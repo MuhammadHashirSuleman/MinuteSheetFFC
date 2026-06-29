@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FFC Minute Sheet - Enterprise Governance Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#3f30ae",
+                    "inverse-on-surface": "#ebf1ff",
+                    "primary-fixed": "#ffdcc3",
+                    "surface-variant": "#dce2f3",
+                    "on-primary-fixed-variant": "#6e3900",
+                    "on-surface-variant": "#544438",
+                    "on-primary-fixed": "#2f1500",
+                    "on-error": "#ffffff",
+                    "tertiary": "#574bc7",
+                    "background": "#f9f9ff",
+                    "on-secondary-fixed-variant": "#3d446c",
+                    "secondary-fixed": "#dee1ff",
+                    "outline": "#867366",
+                    "on-background": "#151c27",
+                    "secondary": "#555c85",
+                    "secondary-fixed-dim": "#bdc4f3",
+                    "surface-bright": "#f9f9ff",
+                    "surface-dim": "#d3daea",
+                    "error": "#ba1a1a",
+                    "primary": "#904d00",
+                    "surface-container-low": "#f0f3ff",
+                    "surface-tint": "#904d00",
+                    "on-tertiary-fixed": "#150067",
+                    "secondary-container": "#c8cfff",
+                    "primary-container": "#f2994a",
+                    "inverse-primary": "#ffb77d",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#dce2f3",
+                    "inverse-surface": "#2a313d",
+                    "primary-fixed-dim": "#ffb77d",
+                    "on-primary-container": "#663500",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#aaa3ff",
+                    "tertiary-fixed-dim": "#c5c0ff",
+                    "on-secondary-container": "#505780",
+                    "on-tertiary-container": "#3929a9",
+                    "surface-container": "#e7eefe",
+                    "outline-variant": "#d9c2b3",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#e4dfff",
+                    "surface": "#f9f9ff",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#151c27",
+                    "surface-container-high": "#e2e8f8",
+                    "on-secondary-fixed": "#11183e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding": "24px",
+                    "stack-md": "16px",
+                    "stack-lg": "24px",
+                    "stack-sm": "8px",
+                    "gutter": "16px",
+                    "sidebar-width": "240px",
+                    "topbar-height": "64px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f9f9ff;
+            font-family: 'Inter', sans-serif;
+        }
+        .canvas-area {
+            margin-left: 240px;
+            margin-top: 64px;
+            min-height: calc(100vh - 64px);
+        }
+        .surface-card {
+            background-color: #ffffff;
+            border: 1px solid #E6E9F2;
+            box-shadow: 0px 2px 4px rgba(27, 31, 59, 0.04);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .surface-card:hover {
+            border-color: #D1D5DB;
+            box-shadow: 0px 4px 6px rgba(27, 31, 59, 0.06);
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- SideNavBar (JSON Derived) -->
+<aside class="fixed h-full w-[240px] left-0 top-0 bg-on-secondary-fixed dark:bg-on-secondary-fixed border-r border-outline-variant dark:border-outline shadow-sm dark:shadow-none flex flex-col h-full py-6 z-50">
+<div class="px-6 mb-8">
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary-container dark:text-primary-container leading-tight">FFC Minute Sheet</h1>
+<p class="text-label-sm font-label-sm text-secondary-fixed-dim opacity-70 mt-1">Enterprise Governance</p>
+</div>
+<nav class="flex-grow space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-primary-container dark:text-primary-container border-l-4 border-primary-container bg-on-secondary-fixed-variant transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-label-md font-label-md">All Requests</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim dark:text-secondary-fixed-dim hover:bg-on-secondary-fixed-variant hover:text-white transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="text-label-md font-label-md">Create Request</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim dark:text-secondary-fixed-dim hover:bg-on-secondary-fixed-variant hover:text-white transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="task">task</span>
+<span class="text-label-md font-label-md">My Actions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim dark:text-secondary-fixed-dim hover:bg-on-secondary-fixed-variant hover:text-white transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="share_reviews">share_reviews</span>
+<span class="text-label-md font-label-md">Shared Minutesheets</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-on-secondary-fixed-variant/30 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim dark:text-secondary-fixed-dim hover:bg-on-secondary-fixed-variant hover:text-white transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim dark:text-secondary-fixed-dim hover:bg-on-secondary-fixed-variant hover:text-white transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="text-label-md font-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar (JSON Derived) -->
+<header class="fixed top-0 right-0 w-[calc(100%-240px)] h-[64px] z-40 bg-on-secondary-fixed dark:bg-on-secondary-fixed border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none flex justify-between items-center px-6">
+<div class="flex items-center gap-4">
+<h2 class="text-headline-md font-headline-md font-black text-primary-container dark:text-primary-container">Dashboard</h2>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative text-secondary-fixed-dim hover:text-primary-container transition-colors p-2">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-primary-container rounded-full ring-2 ring-on-secondary-fixed"></span>
+</button>
+<div class="flex items-center gap-3 group cursor-pointer">
+<div class="text-right">
+<p class="text-label-sm font-label-sm text-on-primary-fixed">Ahsan Iqbal</p>
+<p class="text-[10px] text-secondary-fixed-dim uppercase tracking-wider">Admin Officer</p>
+</div>
+<img class="w-10 h-10 rounded-full border-2 border-primary-container/20 group-hover:border-primary-container transition-colors" data-alt="Professional headshot of a corporate male administrator in a sharp navy suit, clean-cut appearance, set against a blurred high-end office background with neutral gray and white tones. The lighting is soft and professional, emphasizing trust and institutional reliability, consistent with a modern enterprise governance platform dashboard aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOvGPtlphNaOvUYChp6SaH7mD9VecGN1T49Nw3z5s6xkq0ZwkARtkhJ7s2wljyzeDBj1K1dsvePvzRSlIybpsVOJUrnMA2o0lDr32ZQ03jYvoa0dq0Q0MWqDU-jguabChKhAKPyHH8IX0dUyv9gvZT53hxJd-DdFo3n94WYR1y8XDwfoRiIdcOIW_-lVPIwxHMCL187vG5rGBkhWnsEKSCpxMTNkrAtepB6ONQWyCDjR8pfm-hZ1Y09A"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="canvas-area p-container-padding">
+<!-- Top Row: Stat Cards Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-stack-lg">
+<!-- Card 1 -->
+<div class="surface-card p-6 rounded-lg flex items-center justify-between">
+<div>
+<p class="text-label-sm font-label-sm text-secondary uppercase tracking-tight mb-1">My Requests</p>
+<h3 class="text-headline-xl font-headline-xl text-on-surface">24</h3>
+</div>
+<div class="w-12 h-12 bg-primary-container/10 rounded-xl flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[32px]" data-icon="description">description</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="surface-card p-6 rounded-lg flex items-center justify-between border-l-4 border-l-tertiary">
+<div>
+<p class="text-label-sm font-label-sm text-secondary uppercase tracking-tight mb-1">Pending Actions</p>
+<h3 class="text-headline-xl font-headline-xl text-tertiary">08</h3>
+</div>
+<div class="w-12 h-12 bg-tertiary-container/10 rounded-xl flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[32px]" data-icon="pending_actions">pending_actions</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="surface-card p-6 rounded-lg flex items-center justify-between">
+<div>
+<p class="text-label-sm font-label-sm text-secondary uppercase tracking-tight mb-1">Drafts</p>
+<h3 class="text-headline-xl font-headline-xl text-on-surface">12</h3>
+</div>
+<div class="w-12 h-12 bg-surface-container-high rounded-xl flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[32px]" data-icon="drafts">drafts</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="surface-card p-6 rounded-lg flex items-center justify-between border-l-4 border-l-green-600">
+<div>
+<p class="text-label-sm font-label-sm text-secondary uppercase tracking-tight mb-1">Approved</p>
+<h3 class="text-headline-xl font-headline-xl text-on-surface">142</h3>
+</div>
+<div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-green-700">
+<span class="material-symbols-outlined text-[32px]" data-icon="verified">verified</span>
+</div>
+</div>
+</section>
+<!-- Middle Sections: Tables -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-gutter mb-stack-lg">
+<!-- My Pending Actions -->
+<div class="surface-card rounded-lg overflow-hidden flex flex-col">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary" data-icon="gavel">gavel</span>
+<h4 class="font-headline-md text-headline-md">My Pending Actions</h4>
+</div>
+<button class="text-label-sm font-label-sm text-primary hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="px-4 py-3 text-label-sm font-label-sm text-secondary">REF</th>
+<th class="px-4 py-3 text-label-sm font-label-sm text-secondary">SUBJECT</th>
+<th class="px-4 py-3 text-label-sm font-label-sm text-secondary">REQUESTER</th>
+<th class="px-4 py-3 text-label-sm font-label-sm text-secondary">STATUS</th>
+<th class="px-4 py-3 text-label-sm font-label-sm text-secondary text-right">ACTION</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-primary-fixed/20 transition-colors">
+<td class="px-4 py-4 font-label-sm text-on-surface">#MS-9021</td>
+<td class="px-4 py-4 text-body-md text-on-surface-variant font-medium">Budget Reallocation Q4</td>
+<td class="px-4 py-4 text-body-sm text-secondary">Sarah Connor</td>
+<td class="px-4 py-4">
+<span class="px-2 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-semibold uppercase">Reviewing</span>
+</td>
+<td class="px-4 py-4 text-right">
+<button class="w-8 h-8 rounded-full hover:bg-primary-container hover:text-white transition-all inline-flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-primary-fixed/20 transition-colors">
+<td class="px-4 py-4 font-label-sm text-on-surface">#MS-9018</td>
+<td class="px-4 py-4 text-body-md text-on-surface-variant font-medium">Procurement: IT Infrastructure</td>
+<td class="px-4 py-4 text-body-sm text-secondary">James Holden</td>
+<td class="px-4 py-4">
+<span class="px-2 py-1 rounded-full bg-amber-100 text-amber-800 text-[11px] font-semibold uppercase">Urgent</span>
+</td>
+<td class="px-4 py-4 text-right">
+<button class="w-8 h-8 rounded-full hover:bg-primary-container hover:text-white transition-all inline-flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-primary-fixed/20 transition-colors">
+<td class="px-4 py-4 font-label-sm text-on-surface">#MS-8992</td>
+<td class="px-4 py-4 text-body-md text-on-surface-variant font-medium">Policy Update: Remote Work</td>
+<td class="px-4 py-4 text-body-sm text-secondary">Naomi Nagata</td>
+<td class="px-4 py-4">
+<span class="px-2 py-1 rounded-full bg-surface-container-highest text-secondary text-[11px] font-semibold uppercase">Standard</span>
+</td>
+<td class="px-4 py-4 text-right">
+<button class="w-8 h-8 rounded-full hover:bg-primary-container hover:text-white transition-all inline-flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- My Recent Requests -->
+<div class="surface-card rounded-lg overflow-hidden flex flex-col">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="history">history</span>
+<h4 class="font-headline-md text-headline-md">My Recent Requests</h4>
+</div>
+<button class="text-label-sm font-label-sm text-primary hover:underline">Track All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="px-4 py-3 text-label-sm font-label-sm text-secondary">REF</th>
+<th class="px-4 py-3 text-label-sm font-label-sm text-secondary">SUBJECT</th>
+<th class="px-4 py-3 text-label-sm font-label-sm text-secondary">CURR. HOLDER</th>
+<th class="px-4 py-3 text-label-sm font-label-sm text-secondary">STATUS</th>
+<th class="px-4 py-3 text-label-sm font-label-sm text-secondary text-right">ACTION</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-primary-fixed/20 transition-colors">
+<td class="px-4 py-4 font-label-sm text-on-surface">#MS-9045</td>
+<td class="px-4 py-4 text-body-md text-on-surface-variant font-medium">Project Phoenix Phase 2</td>
+<td class="px-4 py-4 text-body-sm text-secondary">Director Ops</td>
+<td class="px-4 py-4">
+<span class="px-2 py-1 rounded-full bg-blue-100 text-blue-800 text-[11px] font-semibold uppercase">Pending</span>
+</td>
+<td class="px-4 py-4 text-right">
+<button class="w-8 h-8 rounded-full hover:bg-primary-container hover:text-white transition-all inline-flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-primary-fixed/20 transition-colors">
+<td class="px-4 py-4 font-label-sm text-on-surface">#MS-9033</td>
+<td class="px-4 py-4 text-body-md text-on-surface-variant font-medium">Travel Authorization: Dubai</td>
+<td class="px-4 py-4 text-body-sm text-secondary">System</td>
+<td class="px-4 py-4">
+<span class="px-2 py-1 rounded-full bg-green-100 text-green-800 text-[11px] font-semibold uppercase">Approved</span>
+</td>
+<td class="px-4 py-4 text-right">
+<button class="w-8 h-8 rounded-full hover:bg-primary-container hover:text-white transition-all inline-flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-primary-fixed/20 transition-colors">
+<td class="px-4 py-4 font-label-sm text-on-surface">#MS-8812</td>
+<td class="px-4 py-4 text-body-md text-on-surface-variant font-medium">Hiring: Junior Data Analyst</td>
+<td class="px-4 py-4 text-body-sm text-secondary">HR Admin</td>
+<td class="px-4 py-4">
+<span class="px-2 py-1 rounded-full bg-error-container text-on-error-container text-[11px] font-semibold uppercase">Returned</span>
+</td>
+<td class="px-4 py-4 text-right">
+<button class="w-8 h-8 rounded-full hover:bg-primary-container hover:text-white transition-all inline-flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Bottom Row: Aging / Delayed Approvals -->
+<section class="surface-card rounded-lg p-6 bg-surface-container-lowest">
+<div class="flex items-center justify-between mb-stack-md">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-error" data-icon="timer_off">timer_off</span>
+<div>
+<h4 class="font-headline-md text-headline-md">Aging / Delayed Approvals</h4>
+<p class="text-body-sm text-secondary">Critical bottlenecks requiring immediate attention</p>
+</div>
+</div>
+<div class="flex gap-2">
+<span class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 text-label-sm font-label-sm">
+<span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                        3-7 Days
+                    </span>
+<span class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-error-container text-on-error-container border border-error/20 text-label-sm font-label-sm">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+                        &gt;7 Days
+                    </span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-stack-md">
+<!-- Alert Chip 1 -->
+<div class="flex items-center gap-4 p-4 rounded-xl border border-error/30 bg-error-container/10">
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+</div>
+<div class="flex-grow">
+<p class="text-label-sm font-label-sm text-on-surface">#MS-8552: Annual Audit</p>
+<p class="text-[11px] text-error font-bold uppercase">12 Days Delayed</p>
+</div>
+<button class="p-2 text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="forward_to_inbox">forward_to_inbox</span>
+</button>
+</div>
+<!-- Alert Chip 2 -->
+<div class="flex items-center gap-4 p-4 rounded-xl border border-amber-300 bg-amber-50">
+<div class="w-10 h-10 rounded-full bg-amber-200 flex items-center justify-center text-amber-800">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</div>
+<div class="flex-grow">
+<p class="text-label-sm font-label-sm text-on-surface">#MS-8910: Vendor Payment</p>
+<p class="text-[11px] text-amber-700 font-bold uppercase">5 Days Delayed</p>
+</div>
+<button class="p-2 text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="forward_to_inbox">forward_to_inbox</span>
+</button>
+</div>
+<!-- Alert Chip 3 -->
+<div class="flex items-center gap-4 p-4 rounded-xl border border-amber-300 bg-amber-50">
+<div class="w-10 h-10 rounded-full bg-amber-200 flex items-center justify-center text-amber-800">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</div>
+<div class="flex-grow">
+<p class="text-label-sm font-label-sm text-on-surface">#MS-8914: Leave Approval</p>
+<p class="text-[11px] text-amber-700 font-bold uppercase">4 Days Delayed</p>
+</div>
+<button class="p-2 text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="forward_to_inbox">forward_to_inbox</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB for Create (Contextual for Dashboard) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary-container text-on-primary-container rounded-full shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center justify-center z-50">
+<span class="material-symbols-outlined text-[32px]" data-icon="add">add</span>
+</button>
+<script>
+        // Micro-interaction for table rows
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.transform = 'translateX(4px)';
+                row.style.transition = 'transform 0.2s ease-out';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.style.transform = 'translateX(0px)';
+            });
+        });
+
+        // Search highlight simulation (if search was active)
+        console.log("FFC Minute Sheet Dashboard Initialized");
+    </script>
+</body></html>

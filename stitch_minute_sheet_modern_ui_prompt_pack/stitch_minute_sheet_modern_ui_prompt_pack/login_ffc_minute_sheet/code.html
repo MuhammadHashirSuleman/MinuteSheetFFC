@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FFC Minute Sheet - Sign In</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9ff;
+        }
+        .diagonal-stripes {
+            background-image: repeating-linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.03) 0px,
+                rgba(255, 255, 255, 0.03) 1px,
+                transparent 1px,
+                transparent 10px
+            );
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#3f30ae",
+                        "inverse-on-surface": "#ebf1ff",
+                        "primary-fixed": "#ffdcc3",
+                        "surface-variant": "#dce2f3",
+                        "on-primary-fixed-variant": "#6e3900",
+                        "on-surface-variant": "#544438",
+                        "on-primary-fixed": "#2f1500",
+                        "on-error": "#ffffff",
+                        "tertiary": "#574bc7",
+                        "background": "#f9f9ff",
+                        "on-secondary-fixed-variant": "#3d446c",
+                        "secondary-fixed": "#dee1ff",
+                        "outline": "#867366",
+                        "on-background": "#151c27",
+                        "secondary": "#555c85",
+                        "secondary-fixed-dim": "#bdc4f3",
+                        "surface-bright": "#f9f9ff",
+                        "surface-dim": "#d3daea",
+                        "error": "#ba1a1a",
+                        "primary": "#904d00",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-tint": "#904d00",
+                        "on-tertiary-fixed": "#150067",
+                        "secondary-container": "#c8cfff",
+                        "primary-container": "#f2994a",
+                        "inverse-primary": "#ffb77d",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#dce2f3",
+                        "inverse-surface": "#2a313d",
+                        "primary-fixed-dim": "#ffb77d",
+                        "on-primary-container": "#663500",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#aaa3ff",
+                        "tertiary-fixed-dim": "#c5c0ff",
+                        "on-secondary-container": "#505780",
+                        "on-tertiary-container": "#3929a9",
+                        "surface-container": "#e7eefe",
+                        "outline-variant": "#d9c2b3",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#e4dfff",
+                        "surface": "#f9f9ff",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#151c27",
+                        "surface-container-high": "#e2e8f8",
+                        "on-secondary-fixed": "#11183e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding": "24px",
+                        "stack-md": "16px",
+                        "stack-lg": "24px",
+                        "stack-sm": "8px",
+                        "gutter": "16px",
+                        "sidebar-width": "240px",
+                        "topbar-height": "64px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-xl": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<main class="flex min-h-screen">
+<!-- Left Panel: Brand Experience -->
+<section class="hidden lg:flex lg:w-[45%] bg-on-secondary-fixed relative flex-col justify-center items-center text-center p-container-padding overflow-hidden">
+<!-- Background Motif -->
+<div class="absolute inset-0 diagonal-stripes"></div>
+<!-- Atmospheric Shader Element -->
+<div class="absolute inset-0 opacity-20 mix-blend-screen pointer-events-none">
+
+</div>
+<!-- Content Overlay -->
+<div class="relative z-10 flex flex-col items-center">
+<div class="mb-stack-lg">
+<span class="text-white font-headline-xl text-[48px] tracking-tighter font-black">FFC</span>
+</div>
+<h1 class="text-white font-headline-lg text-headline-lg mb-stack-sm">Minute Sheet</h1>
+<p class="text-secondary-fixed-dim font-body-lg text-body-lg opacity-80">Internal Approval &amp; Workflow System</p>
+<div class="mt-12 w-64 h-1 bg-primary-container rounded-full opacity-50"></div>
+</div>
+<!-- Subtle Decorative Circle -->
+<div class="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-primary-container/10 rounded-full blur-[80px]"></div>
+</section>
+<!-- Right Panel: Authentication Form -->
+<section class="flex-1 flex flex-col bg-surface-container-lowest">
+<div class="flex-1 flex flex-col justify-center px-8 sm:px-12 md:px-24 lg:px-16 xl:px-32 max-w-2xl mx-auto w-full">
+<!-- Mobile Header (Visible only when left panel is hidden) -->
+<div class="lg:hidden mb-stack-lg flex items-center gap-3">
+<div class="w-10 h-10 bg-on-secondary-fixed flex items-center justify-center rounded-lg">
+<span class="text-white font-bold text-lg">F</span>
+</div>
+<span class="text-on-surface font-headline-md text-headline-md">FFC Minute Sheet</span>
+</div>
+<div class="space-y-stack-sm mb-stack-lg">
+<h2 class="text-on-surface font-headline-xl text-headline-xl tracking-tight">Sign in to Minute Sheet</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Enterprise governance and document tracking portal.</p>
+</div>
+<form class="space-y-6" id="loginForm">
+<!-- Employee ID Field -->
+<div class="space-y-2">
+<label class="block text-on-surface font-label-md text-label-md" for="pno">Employee ID / PNo</label>
+<div class="relative">
+<input class="w-full px-4 py-3 bg-surface border border-outline-variant rounded-lg font-body-md focus:ring-2 focus:ring-primary-container focus:border-primary-container transition-all outline-none" id="pno" name="pno" placeholder="Enter your ID" type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant">person</span>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<label class="block text-on-surface font-label-md text-label-md" for="password">Password</label>
+<a class="text-primary font-label-sm text-label-sm hover:underline" href="#">Forgot password?</a>
+</div>
+<div class="relative">
+<input class="w-full px-4 py-3 bg-surface border border-outline-variant rounded-lg font-body-md focus:ring-2 focus:ring-primary-container focus:border-primary-container transition-all outline-none" id="password" name="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface transition-colors" id="togglePassword" type="button">
+<span class="material-symbols-outlined" id="eyeIcon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Remember Me -->
+<div class="flex items-center">
+<input class="w-4 h-4 text-primary border-outline-variant rounded focus:ring-primary-container transition-all" id="remember" type="checkbox"/>
+<label class="ml-2 block text-on-surface-variant font-body-md text-body-md select-none" for="remember">Remember me</label>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-primary-container text-on-primary-container font-label-md text-label-md py-4 rounded-lg shadow-sm hover:bg-on-primary-fixed-variant hover:text-white transition-all duration-300 transform active:scale-[0.98] focus:outline-none focus:ring-4 focus:ring-primary-container/20" type="submit">
+                        Sign In
+                    </button>
+</form>
+<!-- Help Link -->
+<p class="mt-8 text-center text-on-surface-variant font-body-sm text-body-sm">
+                    Having trouble signing in? <a class="text-primary font-label-sm hover:underline" href="#">Contact IT Support</a>
+</p>
+</div>
+<!-- Footer -->
+<footer class="p-8 text-center border-t border-outline-variant/30">
+<p class="text-on-surface-variant font-label-sm text-label-sm opacity-60">© FFC — Internal Use Only</p>
+</footer>
+</section>
+</main>
+<script>
+        // Micro-interactions and logic
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        const eyeIcon = document.getElementById('eyeIcon');
+
+        togglePassword.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            eyeIcon.textContent = type === 'password' ? 'visibility' : 'visibility_off';
+        });
+
+        // Form submission effect
+        const form = document.getElementById('loginForm');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            
+            btn.disabled = true;
+            btn.innerHTML = `
+                <div class="flex items-center justify-center gap-2">
+                    <svg class="animate-spin h-5 w-5 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>Verifying Credentials...</span>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.textContent = originalText;
+                // Transition logic would go here
+            }, 1500);
+        });
+
+        // Atmospheric interactions
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            const gradient = document.querySelector('.diagonal-stripes');
+            if (gradient) {
+                gradient.style.opacity = 0.03 + (mouseX * 0.02);
+            }
+        });
+    </script>
+</body></html>

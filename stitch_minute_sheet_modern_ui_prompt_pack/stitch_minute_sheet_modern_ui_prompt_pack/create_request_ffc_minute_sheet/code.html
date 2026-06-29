@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create New Minute Sheet | FFC Governance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#3f30ae",
+                        "inverse-on-surface": "#ebf1ff",
+                        "primary-fixed": "#ffdcc3",
+                        "surface-variant": "#dce2f3",
+                        "on-primary-fixed-variant": "#6e3900",
+                        "on-surface-variant": "#544438",
+                        "on-primary-fixed": "#2f1500",
+                        "on-error": "#ffffff",
+                        "tertiary": "#574bc7",
+                        "background": "#f9f9ff",
+                        "on-secondary-fixed-variant": "#3d446c",
+                        "secondary-fixed": "#dee1ff",
+                        "outline": "#867366",
+                        "on-background": "#151c27",
+                        "secondary": "#555c85",
+                        "secondary-fixed-dim": "#bdc4f3",
+                        "surface-bright": "#f9f9ff",
+                        "surface-dim": "#d3daea",
+                        "error": "#ba1a1a",
+                        "primary": "#904d00",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-tint": "#904d00",
+                        "on-tertiary-fixed": "#150067",
+                        "secondary-container": "#c8cfff",
+                        "primary-container": "#f2994a",
+                        "inverse-primary": "#ffb77d",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#dce2f3",
+                        "inverse-surface": "#2a313d",
+                        "primary-fixed-dim": "#ffb77d",
+                        "on-primary-container": "#663500",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#aaa3ff",
+                        "tertiary-fixed-dim": "#c5c0ff",
+                        "on-secondary-container": "#505780",
+                        "on-tertiary-container": "#3929a9",
+                        "surface-container": "#e7eefe",
+                        "outline-variant": "#d9c2b3",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#e4dfff",
+                        "surface": "#f9f9ff",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#151c27",
+                        "surface-container-high": "#e2e8f8",
+                        "on-secondary-fixed": "#11183e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "8px",
+                        "xl": "12px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding": "24px",
+                        "stack-md": "16px",
+                        "stack-lg": "24px",
+                        "stack-sm": "8px",
+                        "gutter": "16px",
+                        "sidebar-width": "240px",
+                        "topbar-height": "64px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-xl": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            user-select: none;
+        }
+        body {
+            background-color: #F4F6FB;
+            font-family: 'Inter', sans-serif;
+        }
+        .canvas-area {
+            margin-left: 240px;
+            margin-top: 64px;
+            padding-bottom: 100px;
+        }
+        .custom-shadow {
+            box-shadow: 0px 2px 4px rgba(27, 31, 59, 0.04);
+        }
+        .rich-text-area {
+            min-height: 200px;
+            border-color: #E6E9F2;
+        }
+        .workflow-card {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .workflow-card.active {
+            border-color: #904d00;
+            background-color: #ffdcc3;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #904d00 !important;
+            box-shadow: 0 0 0 2px rgba(144, 77, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Side Navigation Bar -->
+<aside class="fixed h-full w-[240px] left-0 top-0 bg-on-secondary-fixed dark:bg-on-secondary-fixed border-r border-outline-variant dark:border-outline shadow-sm dark:shadow-none flex flex-col h-full py-6 z-50">
+<div class="px-6 mb-8">
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary-container dark:text-primary-container">FFC Minute Sheet</h1>
+<p class="text-label-md font-label-md text-secondary-fixed-dim">Enterprise Governance</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim dark:text-secondary-fixed-dim hover:bg-on-secondary-fixed-variant hover:text-white transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-label-md font-label-md">All Requests</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-container dark:text-primary-container border-l-4 border-primary-container bg-on-secondary-fixed-variant" href="#">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="text-label-md font-label-md">Create Request</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim dark:text-secondary-fixed-dim hover:bg-on-secondary-fixed-variant hover:text-white transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="task">task</span>
+<span class="text-label-md font-label-md">My Actions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim dark:text-secondary-fixed-dim hover:bg-on-secondary-fixed-variant hover:text-white transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="share_reviews">share_reviews</span>
+<span class="text-label-md font-label-md">Shared Minutesheets</span>
+</a>
+</nav>
+<div class="mt-auto space-y-1 border-t border-outline-variant pt-4">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim dark:text-secondary-fixed-dim hover:bg-on-secondary-fixed-variant hover:text-white transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim dark:text-secondary-fixed-dim hover:bg-on-secondary-fixed-variant hover:text-white transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="text-label-md font-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 right-0 w-[calc(100%-240px)] h-[64px] z-40 bg-on-secondary-fixed dark:bg-on-secondary-fixed border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none flex justify-between items-center px-6">
+<div class="flex items-center gap-2">
+<span class="text-headline-md font-headline-md font-black text-primary-container dark:text-primary-container">Create New Minute Sheet</span>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-primary-fixed hover:text-primary-container transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-error ring-2 ring-on-secondary-fixed"></span>
+</button>
+<div class="flex items-center gap-3 group cursor-pointer">
+<span class="text-label-sm font-label-sm text-on-primary-fixed">Ahsan Iqbal</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a corporate executive in his 30s wearing a clean dark suit and a crisp white shirt. The background is a blurred modern office environment with soft morning light. The photo has a high-end corporate aesthetic with natural skin tones and sharp focus on the subject." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK2bkrKdctsOiP3NqRVILWWeWznT09BeTEixorrn5jr0GrkiMwSrapvbZ22U0W0nPjcCsLEDw_DdYoMObK0bqNoRzHaem7fuzmb9uGHU2iNUJjsWmhVejqjQUji8ThXrMXbSEXY8ww86RN_HVdPw4vEv3An8kY4LZ_SFK5OEhMTtGyCRo_5HMxiwzJq-z1aeolzjHrtv3FUXKASkuBib_RXmkTPfSsJwK3D2vttJGf9gpCZ_HHWP-TSQ"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="canvas-area">
+<div class="max-w-4xl mx-auto py-8 px-container-padding space-y-6">
+<!-- Section 1: Requester Info (Read-only) -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 custom-shadow">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-label-md font-label-md text-secondary uppercase tracking-wider">Requester Information</h2>
+<span class="text-body-sm font-body-sm text-outline">Reference ID: MS-2023-8942</span>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-low p-3 rounded-lg border border-outline-variant/30">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-headline-md">
+                        AI
+                    </div>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Ahsan Iqbal</p>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-on-tertiary-fixed text-tertiary-fixed">Finance Department</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-secondary-container text-on-secondary-container">Senior Admin Officer</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Details -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 custom-shadow space-y-6">
+<h2 class="text-label-md font-label-md text-secondary uppercase tracking-wider">Minute Sheet Details</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="col-span-2 space-y-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant">Subject / Title</label>
+<input class="w-full h-11 px-4 rounded-lg border border-outline-variant text-body-md font-body-md transition-all" placeholder="Enter a descriptive title for this minute sheet" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant">Sheet Type</label>
+<select class="w-full h-11 px-4 rounded-lg border border-outline-variant text-body-md font-body-md bg-transparent" id="sheetType" onchange="toggleBudget(this.value)">
+<option value="hr">HR &amp; Recruitment</option>
+<option value="financial">Financial &amp; Procurement</option>
+<option value="admin">Administrative</option>
+<option value="it">IT Services</option>
+<option value="legal">Legal &amp; Compliance</option>
+</select>
+</div>
+<div class="space-y-2 hidden animate-in fade-in slide-in-from-top-2 duration-300" id="budgetField">
+<label class="text-label-sm font-label-sm text-on-surface-variant">Estimated Budget (USD)</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-outline">$</span>
+<input class="w-full h-11 pl-8 pr-4 rounded-lg border border-outline-variant text-body-md font-body-md" placeholder="0.00" type="number"/>
+</div>
+</div>
+<div class="col-span-2 space-y-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant">Priority Level</label>
+<div class="flex p-1 bg-surface-container-high rounded-lg border border-outline-variant gap-1">
+<button class="flex-1 py-2 text-label-sm font-label-sm rounded-md bg-white text-on-surface shadow-sm border border-outline-variant/20 transition-all">Low</button>
+<button class="flex-1 py-2 text-label-sm font-label-sm text-outline hover:text-on-surface transition-all">Medium</button>
+<button class="flex-1 py-2 text-label-sm font-label-sm text-outline hover:text-on-surface transition-all">High</button>
+<button class="flex-1 py-2 text-label-sm font-label-sm text-outline hover:text-on-surface transition-all">Urgent</button>
+</div>
+</div>
+<div class="col-span-2 flex items-center justify-between p-4 bg-surface-container-low rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="lock">lock</span>
+<div>
+<p class="text-label-md font-label-md">Confidential Minute</p>
+<p class="text-body-sm font-body-sm text-outline">Restrict visibility to selected workflow participants only.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Section 3: Description (Rich Text) -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 custom-shadow space-y-4">
+<h2 class="text-label-md font-label-md text-secondary uppercase tracking-wider">Note / Body Text</h2>
+<div class="border border-outline-variant rounded-lg overflow-hidden">
+<div class="bg-surface-container-high px-4 py-2 border-b border-outline-variant flex gap-4">
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[20px]" data-icon="format_bold">format_bold</span></button>
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[20px]" data-icon="format_italic">format_italic</span></button>
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[20px]" data-icon="format_list_bulleted">format_list_bulleted</span></button>
+<div class="w-px h-6 bg-outline-variant"></div>
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[20px]" data-icon="link">link</span></button>
+</div>
+<textarea class="w-full p-4 rich-text-area text-body-md font-body-md border-none resize-y" placeholder="Compose your minute content here. Be concise and provide all necessary context for approval."></textarea>
+</div>
+</section>
+<!-- Section 4: Attachments -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 custom-shadow space-y-4">
+<h2 class="text-label-md font-label-md text-secondary uppercase tracking-wider">Attachments</h2>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-8 flex flex-col items-center justify-center bg-surface-container-low hover:bg-surface-container hover:border-primary-container transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-outline group-hover:text-primary-container text-4xl mb-2" data-icon="cloud_upload">cloud_upload</span>
+<p class="text-label-md font-label-md text-on-surface">Click or drag files to upload</p>
+<p class="text-body-sm font-body-sm text-outline">PDF, DOCX, XLSX (Max 10MB each)</p>
+</div>
+<div class="space-y-2 mt-4">
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest border border-outline-variant rounded-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="description">description</span>
+<div>
+<p class="text-label-sm font-label-sm">Project_Proposal_v2.pdf</p>
+<p class="text-body-sm font-body-sm text-outline">1.2 MB • Uploaded 2 mins ago</p>
+</div>
+</div>
+<button class="text-error hover:bg-error-container p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Section 5: Workflow Mode -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 custom-shadow space-y-4">
+<h2 class="text-label-md font-label-md text-secondary uppercase tracking-wider">Select Workflow Mode</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Manual -->
+<div class="workflow-card border border-outline-variant rounded-xl p-4 cursor-pointer hover:border-primary active" onclick="selectWorkflow(this)">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="route">route</span>
+</div>
+<h3 class="text-label-md font-label-md text-on-surface mb-1">Manual</h3>
+<p class="text-body-sm font-body-sm text-outline">Pick each recipient and approver yourself.</p>
+</div>
+<!-- Dynamic -->
+<div class="workflow-card border border-outline-variant rounded-xl p-4 cursor-pointer hover:border-primary" onclick="selectWorkflow(this)">
+<div class="w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<h3 class="text-label-md font-label-md text-on-surface mb-1">Dynamic</h3>
+<p class="text-body-sm font-body-sm text-outline">Auto-route based on department and budget.</p>
+</div>
+<!-- Hybrid -->
+<div class="workflow-card border border-outline-variant rounded-xl p-4 cursor-pointer hover:border-primary" onclick="selectWorkflow(this)">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-on-primary-fixed-variant" data-icon="account_tree">account_tree</span>
+</div>
+<h3 class="text-label-md font-label-md text-on-surface mb-1">Hybrid</h3>
+<p class="text-body-sm font-body-sm text-outline">Standard path with custom additions.</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Sticky Bottom Action Bar -->
+<footer class="fixed bottom-0 right-0 w-[calc(100%-240px)] bg-on-secondary-fixed text-white border-t border-outline-variant p-4 z-40">
+<div class="max-w-4xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-on-tertiary-fixed-variant text-tertiary-fixed hover:bg-tertiary-container hover:text-on-tertiary-container transition-all text-label-md font-label-md">
+<span class="material-symbols-outlined text-[20px]" data-icon="auto_sparkle">auto_label</span>
+                    AI Analyze
+                </button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg border border-outline-variant text-secondary-fixed-dim hover:bg-on-secondary-fixed-variant transition-all text-label-md font-label-md">
+<span class="material-symbols-outlined text-[20px]" data-icon="insights">insights</span>
+                    Preview Route
+                </button>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-6 py-2 rounded-lg text-secondary-fixed-dim hover:text-white transition-all text-label-md font-label-md">
+                    Save Draft
+                </button>
+<button class="px-8 py-2.5 rounded-lg bg-primary-container text-on-primary-container font-bold shadow-lg hover:scale-105 active:scale-95 transition-all text-label-md font-label-md">
+                    Submit Sheet
+                </button>
+</div>
+</div>
+</footer>
+<script>
+        function toggleBudget(val) {
+            const budgetDiv = document.getElementById('budgetField');
+            if (val === 'financial') {
+                budgetDiv.classList.remove('hidden');
+                budgetDiv.classList.add('block');
+            } else {
+                budgetDiv.classList.add('hidden');
+                budgetDiv.classList.remove('block');
+            }
+        }
+
+        function selectWorkflow(element) {
+            document.querySelectorAll('.workflow-card').forEach(card => {
+                card.classList.remove('active', 'border-primary', 'bg-primary-fixed');
+            });
+            element.classList.add('active', 'border-primary', 'bg-primary-fixed');
+        }
+
+        // Pill Switcher Logic
+        document.querySelectorAll('section:nth-of-type(2) .flex.p-1 button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const parent = this.parentElement;
+                parent.querySelectorAll('button').forEach(b => {
+                    b.classList.remove('bg-white', 'text-on-surface', 'shadow-sm', 'border', 'border-outline-variant/20');
+                    b.classList.add('text-outline');
+                });
+                this.classList.add('bg-white', 'text-on-surface', 'shadow-sm', 'border', 'border-outline-variant/20');
+                this.classList.remove('text-outline');
+            });
+        });
+    </script>
+</body></html>

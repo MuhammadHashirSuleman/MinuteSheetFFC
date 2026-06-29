@@ -1,23 +1,89 @@
-﻿@inherits LayoutComponentBase
+@inherits LayoutComponentBase
+@implements IDisposable
+@inject NavigationManager Navigation
+@inject IEmployeeService EmployeeService
 
-<div class="page">
-    <div class="sidebar">
+<input class="shell-menu-check" id="shell-menu-check" type="checkbox" aria-hidden="true" />
+
+<div class="app-shell">
+    <aside class="app-sidebar">
         <NavMenu />
-    </div>
+    </aside>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
+    <div class="app-frame">
+        <header class="app-topbar">
+            <div class="d-flex align-items-center gap-3 min-w-0">
+                <label class="mobile-menu-button" for="shell-menu-check" aria-label="Open navigation">
+                    <i class="bi bi-list"></i>
+                </label>
+                <h1 class="app-topbar-title text-truncate">@PageTitle</h1>
+            </div>
 
-        <article class="content px-4">
+            <div class="app-topbar-actions">
+                <button class="notification-button" type="button" aria-label="Notifications">
+                    <i class="bi bi-bell"></i>
+                    <span></span>
+                </button>
+                <div class="topbar-divider"></div>
+                <div class="user-chip">
+                    <div class="user-chip-text">
+                        <strong>@(CurrentUser?.FullName ?? "Ahsan Iqbal")</strong>
+                        <span>@(CurrentUser?.Designation ?? "Admin Officer")</span>
+                    </div>
+                    <Avatar Employee="CurrentUser" Size="36" />
+                </div>
+            </div>
+        </header>
+
+        <main class="app-content">
             @Body
-        </article>
-    </main>
+        </main>
+    </div>
 </div>
+
+<label class="shell-backdrop" for="shell-menu-check" aria-label="Close navigation"></label>
 
 <div id="blazor-error-ui" data-nosnippet>
     An unhandled error has occurred.
     <a href="." class="reload">Reload</a>
-    <span class="dismiss">🗙</span>
+    <span class="dismiss">x</span>
 </div>
+
+@code {
+    private EmployeeProfile? CurrentUser { get; set; }
+
+    private string PageTitle
+    {
+        get
+        {
+            var relativePath = Navigation.ToBaseRelativePath(Navigation.Uri).TrimEnd('/');
+
+            return relativePath switch
+            {
+                "" => "Dashboard",
+                "minute-sheets" => "FFC Minute Sheet",
+                "minute-sheets/create" => "Create New Minute Sheet",
+                "my-pending" => "My Actions",
+                "minute-sheets/shared" => "Shared Minutesheets",
+                var path when path.StartsWith("minute-sheets/", StringComparison.OrdinalIgnoreCase) => path.Split('/').LastOrDefault() is { } id ? $"MS-2024-{id.PadLeft(4, '0')}" : "Minute Sheet Detail",
+                _ => "FFC Minute Sheet"
+            };
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        CurrentUser = await EmployeeService.GetCurrentEmployeeAsync();
+        Navigation.LocationChanged += OnLocationChanged;
+    }
+
+    private void OnLocationChanged(object? sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs args)
+    {
+        _ = InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        Navigation.LocationChanged -= OnLocationChanged;
+    }
+}

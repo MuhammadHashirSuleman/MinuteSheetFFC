@@ -1,10 +1,18 @@
 using MinuteSheetFFC.Web.Components;
+using MinuteSheetFFC.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddScoped<MockMinuteSheetDataStore>();
+builder.Services.AddScoped<IEmployeeService, InMemoryEmployeeService>();
+builder.Services.AddScoped<IMinuteSheetService, InMemoryMinuteSheetService>();
+builder.Services.AddScoped<IWorkflowService, InMemoryWorkflowService>();
+builder.Services.AddScoped<IAiService, InMemoryAiService>();
+builder.Services.AddScoped<IDashboardService, InMemoryDashboardService>();
 
 var app = builder.Build();
 

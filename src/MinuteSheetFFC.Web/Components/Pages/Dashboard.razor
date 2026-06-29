@@ -1,0 +1,210 @@
+@page "/"
+@rendermode InteractiveServer
+
+<PageTitle>FFC Minute Sheet - Dashboard</PageTitle>
+
+<div class="dashboard-screen">
+    <section class="dashboard-stats" aria-label="Dashboard metrics">
+        <article class="dashboard-stat-card">
+            <div>
+                <p>My Requests</p>
+                <strong>24</strong>
+            </div>
+            <span class="dashboard-stat-icon icon-orange">
+                <i class="bi bi-file-earmark-text"></i>
+            </span>
+        </article>
+
+        <article class="dashboard-stat-card stat-purple">
+            <div>
+                <p>Pending Actions</p>
+                <strong>08</strong>
+            </div>
+            <span class="dashboard-stat-icon icon-purple">
+                <i class="bi bi-clipboard2-check"></i>
+            </span>
+        </article>
+
+        <article class="dashboard-stat-card">
+            <div>
+                <p>Drafts</p>
+                <strong>12</strong>
+            </div>
+            <span class="dashboard-stat-icon icon-muted">
+                <i class="bi bi-envelope-open"></i>
+            </span>
+        </article>
+
+        <article class="dashboard-stat-card stat-green">
+            <div>
+                <p>Approved</p>
+                <strong>142</strong>
+            </div>
+            <span class="dashboard-stat-icon icon-green">
+                <i class="bi bi-patch-check"></i>
+            </span>
+        </article>
+    </section>
+
+    <section class="dashboard-table-grid">
+        <article class="dashboard-panel">
+            <header class="dashboard-panel-header">
+                <div>
+                    <i class="bi bi-gavel"></i>
+                    <h2>My Pending Actions</h2>
+                </div>
+                <a href="my-pending">View All</a>
+            </header>
+
+            <div class="dashboard-table-wrap">
+                <table class="dashboard-table">
+                    <thead>
+                        <tr>
+                            <th>Ref</th>
+                            <th>Subject</th>
+                            <th>Requester</th>
+                            <th>Status</th>
+                            <th class="text-end">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var row in PendingRows)
+                        {
+                            <tr>
+                                <td class="ref-cell">@row.Ref</td>
+                                <td>@row.Subject</td>
+                                <td class="muted-cell">@row.ThirdColumn</td>
+                                <td>
+                                    <span class="@row.BadgeClass">@row.Badge</span>
+                                </td>
+                                <td class="text-end">
+                                    <a class="dashboard-row-action" href="@row.Href" aria-label="Open @row.Ref">
+                                        <i class="bi bi-arrow-right"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </article>
+
+        <article class="dashboard-panel">
+            <header class="dashboard-panel-header">
+                <div>
+                    <i class="bi bi-clock-history icon-warning"></i>
+                    <h2>My Recent Requests</h2>
+                </div>
+                <a href="minute-sheets">Track All</a>
+            </header>
+
+            <div class="dashboard-table-wrap">
+                <table class="dashboard-table">
+                    <thead>
+                        <tr>
+                            <th>Ref</th>
+                            <th>Subject</th>
+                            <th>Curr. Holder</th>
+                            <th>Status</th>
+                            <th class="text-end">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var row in RecentRows)
+                        {
+                            <tr>
+                                <td class="ref-cell">@row.Ref</td>
+                                <td>@row.Subject</td>
+                                <td class="muted-cell">@row.ThirdColumn</td>
+                                <td>
+                                    <span class="@row.BadgeClass">@row.Badge</span>
+                                </td>
+                                <td class="text-end">
+                                    <a class="dashboard-row-action" href="@row.Href" aria-label="Open @row.Ref">
+                                        <i class="@row.IconClass"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </article>
+    </section>
+
+    <section class="dashboard-delays">
+        <header class="delay-header">
+            <div class="delay-title">
+                <i class="bi bi-alarm"></i>
+                <div>
+                    <h2>Aging / Delayed Approvals</h2>
+                    <p>Critical bottlenecks requiring immediate attention</p>
+                </div>
+            </div>
+            <div class="delay-legend">
+                <span class="delay-legend-pill warning"><i></i>3-7 Days</span>
+                <span class="delay-legend-pill danger"><i></i>&gt;7 Days</span>
+            </div>
+        </header>
+
+        <div class="delay-grid">
+            @foreach (var delay in DelayedRows)
+            {
+                <a class="@delay.CardClass" href="@delay.Href">
+                    <span class="delay-icon">
+                        <i class="@delay.IconClass"></i>
+                    </span>
+                    <span class="delay-copy">
+                        <strong>@delay.Ref: @delay.Subject</strong>
+                        <small>@delay.Days Days Delayed</small>
+                    </span>
+                    <i class="bi bi-envelope-arrow-up delay-forward"></i>
+                </a>
+            }
+        </div>
+    </section>
+</div>
+
+<a class="dashboard-fab" href="minute-sheets/create" aria-label="Create request">
+    <i class="bi bi-plus-lg"></i>
+</a>
+
+@code {
+    private static readonly IReadOnlyList<DashboardRow> PendingRows = new[]
+    {
+        new DashboardRow("#MS-9021", "Budget Reallocation Q4", "Sarah Connor", "Reviewing", "dashboard-badge badge-reviewing", "minute-sheets/892", "bi bi-arrow-right"),
+        new DashboardRow("#MS-9018", "Procurement: IT Infrastructure", "James Holden", "Urgent", "dashboard-badge badge-urgent", "minute-sheets/6", "bi bi-arrow-right"),
+        new DashboardRow("#MS-8992", "Policy Update: Remote Work", "Naomi Nagata", "Standard", "dashboard-badge badge-standard", "minute-sheets/8", "bi bi-arrow-right")
+    };
+
+    private static readonly IReadOnlyList<DashboardRow> RecentRows = new[]
+    {
+        new DashboardRow("#MS-9045", "Project Phoenix Phase 2", "Director Ops", "Pending", "dashboard-badge badge-pending", "minute-sheets/1", "bi bi-eye"),
+        new DashboardRow("#MS-9033", "Travel Authorization: Dubai", "System", "Approved", "dashboard-badge badge-approved", "minute-sheets/2", "bi bi-download"),
+        new DashboardRow("#MS-8812", "Hiring: Junior Data Analyst", "HR Admin", "Returned", "dashboard-badge badge-returned", "minute-sheets/6", "bi bi-pencil")
+    };
+
+    private static readonly IReadOnlyList<DelayRow> DelayedRows = new[]
+    {
+        new DelayRow("#MS-8552", "Annual Audit", 12, "delay-card danger", "bi bi-exclamation-triangle", "minute-sheets/892"),
+        new DelayRow("#MS-8910", "Vendor Payment", 5, "delay-card warning", "bi bi-clock", "minute-sheets/6"),
+        new DelayRow("#MS-8914", "Leave Approval", 4, "delay-card warning", "bi bi-clock", "minute-sheets/8")
+    };
+
+    private sealed record DashboardRow(
+        string Ref,
+        string Subject,
+        string ThirdColumn,
+        string Badge,
+        string BadgeClass,
+        string Href,
+        string IconClass);
+
+    private sealed record DelayRow(
+        string Ref,
+        string Subject,
+        int Days,
+        string CardClass,
+        string IconClass,
+        string Href);
+}

@@ -1,0 +1,101 @@
+@page "/login"
+@layout EmptyLayout
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
+
+<PageTitle>FFC Minute Sheet - Sign In</PageTitle>
+
+<main class="login-shell">
+    <section class="login-brand">
+        <div class="login-brand-content">
+            <strong>FFC</strong>
+            <h1>Minute Sheet</h1>
+            <p class="mb-0 text-white-50">Internal Approval &amp; Workflow System</p>
+            <div class="brand-rule"></div>
+        </div>
+    </section>
+
+    <section class="login-panel">
+        <div class="login-form-wrap">
+            <div class="d-lg-none d-flex align-items-center gap-3 mb-4">
+                <div class="avatar avatar-fallback" style="width: 42px; height: 42px;">F</div>
+                <strong class="fs-5">FFC Minute Sheet</strong>
+            </div>
+
+            <div class="mb-4">
+                <h2 class="fw-bold mb-2">Sign in to Minute Sheet</h2>
+                <p class="text-muted mb-0">Enterprise governance and document tracking portal.</p>
+            </div>
+
+            <EditForm Model="loginModel" OnValidSubmit="SignInAsync">
+                <DataAnnotationsValidator />
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold" for="pno">Employee ID / PNo</label>
+                    <div class="position-relative">
+                        <InputText id="pno" class="form-control form-control-lg pe-5" @bind-Value="loginModel.PNo" placeholder="Enter your ID" />
+                        <i class="bi bi-person position-absolute top-50 end-0 translate-middle-y me-3 text-muted"></i>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <label class="form-label fw-bold" for="password">Password</label>
+                        <a class="small fw-bold text-decoration-none" href="#">Forgot password?</a>
+                    </div>
+                    <div class="position-relative">
+                        <InputText id="password" type="@(showPassword ? "text" : "password")" class="form-control form-control-lg pe-5" @bind-Value="loginModel.Password" placeholder="********" />
+                        <button class="btn position-absolute top-50 end-0 translate-middle-y me-1 text-muted" type="button" @onclick="TogglePassword" aria-label="Show password">
+                            <i class="bi @(showPassword ? "bi-eye-slash" : "bi-eye")"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-check mb-4">
+                    <InputCheckbox id="remember" class="form-check-input" @bind-Value="loginModel.RememberMe" />
+                    <label class="form-check-label" for="remember">Remember me</label>
+                </div>
+
+                <button class="btn btn-primary-ffc btn-lg w-100 py-3" type="submit" disabled="@isSubmitting">
+                    @if (isSubmitting)
+                    {
+                        <span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>
+                        <span>Verifying Credentials...</span>
+                    }
+                    else
+                    {
+                        <span>Sign In</span>
+                    }
+                </button>
+            </EditForm>
+
+            <p class="mt-4 text-center text-muted">
+                Having trouble signing in? <a class="fw-bold text-decoration-none" href="#">Contact IT Support</a>
+            </p>
+        </div>
+
+        <footer class="login-footer">&copy; FFC &mdash; Internal Use Only</footer>
+    </section>
+</main>
+
+@code {
+    private readonly LoginModel loginModel = new();
+    private bool showPassword;
+    private bool isSubmitting;
+
+    private void TogglePassword() => showPassword = !showPassword;
+
+    private async Task SignInAsync()
+    {
+        isSubmitting = true;
+        await Task.Delay(650);
+        Navigation.NavigateTo("/");
+    }
+
+    private sealed class LoginModel
+    {
+        public string PNo { get; set; } = "P1001";
+        public string Password { get; set; } = "password";
+        public bool RememberMe { get; set; }
+    }
+}
