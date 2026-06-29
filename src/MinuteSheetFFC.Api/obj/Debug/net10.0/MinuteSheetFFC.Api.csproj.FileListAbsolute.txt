@@ -1,0 +1,9 @@
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Api\obj\Debug\net10.0\MinuteSheetFFC.Api.csproj.AssemblyReference.cache
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Api\obj\Debug\net10.0\rpswa.dswa.cache.json
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Api\obj\Debug\net10.0\MinuteSheetFFC.Api.GeneratedMSBuildEditorConfig.editorconfig
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Api\obj\Debug\net10.0\MinuteSheetFFC.Api.AssemblyInfoInputs.cache
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Api\obj\Debug\net10.0\MinuteSheetFFC.Api.AssemblyInfo.cs
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Api\obj\Debug\net10.0\MinuteSheetFFC.Api.csproj.CoreCompileInputs.cache
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Api\obj\Debug\net10.0\MinuteSheetFFC.Api.MvcApplicationPartsAssemblyInfo.cs
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Api\obj\Debug\net10.0\MinuteSheetFFC.Api.MvcApplicationPartsAssemblyInfo.cache
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Api\obj\Debug\net10.0\MinuteSheetFFC.Api.sourcelink.json

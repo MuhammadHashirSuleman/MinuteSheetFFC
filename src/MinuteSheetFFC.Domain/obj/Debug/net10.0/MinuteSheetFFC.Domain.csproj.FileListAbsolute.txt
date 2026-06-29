@@ -1,0 +1,12 @@
+h:\Minute Sheet FFC\src\MinuteSheetFFC.Domain\bin\Debug\net10.0\MinuteSheetFFC.Domain.deps.json
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Domain\bin\Debug\net10.0\MinuteSheetFFC.Domain.dll
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Domain\bin\Debug\net10.0\MinuteSheetFFC.Domain.pdb
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Domain\obj\Debug\net10.0\MinuteSheetFFC.Domain.GeneratedMSBuildEditorConfig.editorconfig
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Domain\obj\Debug\net10.0\MinuteSheetFFC.Domain.AssemblyInfoInputs.cache
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Domain\obj\Debug\net10.0\MinuteSheetFFC.Domain.AssemblyInfo.cs
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Domain\obj\Debug\net10.0\MinuteSheetFFC.Domain.csproj.CoreCompileInputs.cache
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Domain\obj\Debug\net10.0\MinuteSheetFFC.Domain.sourcelink.json
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Domain\obj\Debug\net10.0\MinuteSheetFFC.Domain.dll
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Domain\obj\Debug\net10.0\refint\MinuteSheetFFC.Domain.dll
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Domain\obj\Debug\net10.0\MinuteSheetFFC.Domain.pdb
+h:\Minute Sheet FFC\src\MinuteSheetFFC.Domain\obj\Debug\net10.0\ref\MinuteSheetFFC.Domain.dll

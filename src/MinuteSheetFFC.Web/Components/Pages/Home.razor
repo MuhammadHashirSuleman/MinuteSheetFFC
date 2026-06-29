@@ -1,7 +1,98 @@
 ﻿@page "/"
+@using MinuteSheetFFC.Application.DTOs.Dashboard
+@using MinuteSheetFFC.Application.DTOs.Workflow
+@inject MinuteSheetFFC.Web.Services.ApiClient Api
+@inject MinuteSheetFFC.Web.State.AppState State
+@inject NavigationManager Navigation
+@rendermode InteractiveServer
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Dashboard - MinuteSheet FFC</PageTitle>
 
-<h1>Hello, world!</h1>
+@if (!State.IsAuthenticated)
+{
+    <div class="text-center mt-5">
+        <h3>Welcome to MinuteSheet FFC</h3>
+        <p>Please <a href="/login">login</a> to continue.</p>
+    </div>
+}
+else
+{
+    <h3 class="mb-4">Dashboard</h3>
 
-Welcome to your new app.
+    @if (summary != null)
+    {
+        <div class="row g-3 mb-4">
+            <div class="col-md-3"><div class="card text-center p-3 border-primary"><h2 class="text-primary">@summary.MyTotalRequests</h2><small>My Requests</small></div></div>
+            <div class="col-md-3"><div class="card text-center p-3 border-warning"><h2 class="text-warning">@summary.MyPendingActions</h2><small>Pending Actions</small></div></div>
+            <div class="col-md-3"><div class="card text-center p-3 border-success"><h2 class="text-success">@summary.ApprovedCount</h2><small>Approved</small></div></div>
+            <div class="col-md-3"><div class="card text-center p-3 border-info"><h2 class="text-info">@summary.InReviewCount</h2><small>In Review</small></div></div>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-2"><div class="card text-center p-2"><strong>@summary.DraftCount</strong><br/><small class="text-muted">Draft</small></div></div>
+            <div class="col-md-2"><div class="card text-center p-2"><strong>@summary.RejectedCount</strong><br/><small class="text-muted">Rejected</small></div></div>
+            <div class="col-md-2"><div class="card text-center p-2"><strong>@summary.ReturnedCount</strong><br/><small class="text-muted">Returned</small></div></div>
+            <div class="col-md-2"><div class="card text-center p-2"><strong>@summary.CancelledCount</strong><br/><small class="text-muted">Cancelled</small></div></div>
+        </div>
+    }
+
+    @if (pendingActions?.Count > 0)
+    {
+        <div class="card mb-4">
+            <div class="card-header"><strong>My Pending Actions</strong></div>
+            <div class="card-body p-0">
+                <table class="table table-hover mb-0">
+                    <thead><tr><th>Ref#</th><th>Subject</th><th>Requester</th><th>Action</th><th></th></tr></thead>
+                    <tbody>
+                    @foreach (var a in pendingActions)
+                    {
+                        <tr>
+                            <td>@a.ReferenceNumber</td>
+                            <td>@a.Subject</td>
+                            <td>@a.RequesterName</td>
+                            <td><span class="badge bg-warning">@a.ActionType</span></td>
+                            <td><a href="/minute-sheets/@a.MinuteSheetId" class="btn btn-sm btn-outline-primary">View</a></td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+
+    @if (summary?.AgingItems?.Count > 0)
+    {
+        <div class="card">
+            <div class="card-header"><strong>Aging Requests (3+ days pending)</strong></div>
+            <div class="card-body p-0">
+                <table class="table table-sm mb-0">
+                    <thead><tr><th>Ref#</th><th>Subject</th><th>Actioner</th><th>Days</th></tr></thead>
+                    <tbody>
+                    @foreach (var item in summary.AgingItems)
+                    {
+                        <tr><td>@item.ReferenceNumber</td><td>@item.Subject</td><td>@item.CurrentActionerName</td><td><span class="badge bg-danger">@item.DaysPending</span></td></tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+}
+
+@code {
+    private DashboardSummaryDto? summary;
+    private List<PendingActionDto>? pendingActions;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!State.IsAuthenticated) return;
+        var pno = State.CurrentUser?.EmployeePNo;
+        if (string.IsNullOrEmpty(pno)) return;
+
+        var summaryResult = await Api.GetAsync<DashboardSummaryDto>($"api/v1/dashboard/summary?userPNo={pno}");
+        if (summaryResult.Success) summary = summaryResult.Data;
+
+        var pendingResult = await Api.GetAsync<List<PendingActionDto>>($"api/v1/workflow/my-pending-actions?actionerPNo={pno}");
+        if (pendingResult.Success) pendingActions = pendingResult.Data;
+    }
+}

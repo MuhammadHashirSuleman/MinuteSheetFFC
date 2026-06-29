@@ -1,0 +1,46 @@
+@page "/my-pending"
+@using MinuteSheetFFC.Application.DTOs.Workflow
+@inject MinuteSheetFFC.Web.Services.ApiClient Api
+@inject MinuteSheetFFC.Web.State.AppState State
+@rendermode InteractiveServer
+
+<PageTitle>My Pending Actions</PageTitle>
+<h3 class="mb-3">My Pending Actions</h3>
+
+@if (items == null)
+{ <p>Loading...</p> }
+else if (items.Count == 0)
+{ <div class="alert alert-info">No pending actions.</div> }
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead><tr><th>Ref#</th><th>Subject</th><th>Requester</th><th>Action Required</th><th>Submitted</th><th></th></tr></thead>
+            <tbody>
+            @foreach (var a in items)
+            {
+                <tr>
+                    <td><code>@a.ReferenceNumber</code></td>
+                    <td>@a.Subject</td>
+                    <td>@a.RequesterName</td>
+                    <td><span class="badge bg-warning text-dark">@a.ActionType</span></td>
+                    <td>@a.SubmittedAt?.ToString("dd-MMM-yy")</td>
+                    <td><a href="/minute-sheets/@a.MinuteSheetId" class="btn btn-sm btn-primary">Action</a></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}
+
+@code {
+    private List<PendingActionDto>? items;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var pno = State.CurrentUser?.EmployeePNo ?? "";
+        if (string.IsNullOrEmpty(pno)) return;
+        var result = await Api.GetAsync<List<PendingActionDto>>($"api/v1/workflow/my-pending-actions?actionerPNo={pno}");
+        if (result.Success) items = result.Data ?? new();
+    }
+}

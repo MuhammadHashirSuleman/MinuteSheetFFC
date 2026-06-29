@@ -1,0 +1,64 @@
+@page "/login"
+@using MinuteSheetFFC.Application.DTOs.Auth
+@using MinuteSheetFFC.Application.DTOs.Common
+@inject MinuteSheetFFC.Web.Services.ApiClient Api
+@inject MinuteSheetFFC.Web.State.AppState State
+@inject NavigationManager Navigation
+@rendermode InteractiveServer
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Login</h4>
+            </div>
+            <div class="card-body">
+                @if (!string.IsNullOrEmpty(errorMessage))
+                {
+                    <div class="alert alert-danger">@errorMessage</div>
+                }
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-control" @bind="username" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" @bind="password" />
+                </div>
+                <button class="btn btn-primary w-100" @onclick="HandleLogin" disabled="@isLoading">
+                    @(isLoading ? "Logging in..." : "Login")
+                </button>
+                <div class="mt-3 text-center">
+                    <a href="/register">Don't have an account? Register</a>
+                </div>
+                <hr />
+                <small class="text-muted">Demo: username <code>employee001</code>, password <code>Password123!</code></small>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string username = "";
+    private string password = "";
+    private string? errorMessage;
+    private bool isLoading;
+
+    private async Task HandleLogin()
+    {
+        errorMessage = null;
+        isLoading = true;
+        var result = await Api.PostAsync<AuthResponseDto>("api/v1/auth/login", new LoginRequestDto { Username = username, Password = password });
+        isLoading = false;
+
+        if (result.Success && result.Data != null)
+        {
+            State.SetAuth(result.Data);
+            Navigation.NavigateTo("/");
+        }
+        else
+        {
+            errorMessage = result.Message ?? "Login failed.";
+        }
+    }
+}
