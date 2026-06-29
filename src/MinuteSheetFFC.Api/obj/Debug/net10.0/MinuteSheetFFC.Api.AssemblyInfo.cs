@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MinuteSheetFFC.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6a45b4035c18752b6210f4bf34e283d3caad0d41")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b7520d0eb2c99ca94debf234fd9646797be49a26")]
 [assembly: System.Reflection.AssemblyProductAttribute("MinuteSheetFFC.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MinuteSheetFFC.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
