@@ -1,0 +1,175 @@
+-- ============================================================================
+-- MINUTE SHEET / GENERAL APPROVAL WORKFLOW
+-- Entity Relationship Diagram (Text-Based)
+-- Database: Microsoft SQL Server
+-- ============================================================================
+-- Data types aligned with: FFC_Orbit_Employee_Template_Anonymized.xlsx
+-- ============================================================================
+
+-- ============================================================================
+-- ERD - ENTITY RELATIONSHIP DIAGRAM
+-- ============================================================================
+--
+--  +---------------------+       +------------------------+
+--  |       Roles         |       |    RefreshTokens       |
+--  |---------------------|       |------------------------|
+--  | PK  Id        INT   |       | PK  Id       INT       |
+--  |     Name   VC(50)   |       | FK  UserId   INT       |
+--  |     Desc   NVC(200) |       |     Token    VC(500)   |
+--  +---------------------+       |     ExpiresAt DT2      |
+--          |                     |     RevokedAt DT2      |
+--          | 1:N                 +------------------------+
+--          v                                |
+--  +---------------------+                  |
+--  | UserRoles (M:N jnc) |                  |
+--  |---------------------|                  |
+--  | FK  UserId   INT    |                  |
+--  | FK  RoleId   INT    |                  |
+--  +---------------------+                  |
+--          |                                |
+--          | N:1                             |
+--          v                                v
+--  +------------------------------+
+--  |           Users              |
+--  |------------------------------|
+--  | PK  Id            INT (ID)   |       +-------------------------+
+--  |     Username      VC(50)     |       |     Departments         |
+--  |     Email         NVC(200)   |       |-------------------------|
+--  |     PasswordHash  NVC(500)   |       | PK  DepartmentId  INT   |
+--  | FK  EmployeePNo   VC(8)      |       |     Name       NVC(100) |
+--  |     IsActive      BIT        |       |     ShortName  VC(10)   |
+--  |     IsLocked      BIT        |       |     IsActive   BIT      |
+--  |     LastLoginAt   DT2        |       +-------------------------+
+--  +------------------------------+               |
+--          |                                       |
+--          | 1:1                                   | 1:N
+--          v                                       v
+--  +------------------------------------------------------------+
+--  |                      Employees                              |
+--  |------------------------------------------------------------|
+--  | PK  PNo             VARCHAR(8)     "00010101"               |
+--  |     OldPNo          VARCHAR(10)    "OLD10101"               |
+--  |     Name            NVARCHAR(200)                           |
+--  |     Email           NVARCHAR(200)                           |
+--  |     Designation     NVARCHAR(100)                           |
+--  |     DesignationShort VARCHAR(10)   "AM","MGR","SM","GM"     |
+--  |     JobDescription  NVARCHAR(200)                           |
+--  |     JobKey          INT            50000001                 |
+--  |     PositionId      INT            14000001                 |
+--  | FK  DepartmentId    INT            14002001                 |
+--  |     DepartmentName  NVARCHAR(100)                           |
+--  |     DepartmentShort VARCHAR(10)    "ICT","FIN"              |
+--  |     EmployeeGroup   VARCHAR(5)     "M"                      |
+--  |     EmployeeCategory VARCHAR(5)    "AH","AG","AF"           |
+--  |     GroupId         INT            14000001                 |
+--  |     GroupDesc       NVARCHAR(100)                           |
+--  |     GroupShort      VARCHAR(10)    "ICT","FIN"              |
+--  |     PAreaId         INT            9001                     |
+--  |     PAreaDesc       NVARCHAR(100)  "Head Office"            |
+--  |     PSAreaId        INT            9101                     |
+--  |     PSAreaDesc      NVARCHAR(100)  "Head Office"            |
+--  |     CostCenter      INT            900001001                |
+--  |     CostCenterDesc  NVARCHAR(100)                           |
+--  | FK  ManagerPNo      VARCHAR(8)     -> Employees.PNo (self)  |
+--  |     IsActive        BIT            TRUE/FALSE               |
+--  |     AnnualLeaveBalance INT                                  |
+--  |     Gender          INT            1,2                      |
+--  |     MaritalStatus   INT            0,1                      |
+--  |     DOB, HireDate, LastPromotion, Retirement, Leaving: DATE |
+--  +------------------------------------------------------------+
+--          |                          |
+--          | 1:N (Requester)          | 1:N (CurrentActioner)
+--          v                          v
+--  +------------------------------------------------------------+
+--  |               MinuteSheetRequests                           |
+--  |------------------------------------------------------------|
+--  | PK  Id               INT (IDENTITY)                        |
+--  |     ReferenceNumber  VARCHAR(30) UNIQUE                    |
+--  |     Subject          NVARCHAR(500)                         |
+--  |     Body             NVARCHAR(MAX)                         |
+--  | FK  RequestTypeId    INT                                   |
+--  |     EstimatedBudget  DECIMAL(18,2)                         |
+--  |     Priority         VARCHAR(10)  LOW/NORMAL/HIGH/URGENT   |
+--  |     IsConfidential   BIT                                   |
+--  |     WorkflowMode     VARCHAR(10)  MANUAL/DYNAMIC/HYBRID    |
+--  |     Status           VARCHAR(20)  DRAFT/SUBMITTED/IN_REVIEW|
+--  |                                   APPROVED/REJECTED/RETURNED|
+--  |                                   CANCELLED/RESUBMITTED     |
+--  | FK  RequesterPNo     VARCHAR(8)                            |
+--  | FK  CurrentActionerPNo VARCHAR(8)                          |
+--  |     CurrentStageOrder INT                                  |
+--  |     SubmittedAt, CompletedAt, CreatedAt, UpdatedAt: DT2    |
+--  +------------------------------------------------------------+
+--      |           |            |           |            |
+--      |1:N        |1:N         |1:N        |1:N         |1:1
+--      v           v            v           v            v
+--  +--------+ +-----------+ +----------+ +----------+ +--------------+
+--  |Attach- | |Workflow   | |Workflow  | |Workflow  | |AiAnalysis    |
+--  |ments   | |Stages     | |History   | |Exceptions| |Results       |
+--  |--------| |-----------| |----------| |----------| |--------------|
+--  |PK Id   | |PK Id      | |PK Id     | |PK Id    | |PK Id         |
+--  |FK MS_Id| |FK MS_Id   | |FK MS_Id  | |FK MS_Id | |FK MS_Id      |
+--  |FK Upldr| |FK Actioner| |FK Actioner| |FK EmpPNo| |Summary       |
+--  |VC(8)   | |VC(8)      | |VC(8)     | |VC(8)    | |DetectedBudget|
+--  |FileName| |StageOrder | |Action    | |Type     | |Impact        |
+--  |FileType| |ActionType | |PrevStatus| |Severity | |Urgency       |
+--  |FileSize| |Status     | |NewStatus | |IsResolvd| |RiskLevel     |
+--  +--------+ |Action     | |Remarks   | +----------+ |MissingInfo  |
+--             |Remarks    | |Timestamp |              |SuggestedRoute|
+--             |ActionedAt | +----------+              |Checklist     |
+--             |Source     |                           +--------------+
+--             +-----------+
+--
+--  +---------------------+       +---------------------+
+--  |    RequestTypes      |       |    WorkflowRules    |
+--  |---------------------|       |---------------------|
+--  | PK  Id        INT   |<------| PK  Id       INT    |
+--  |     Code    VC(20)  |  1:N  | FK  ReqTypeId INT   |
+--  |     Name  NVC(100)  |       |     BudgetFrom DEC  |
+--  |     Desc  NVC(500)  |       |     BudgetTo   DEC  |
+--  |     IsActive  BIT   |       |     RequiredLvl INT |
+--  +---------------------+       |     FinReview  BIT  |
+--                                |     Fallback VC(20) |
+--                                +---------------------+
+--
+-- ============================================================================
+-- RELATIONSHIP SUMMARY
+-- ============================================================================
+--
+-- Users              1:1   Employees          (via EmployeePNo VARCHAR(8))
+-- Users              M:N   Roles              (via UserRoles junction)
+-- Users              1:N   RefreshTokens      (via UserId)
+-- Employees          1:N   Employees          (self-ref via ManagerPNo VARCHAR(8))
+-- Employees          N:1   Departments        (via DepartmentId INT)
+-- Employees          1:N   MinuteSheetRequests (as Requester)
+-- Employees          1:N   MinuteSheetRequests (as CurrentActioner)
+-- Employees          1:N   WorkflowStages     (as Actioner)
+-- Employees          1:N   WorkflowHistory    (as Actioner)
+-- RequestTypes       1:N   MinuteSheetRequests
+-- RequestTypes       1:N   WorkflowRules
+-- MinuteSheetRequests 1:N  MinuteSheetAttachments
+-- MinuteSheetRequests 1:N  WorkflowStages
+-- MinuteSheetRequests 1:N  WorkflowHistory
+-- MinuteSheetRequests 1:N  WorkflowExceptions
+-- MinuteSheetRequests 1:1  AiAnalysisResults
+--
+-- ============================================================================
+-- KEY DATA TYPE DECISIONS (matched to Excel template)
+-- ============================================================================
+--
+-- PNo, ManagerPNo     = VARCHAR(8)   -> 8-digit with leading zeros
+-- DepartmentId        = INT          -> e.g. 14002001
+-- JobKey              = INT          -> e.g. 50000001
+-- PositionId          = INT          -> e.g. 14000001
+-- GroupId             = INT          -> e.g. 14000001
+-- PAreaId             = INT          -> e.g. 9001
+-- PSAreaId            = INT          -> e.g. 9101
+-- CostCenter          = INT          -> e.g. 900001001
+-- EmployeeGroup       = VARCHAR(5)   -> e.g. "M"
+-- EmployeeCategory    = VARCHAR(5)   -> e.g. "AH", "AG"
+-- Gender              = INT          -> 1, 2
+-- MaritalStatus       = INT          -> 0, 1
+-- AnnualLeaveBalance  = INT          -> whole numbers
+-- IsActive            = BIT          -> TRUE/FALSE
+--
+-- ============================================================================

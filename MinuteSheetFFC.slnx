@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/MinuteSheetFFC.AiService/MinuteSheetFFC.AiService.csproj" />
+    <Project Path="src/MinuteSheetFFC.Api/MinuteSheetFFC.Api.csproj" />
+    <Project Path="src/MinuteSheetFFC.Application/MinuteSheetFFC.Application.csproj" />
+    <Project Path="src/MinuteSheetFFC.Domain/MinuteSheetFFC.Domain.csproj" />
+    <Project Path="src/MinuteSheetFFC.Infrastructure/MinuteSheetFFC.Infrastructure.csproj" />
+    <Project Path="src/MinuteSheetFFC.Web/MinuteSheetFFC.Web.csproj" />
+    <Project Path="src/MinuteSheetFFC.WorkflowEngine/MinuteSheetFFC.WorkflowEngine.csproj" />
+  </Folder>
+</Solution>
