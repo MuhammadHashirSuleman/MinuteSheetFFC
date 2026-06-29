@@ -1754,8 +1754,8 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "h:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Application\\MinuteSheetFFC.Application.csproj": {
-              "projectPath": "h:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Application\\MinuteSheetFFC.Application.csproj"
+            "H:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Application\\MinuteSheetFFC.Application.csproj": {
+              "projectPath": "H:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Application\\MinuteSheetFFC.Application.csproj"
             },
             "H:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Domain\\MinuteSheetFFC.Domain.csproj": {
               "projectPath": "H:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Domain\\MinuteSheetFFC.Domain.csproj"

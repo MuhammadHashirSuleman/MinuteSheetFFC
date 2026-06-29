@@ -10,12 +10,14 @@
 <PageTitle>Minute Sheet - @(detail?.ReferenceNumber ?? "Loading")</PageTitle>
 
 @if (detail == null)
-{ <p>Loading...</p> }
+{
+    <p>Loading...</p>
+}
 else
 {
     <div class="d-flex justify-content-between align-items-center mb-3">
         <div>
-            <h3>@detail.ReferenceNumber <span class="badge @GetBadge(detail.Status)">@detail.Status</span></h3>
+            <h3>@detail.ReferenceNumber <span class="badge @GetBadge(detail.Status ?? "")">@detail.Status</span></h3>
             <small class="text-muted">Created @detail.CreatedAt.ToString("dd MMM yyyy HH:mm") by @detail.RequesterName</small>
         </div>
         <div class="d-flex gap-2">
@@ -23,12 +25,12 @@ else
             {
                 <button class="btn btn-success btn-sm" @onclick="Submit">Submit</button>
             }
-            @if (IsCurrentActioner && (detail.Status == "InReview"))
+            @if (IsCurrentActioner && detail.Status == "InReview")
             {
-                <button class="btn btn-primary btn-sm" @onclick="() => ShowAction(\"Reviewed\")">Review</button>
-                <button class="btn btn-success btn-sm" @onclick="() => ShowAction(\"Approved\")">Approve</button>
-                <button class="btn btn-danger btn-sm" @onclick="() => ShowAction(\"Rejected\")">Reject</button>
-                <button class="btn btn-warning btn-sm" @onclick="() => ShowAction(\"Returned\")">Return</button>
+                <button class="btn btn-primary btn-sm" @onclick="@(() => ShowAction("Reviewed"))">Review</button>
+                <button class="btn btn-success btn-sm" @onclick="@(() => ShowAction("Approved"))">Approve</button>
+                <button class="btn btn-danger btn-sm" @onclick="@(() => ShowAction("Rejected"))">Reject</button>
+                <button class="btn btn-warning btn-sm" @onclick="@(() => ShowAction("Returned"))">Return</button>
             }
             @if (detail.Status == "Returned" && detail.RequesterPNo == State.CurrentUser?.EmployeePNo)
             {
@@ -39,9 +41,10 @@ else
     </div>
 
     @if (!string.IsNullOrEmpty(actionMessage))
-    { <div class="alert @(actionSuccess ? "alert-success" : "alert-danger")">@actionMessage</div> }
+    {
+        <div class="alert @(actionSuccess ? "alert-success" : "alert-danger")">@actionMessage</div>
+    }
 
-    @* Action Modal *@
     @if (showActionModal)
     {
         <div class="card border-primary mb-3">
@@ -52,7 +55,7 @@ else
                     <textarea class="form-control" rows="3" @bind="actionRemarks"></textarea>
                 </div>
                 <button class="btn btn-primary" @onclick="PerformAction">Confirm</button>
-                <button class="btn btn-secondary" @onclick="() => showActionModal = false">Cancel</button>
+                <button class="btn btn-secondary ms-2" @onclick="CancelAction">Cancel</button>
             </div>
         </div>
     }
@@ -69,12 +72,11 @@ else
                         <div class="col-md-3"><strong>Priority:</strong> @detail.Priority</div>
                         <div class="col-md-3"><strong>Mode:</strong> @detail.WorkflowMode</div>
                     </div>
-                    <hr/>
-                    <div>@((MarkupString)detail.Body)</div>
+                    <hr />
+                    <div>@((MarkupString)(detail.Body ?? ""))</div>
                 </div>
             </div>
 
-            @* AI Analysis *@
             @if (aiResult != null)
             {
                 <div class="card mb-3 border-info">
@@ -105,7 +107,6 @@ else
                 </div>
             }
 
-            @* History *@
             <div class="card mb-3">
                 <div class="card-header"><strong>Audit Trail</strong></div>
                 <div class="card-body p-0">
@@ -129,30 +130,36 @@ else
         </div>
 
         <div class="col-md-4">
-            @* Workflow Stages *@
             <div class="card mb-3">
                 <div class="card-header"><strong>Approval Route</strong></div>
                 <div class="card-body">
                     @if (detail.Stages.Count == 0)
-                    { <p class="text-muted">No stages generated yet.</p> }
+                    {
+                        <p class="text-muted">No stages generated yet.</p>
+                    }
                     else
                     {
                         @foreach (var s in detail.Stages)
                         {
-                            <div class="d-flex align-items-start mb-2 p-2 border rounded @(s.Status == "Active" ? "border-warning bg-light" : "")">
+                            var borderClass = s.Status == "Active" ? "border-warning bg-light" : "";
+                            <div class="d-flex align-items-start mb-2 p-2 border rounded @borderClass">
                                 <div class="me-2">
-                                    @if (s.Status == "Completed") { <span class="text-success">&#10004;</span> }
-                                    else if (s.Status == "Active") { <span class="text-warning">&#9679;</span> }
+                                    @if (s.Status == "Completed") { <span class="text-success fw-bold">&#10004;</span> }
+                                    else if (s.Status == "Active") { <span class="text-warning fw-bold">&#9679;</span> }
                                     else if (s.Status == "Skipped") { <span class="text-muted">&#10008;</span> }
                                     else { <span class="text-muted">&#9675;</span> }
                                 </div>
                                 <div>
-                                    <strong>@s.ActionerName</strong><br/>
-                                    <small class="text-muted">@s.ActionerDesignation - @s.ActionType</small><br/>
+                                    <strong>@s.ActionerName</strong><br />
+                                    <small class="text-muted">@s.ActionerDesignation - @s.ActionType</small><br />
                                     @if (s.Action != null)
-                                    { <small><span class="badge bg-info">@s.Action</span> @s.ActionedAt?.ToString("dd-MMM HH:mm")</small> }
+                                    {
+                                        <small><span class="badge bg-info">@s.Action</span> @s.ActionedAt?.ToString("dd-MMM HH:mm")</small>
+                                    }
                                     @if (s.Remarks != null)
-                                    { <br/><small class="text-muted fst-italic">@s.Remarks</small> }
+                                    {
+                                        <br /><small class="text-muted fst-italic">@s.Remarks</small>
+                                    }
                                 </div>
                             </div>
                         }
@@ -160,17 +167,18 @@ else
                 </div>
             </div>
 
-            @* Attachments *@
             <div class="card">
                 <div class="card-header"><strong>Attachments (@detail.Attachments.Count)</strong></div>
                 <div class="card-body">
                     @if (detail.Attachments.Count == 0)
-                    { <p class="text-muted">No attachments.</p> }
+                    {
+                        <p class="text-muted">No attachments.</p>
+                    }
                     else
                     {
                         @foreach (var a in detail.Attachments)
                         {
-                            <div class="mb-1"><small>@a.FileName (@((a.FileSize ?? 0) / 1024) KB)</small></div>
+                            <div class="mb-1"><small>@a.FileName (@((a.FileSize ?? 0L) / 1024) KB)</small></div>
                         }
                     }
                 </div>
@@ -199,11 +207,23 @@ else
         if (result.Success) detail = result.Data;
     }
 
-    private void ShowAction(string action) { pendingAction = action; showActionModal = true; actionRemarks = ""; }
+    private void ShowAction(string action)
+    {
+        pendingAction = action;
+        showActionModal = true;
+        actionRemarks = "";
+    }
+
+    private void CancelAction() => showActionModal = false;
 
     private async Task PerformAction()
     {
-        var dto = new WorkflowActionDto { ActionerPNo = State.CurrentUser?.EmployeePNo ?? "", ActionType = pendingAction, Remarks = actionRemarks };
+        var dto = new WorkflowActionDto
+        {
+            ActionerPNo = State.CurrentUser?.EmployeePNo ?? "",
+            ActionType = pendingAction,
+            Remarks = actionRemarks
+        };
         var result = await Api.PostAsync<WorkflowActionResultDto>($"api/v1/workflow/{Id}/action", dto);
         actionSuccess = result.Success;
         actionMessage = result.Success ? result.Data?.Message : result.Message;
@@ -232,14 +252,25 @@ else
     private async Task RunAiAnalysis()
     {
         if (detail == null) return;
-        var request = new AiAnalyzeRequestDto { Subject = detail.Subject, Body = detail.Body, EstimatedBudget = detail.EstimatedBudget, RequestType = detail.RequestTypeCode };
+        var request = new AiAnalyzeRequestDto
+        {
+            Subject = detail.Subject,
+            Body = detail.Body,
+            EstimatedBudget = detail.EstimatedBudget,
+            RequestType = detail.RequestTypeCode
+        };
         var result = await Api.PostAsync<AiAnalysisDto>("api/v1/ai/analyze", request);
         if (result.Success) aiResult = result.Data;
     }
 
     private string GetBadge(string status) => status switch
     {
-        "Draft" => "bg-secondary", "InReview" => "bg-warning text-dark", "Approved" => "bg-success",
-        "Rejected" => "bg-danger", "Returned" => "bg-info", "Cancelled" => "bg-dark", _ => "bg-secondary"
+        "Draft" => "bg-secondary",
+        "InReview" => "bg-warning text-dark",
+        "Approved" => "bg-success",
+        "Rejected" => "bg-danger",
+        "Returned" => "bg-info",
+        "Cancelled" => "bg-dark",
+        _ => "bg-secondary"
     };
 }
