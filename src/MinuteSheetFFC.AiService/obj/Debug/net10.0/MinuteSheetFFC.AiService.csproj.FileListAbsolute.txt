@@ -4,3 +4,15 @@ H:\Minute Sheet FFC\src\MinuteSheetFFC.AiService\obj\Debug\net10.0\MinuteSheetFF
 H:\Minute Sheet FFC\src\MinuteSheetFFC.AiService\obj\Debug\net10.0\MinuteSheetFFC.AiService.AssemblyInfo.cs
 H:\Minute Sheet FFC\src\MinuteSheetFFC.AiService\obj\Debug\net10.0\MinuteSheetFFC.AiService.csproj.CoreCompileInputs.cache
 H:\Minute Sheet FFC\src\MinuteSheetFFC.AiService\obj\Debug\net10.0\MinuteSheetFFC.AiService.sourcelink.json
+H:\Minute Sheet FFC\src\MinuteSheetFFC.AiService\bin\Debug\net10.0\MinuteSheetFFC.AiService.deps.json
+H:\Minute Sheet FFC\src\MinuteSheetFFC.AiService\bin\Debug\net10.0\MinuteSheetFFC.AiService.dll
+H:\Minute Sheet FFC\src\MinuteSheetFFC.AiService\bin\Debug\net10.0\MinuteSheetFFC.AiService.pdb
+H:\Minute Sheet FFC\src\MinuteSheetFFC.AiService\bin\Debug\net10.0\MinuteSheetFFC.Application.dll
+H:\Minute Sheet FFC\src\MinuteSheetFFC.AiService\bin\Debug\net10.0\MinuteSheetFFC.Domain.dll
+H:\Minute Sheet FFC\src\MinuteSheetFFC.AiService\bin\Debug\net10.0\MinuteSheetFFC.Domain.pdb
+H:\Minute Sheet FFC\src\MinuteSheetFFC.AiService\bin\Debug\net10.0\MinuteSheetFFC.Application.pdb
+H:\Minute Sheet FFC\src\MinuteSheetFFC.AiService\obj\Debug\net10.0\MinuteSh.2270A79A.Up2Date
+H:\Minute Sheet FFC\src\MinuteSheetFFC.AiService\obj\Debug\net10.0\MinuteSheetFFC.AiService.dll
+H:\Minute Sheet FFC\src\MinuteSheetFFC.AiService\obj\Debug\net10.0\refint\MinuteSheetFFC.AiService.dll
+H:\Minute Sheet FFC\src\MinuteSheetFFC.AiService\obj\Debug\net10.0\MinuteSheetFFC.AiService.pdb
+H:\Minute Sheet FFC\src\MinuteSheetFFC.AiService\obj\Debug\net10.0\ref\MinuteSheetFFC.AiService.dll
