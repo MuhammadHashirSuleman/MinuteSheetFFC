@@ -27,8 +27,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "h:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Domain\\MinuteSheetFFC.Domain.csproj": {
-                "projectPath": "h:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Domain\\MinuteSheetFFC.Domain.csproj"
+              "H:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Domain\\MinuteSheetFFC.Domain.csproj": {
+                "projectPath": "H:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Domain\\MinuteSheetFFC.Domain.csproj"
               }
             }
           }
@@ -343,14 +343,14 @@
         }
       }
     },
-    "h:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Domain\\MinuteSheetFFC.Domain.csproj": {
+    "H:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Domain\\MinuteSheetFFC.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "h:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Domain\\MinuteSheetFFC.Domain.csproj",
+        "projectUniqueName": "H:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Domain\\MinuteSheetFFC.Domain.csproj",
         "projectName": "MinuteSheetFFC.Domain",
-        "projectPath": "h:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Domain\\MinuteSheetFFC.Domain.csproj",
+        "projectPath": "H:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Domain\\MinuteSheetFFC.Domain.csproj",
         "packagesPath": "C:\\Users\\B.J COMP\\.nuget\\packages\\",
-        "outputPath": "h:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Domain\\obj\\",
+        "outputPath": "H:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\B.J COMP\\AppData\\Roaming\\NuGet\\NuGet.Config"

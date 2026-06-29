@@ -495,3 +495,65 @@ PRINT '  AnnualLeaveBalance = INT        (whole number)';
 PRINT '  IsActive         = BIT          (TRUE/FALSE)';
 PRINT '====================================================================';
 GO
+
+
+-- Adding password field in Employees
+
+ALTER TABLE Employees
+ADD Password VARCHAR(MAX);
+
+UPDATE Employees
+SET Password = CASE PNo
+    -- Rows 1 to 10 (From previous screen)
+    WHEN '00010101' THEN 'Password123'
+    WHEN '00010102' THEN 'Admin2026'
+    WHEN '00010110' THEN 'Welcome1'
+    WHEN '00010120' THEN 'LetMeIn!'
+    WHEN '00010130' THEN 'Employee99'
+    WHEN '00010140' THEN 'SecretPass'
+    WHEN '00010201' THEN 'LoginNow'
+    WHEN '00010202' THEN 'MyPassword'
+    WHEN '00010210' THEN 'User1234'
+    WHEN '00010220' THEN 'PassCode7'
+
+    -- Rows 11 to 20
+    WHEN '00010230' THEN 'Testing123'
+    WHEN '00010240' THEN 'SystemAdmin'
+    WHEN '00010301' THEN 'StaffMember'
+    WHEN '00010302' THEN 'Office2026'
+    WHEN '00010310' THEN 'AccessGranted'
+    WHEN '00010320' THEN 'CompanyFirst'
+    WHEN '00010330' THEN 'InternalUse'
+    WHEN '00010340' THEN 'GuestUser!'
+    WHEN '00010401' THEN 'RootAccount'
+    WHEN '00010402' THEN 'ChangeMe!'
+
+    -- Rows 21 to 30
+    WHEN '00010410' THEN 'DefaultPass'
+    WHEN '00010420' THEN 'SimpleCode'
+    WHEN '00010430' THEN 'WorkSpace8'
+    WHEN '00010440' THEN 'SecureKey'
+    WHEN '00010501' THEN 'MainFrame'
+    WHEN '00010502' THEN 'Network99'
+    WHEN '00010510' THEN 'Database1'
+    WHEN '00010520' THEN 'ServerAccess'
+    WHEN '00010530' THEN 'Terminal0'
+    WHEN '00010540' THEN 'DevTeam2026'
+
+    -- Rows 31 to 43
+    WHEN '00010601' THEN 'CodeRunner'
+    WHEN '00010602' THEN 'QueryMaster'
+    WHEN '00010610' THEN 'SqlTestPass'
+    WHEN '00010620' THEN 'DataEntry5'
+    WHEN '00010630' THEN 'PortalAccess'
+    WHEN '00010640' THEN 'WebLogin'
+    WHEN '00090001' THEN 'AppUser77'
+    WHEN '00090020' THEN 'LocalHost'
+    WHEN '00090021' THEN 'CloudKey!'
+    WHEN '00090030' THEN 'BackupPass'
+    WHEN '00090040' THEN 'TechSupport'
+    WHEN '00090041' THEN 'Manager9'
+    WHEN '00090042' THEN 'FinalCheck'
+    
+    ELSE 'Default@123'
+END;

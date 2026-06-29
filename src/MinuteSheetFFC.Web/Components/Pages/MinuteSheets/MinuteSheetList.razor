@@ -1,0 +1,80 @@
+@page "/minute-sheets"
+@using MinuteSheetFFC.Application.DTOs.MinuteSheet
+@inject MinuteSheetFFC.Web.Services.ApiClient Api
+@inject MinuteSheetFFC.Web.State.AppState State
+@rendermode InteractiveServer
+
+<PageTitle>Minute Sheets</PageTitle>
+<div class="d-flex justify-content-between mb-3">
+    <h3>Minute Sheets</h3>
+    <a href="/minute-sheets/create" class="btn btn-primary">+ New Request</a>
+</div>
+
+<div class="row mb-3 g-2">
+    <div class="col-md-3"><input type="text" class="form-control form-control-sm" placeholder="Search..." @bind="search" @bind:event="oninput" @onkeyup="() => Load()" /></div>
+    <div class="col-md-2">
+        <select class="form-select form-select-sm" @bind="statusFilter" @bind:after="() => Load()">
+            <option value="">All Status</option>
+            <option value="Draft">Draft</option>
+            <option value="InReview">In Review</option>
+            <option value="Approved">Approved</option>
+            <option value="Rejected">Rejected</option>
+            <option value="Returned">Returned</option>
+            <option value="Cancelled">Cancelled</option>
+        </select>
+    </div>
+</div>
+
+@if (items == null)
+{ <p>Loading...</p> }
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead><tr><th>Ref#</th><th>Subject</th><th>Type</th><th>Budget</th><th>Status</th><th>Requester</th><th>Actioner</th><th>Date</th><th></th></tr></thead>
+            <tbody>
+            @foreach (var m in items)
+            {
+                <tr>
+                    <td><code>@m.ReferenceNumber</code></td>
+                    <td>@(m.Subject.Length > 40 ? m.Subject[..40] + "..." : m.Subject)</td>
+                    <td><span class="badge bg-info">@m.RequestTypeCode</span></td>
+                    <td>@(m.EstimatedBudget?.ToString("N0") ?? "-")</td>
+                    <td><span class="badge @GetStatusBadge(m.Status)">@m.Status</span></td>
+                    <td>@m.RequesterName</td>
+                    <td>@(m.CurrentActionerName ?? "-")</td>
+                    <td>@m.CreatedAt.ToString("dd-MMM-yy")</td>
+                    <td><a href="/minute-sheets/@m.Id" class="btn btn-sm btn-outline-primary">View</a></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}
+
+@code {
+    private List<MinuteSheetListDto>? items;
+    private string search = "";
+    private string statusFilter = "";
+
+    protected override async Task OnInitializedAsync() => await Load();
+
+    private async Task Load()
+    {
+        var url = $"api/v1/minute-sheets?page=1&pageSize=50&search={Uri.EscapeDataString(search)}";
+        if (!string.IsNullOrEmpty(statusFilter)) url += $"&status={statusFilter}";
+        var result = await Api.GetPagedAsync<MinuteSheetListDto>(url);
+        items = result?.Data ?? new();
+    }
+
+    private string GetStatusBadge(string status) => status switch
+    {
+        "Draft" => "bg-secondary",
+        "InReview" => "bg-warning text-dark",
+        "Approved" => "bg-success",
+        "Rejected" => "bg-danger",
+        "Returned" => "bg-info",
+        "Cancelled" => "bg-dark",
+        _ => "bg-secondary"
+    };
+}

@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MinuteSheetFFC.Domain\MinuteSheetFFC.Domain.csproj" />
     <ProjectReference Include="..\MinuteSheetFFC.Application\MinuteSheetFFC.Application.csproj" />
+    <ProjectReference Include="..\MinuteSheetFFC.Infrastructure\MinuteSheetFFC.Infrastructure.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

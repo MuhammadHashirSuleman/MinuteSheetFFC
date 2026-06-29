@@ -1,0 +1,10 @@
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Web\obj\Debug\net10.0\EmbeddedAttribute.cs
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Web\obj\Debug\net10.0\ValidatableTypeAttribute.cs
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Web\obj\Debug\net10.0\MinuteSheetFFC.Web.csproj.AssemblyReference.cache
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Web\obj\Debug\net10.0\rpswa.dswa.cache.json
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Web\obj\Debug\net10.0\MinuteSheetFFC.Web.GeneratedMSBuildEditorConfig.editorconfig
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Web\obj\Debug\net10.0\MinuteSheetFFC.Web.AssemblyInfoInputs.cache
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Web\obj\Debug\net10.0\MinuteSheetFFC.Web.AssemblyInfo.cs
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Web\obj\Debug\net10.0\MinuteSheetFFC.Web.csproj.CoreCompileInputs.cache
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Web\obj\Debug\net10.0\MinuteSheetFFC.Web.MvcApplicationPartsAssemblyInfo.cache
+H:\Minute Sheet FFC\src\MinuteSheetFFC.Web\obj\Debug\net10.0\MinuteSheetFFC.Web.sourcelink.json

@@ -1,0 +1,93 @@
+@page "/employees"
+@using MinuteSheetFFC.Application.DTOs.Employee
+@using MinuteSheetFFC.Application.DTOs.Common
+@inject MinuteSheetFFC.Web.Services.ApiClient Api
+@inject MinuteSheetFFC.Web.State.AppState State
+@rendermode InteractiveServer
+
+<PageTitle>Employee Directory</PageTitle>
+<h3 class="mb-3">Employee Directory</h3>
+
+<div class="row mb-3">
+    <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="Search by name, PNo, email..." @bind="search" @bind:event="oninput" @onkeyup="HandleSearch" />
+    </div>
+    <div class="col-md-3">
+        <select class="form-select" @bind="activeFilter" @bind:after="LoadEmployees">
+            <option value="">All Status</option>
+            <option value="true">Active</option>
+            <option value="false">Inactive</option>
+        </select>
+    </div>
+</div>
+
+@if (employees == null)
+{
+    <p>Loading...</p>
+}
+else if (employees.Count == 0)
+{
+    <div class="alert alert-info">No employees found.</div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr><th>PNo</th><th>Name</th><th>Designation</th><th>Department</th><th>Manager</th><th>Status</th><th></th></tr>
+            </thead>
+            <tbody>
+            @foreach (var emp in employees)
+            {
+                <tr>
+                    <td><code>@emp.PNo</code></td>
+                    <td>@emp.Name</td>
+                    <td>@emp.Designation</td>
+                    <td>@emp.DepartmentShort</td>
+                    <td><code>@emp.ManagerPNo</code></td>
+                    <td>
+                        @if (emp.IsActive)
+                        { <span class="badge bg-success">Active</span> }
+                        else
+                        { <span class="badge bg-secondary">Inactive</span> }
+                    </td>
+                    <td><a href="/employees/@emp.PNo" class="btn btn-sm btn-outline-primary">Detail</a></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+
+    <nav>
+        <ul class="pagination">
+            @for (int i = 1; i <= totalPages; i++)
+            {
+                var pageNum = i;
+                <li class="page-item @(page == pageNum ? "active" : "")">
+                    <button class="page-link" @onclick="() => GoToPage(pageNum)">@pageNum</button>
+                </li>
+            }
+        </ul>
+    </nav>
+}
+
+@code {
+    private List<EmployeeListDto>? employees;
+    private string search = "";
+    private string activeFilter = "";
+    private int page = 1;
+    private int totalPages = 1;
+
+    protected override async Task OnInitializedAsync() => await LoadEmployees();
+
+    private async Task LoadEmployees()
+    {
+        var url = $"api/v1/employees?page={page}&pageSize=15&search={Uri.EscapeDataString(search)}";
+        if (!string.IsNullOrEmpty(activeFilter)) url += $"&isActive={activeFilter}";
+        var result = await Api.GetPagedAsync<EmployeeListDto>(url);
+        if (result != null) { employees = result.Data; totalPages = result.TotalPages > 0 ? result.TotalPages : 1; }
+    }
+
+    private async Task HandleSearch() { page = 1; await LoadEmployees(); }
+    private async Task GoToPage(int p) { page = p; await LoadEmployees(); }
+}

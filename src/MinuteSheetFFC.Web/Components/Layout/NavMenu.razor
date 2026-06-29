@@ -1,30 +1,82 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">MinuteSheetFFC.Web</a>
-    </div>
-</div>
+﻿@implements IDisposable
 
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
-
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="nav flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-            </NavLink>
+<div class="nav-menu">
+    <nav class="flex-column">
+        <div class="nav-brand p-3 border-bottom">
+            <h5 class="mb-0">MinuteSheet FFC</h5>
+            @if (State.IsAuthenticated)
+            {
+                <small class="text-muted">@State.CurrentUser?.EmployeeName</small>
+            }
         </div>
 
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
-            </NavLink>
-        </div>
+        @if (State.IsAuthenticated)
+        {
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                    <span class="bi bi-house-door me-2"></span> Dashboard
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="employees">
+                    <span class="bi bi-people me-2"></span> Employees
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="minute-sheets">
+                    <span class="bi bi-file-text me-2"></span> Minute Sheets
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="minute-sheets/create">
+                    <span class="bi bi-plus-circle me-2"></span> New Request
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="my-pending">
+                    <span class="bi bi-clock me-2"></span> Pending Actions
+                </NavLink>
+            </div>
+            <hr class="mx-3" />
+            <div class="nav-item px-3">
+                <button class="nav-link btn btn-link text-start w-100" @onclick="Logout">
+                    <span class="bi bi-box-arrow-right me-2"></span> Logout
+                </button>
+            </div>
+        }
+        else
+        {
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="login">
+                    <span class="bi bi-box-arrow-in-right me-2"></span> Login
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="register">
+                    <span class="bi bi-person-plus me-2"></span> Register
+                </NavLink>
+            </div>
+        }
     </nav>
 </div>
 
+@code {
+    [Inject] public MinuteSheetFFC.Web.State.AppState State { get; set; } = null!;
+    [Inject] public NavigationManager Navigation { get; set; } = null!;
+
+    protected override void OnInitialized()
+    {
+        State.OnChange += StateHasChanged;
+    }
+
+    private void Logout()
+    {
+        State.ClearAuth();
+        Navigation.NavigateTo("/login");
+    }
+
+    public void Dispose()
+    {
+        State.OnChange -= StateHasChanged;
+    }
+}

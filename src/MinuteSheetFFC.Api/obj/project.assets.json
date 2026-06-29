@@ -649,7 +649,8 @@
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
           "MinuteSheetFFC.Application": "1.0.0",
-          "MinuteSheetFFC.Domain": "1.0.0"
+          "MinuteSheetFFC.Domain": "1.0.0",
+          "MinuteSheetFFC.Infrastructure": "1.0.0"
         },
         "compile": {
           "bin/placeholder/MinuteSheetFFC.WorkflowEngine.dll": {}
@@ -1720,11 +1721,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "h:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Api\\MinuteSheetFFC.Api.csproj",
+      "projectUniqueName": "H:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Api\\MinuteSheetFFC.Api.csproj",
       "projectName": "MinuteSheetFFC.Api",
-      "projectPath": "h:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Api\\MinuteSheetFFC.Api.csproj",
+      "projectPath": "H:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Api\\MinuteSheetFFC.Api.csproj",
       "packagesPath": "C:\\Users\\B.J COMP\\.nuget\\packages\\",
-      "outputPath": "h:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Api\\obj\\",
+      "outputPath": "H:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\B.J COMP\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -1740,8 +1741,8 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "h:\\Minute Sheet FFC\\src\\MinuteSheetFFC.AiService\\MinuteSheetFFC.AiService.csproj": {
-              "projectPath": "h:\\Minute Sheet FFC\\src\\MinuteSheetFFC.AiService\\MinuteSheetFFC.AiService.csproj"
+            "H:\\Minute Sheet FFC\\src\\MinuteSheetFFC.AiService\\MinuteSheetFFC.AiService.csproj": {
+              "projectPath": "H:\\Minute Sheet FFC\\src\\MinuteSheetFFC.AiService\\MinuteSheetFFC.AiService.csproj"
             },
             "h:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Application\\MinuteSheetFFC.Application.csproj": {
               "projectPath": "h:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Application\\MinuteSheetFFC.Application.csproj"
@@ -1749,8 +1750,8 @@
             "H:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Infrastructure\\MinuteSheetFFC.Infrastructure.csproj": {
               "projectPath": "H:\\Minute Sheet FFC\\src\\MinuteSheetFFC.Infrastructure\\MinuteSheetFFC.Infrastructure.csproj"
             },
-            "h:\\Minute Sheet FFC\\src\\MinuteSheetFFC.WorkflowEngine\\MinuteSheetFFC.WorkflowEngine.csproj": {
-              "projectPath": "h:\\Minute Sheet FFC\\src\\MinuteSheetFFC.WorkflowEngine\\MinuteSheetFFC.WorkflowEngine.csproj"
+            "H:\\Minute Sheet FFC\\src\\MinuteSheetFFC.WorkflowEngine\\MinuteSheetFFC.WorkflowEngine.csproj": {
+              "projectPath": "H:\\Minute Sheet FFC\\src\\MinuteSheetFFC.WorkflowEngine\\MinuteSheetFFC.WorkflowEngine.csproj"
             }
           }
         }

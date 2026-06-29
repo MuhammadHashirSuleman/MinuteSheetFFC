@@ -1,0 +1,76 @@
+@page "/employees/{PNo}"
+@using MinuteSheetFFC.Application.DTOs.Employee
+@inject MinuteSheetFFC.Web.Services.ApiClient Api
+@rendermode InteractiveServer
+
+<PageTitle>Employee - @(employee?.Name ?? PNo)</PageTitle>
+
+@if (employee == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <h3>@employee.Name <small class="text-muted">(@employee.PNo)</small></h3>
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header"><strong>Basic Information</strong></div>
+                <div class="card-body">
+                    <table class="table table-sm">
+                        <tr><td class="fw-bold">PNo</td><td><code>@employee.PNo</code></td></tr>
+                        <tr><td class="fw-bold">Name</td><td>@employee.Name</td></tr>
+                        <tr><td class="fw-bold">Designation</td><td>@employee.Designation (@employee.DesignationShort)</td></tr>
+                        <tr><td class="fw-bold">Department</td><td>@employee.DepartmentName (@employee.DepartmentShort)</td></tr>
+                        <tr><td class="fw-bold">Email</td><td>@employee.Email</td></tr>
+                        <tr><td class="fw-bold">Phone</td><td>@employee.Phone</td></tr>
+                        <tr><td class="fw-bold">Manager</td><td><code>@employee.ManagerPNo</code> @employee.ManagerName</td></tr>
+                        <tr><td class="fw-bold">Status</td><td>@(employee.IsActive ? "Active" : "Inactive")</td></tr>
+                        <tr><td class="fw-bold">Hire Date</td><td>@employee.HireDate?.ToString("yyyy-MM-dd")</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header"><strong>Manager Chain</strong></div>
+                <div class="card-body">
+                    @if (chain == null)
+                    { <p>Loading...</p> }
+                    else if (chain.Count == 0)
+                    { <p class="text-muted">No manager chain available.</p> }
+                    else
+                    {
+                        <div class="list-group">
+                        @foreach (var mgr in chain)
+                        {
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <strong>Level @mgr.Level:</strong> @mgr.Name
+                                    <br/><small class="text-muted">@mgr.Designation - @mgr.DepartmentName</small>
+                                </div>
+                                <span class="badge @(mgr.IsActive ? "bg-success" : "bg-danger")">@(mgr.IsActive ? "Active" : "Inactive")</span>
+                            </div>
+                        }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public string PNo { get; set; } = "";
+    private EmployeeDetailDto? employee;
+    private List<ManagerChainItemDto>? chain;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var empResult = await Api.GetAsync<EmployeeDetailDto>($"api/v1/employees/{PNo}");
+        if (empResult.Success) employee = empResult.Data;
+
+        var chainResult = await Api.GetAsync<List<ManagerChainItemDto>>($"api/v1/employees/{PNo}/manager-chain");
+        if (chainResult.Success) chain = chainResult.Data;
+    }
+}
