@@ -1,0 +1,65 @@
+<div class="data-table-wrap">
+    <table class="table data-table compact-table mb-0">
+        <thead>
+            <tr>
+                <th>Ref</th>
+                <th>Subject</th>
+                <th>@ThirdColumnTitle</th>
+                <th>Status</th>
+                <th class="text-end">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!Items.Any())
+            {
+                <tr>
+                    <td colspan="5" class="text-center text-muted py-5">@EmptyText</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var item in Items)
+                {
+                    <tr>
+                        <td class="fw-bold">@item.MinuteSheetId</td>
+                        <td>
+                            <div class="fw-semibold" style="max-width: 220px;">@item.Subject</div>
+                        </td>
+                        <td class="text-muted">@ThirdColumnValue(item)</td>
+                        <td><StatusPill Status="item.Status" /></td>
+                        <td class="text-end">
+                            <a class="icon-button" href="@($"minute-sheets/{item.Id}")" aria-label="Open @item.MinuteSheetId">
+                                <i class="@ActionIcon(item)"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+@code {
+    [Parameter]
+    public IReadOnlyList<MinuteSheetRecord> Items { get; set; } = Array.Empty<MinuteSheetRecord>();
+
+    [Parameter]
+    public string EmptyText { get; set; } = "No items found.";
+
+    [Parameter]
+    public string ThirdColumnTitle { get; set; } = "Requester";
+
+    [Parameter]
+    public bool ShowRequester { get; set; } = true;
+
+    private string ThirdColumnValue(MinuteSheetRecord item) =>
+        ShowRequester ? item.RequesterName : item.CurrentActionerName;
+
+    private static string ActionIcon(MinuteSheetRecord item) =>
+        item.Status switch
+        {
+            MinuteSheetStatus.Approved => "bi bi-download",
+            MinuteSheetStatus.Returned => "bi bi-pencil",
+            _ => "bi bi-arrow-right"
+        };
+}

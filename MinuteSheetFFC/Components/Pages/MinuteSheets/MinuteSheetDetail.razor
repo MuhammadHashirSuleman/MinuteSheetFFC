@@ -1,0 +1,243 @@
+@page "/minute-sheets/{Id:int}"
+@rendermode InteractiveServer
+@inject IEmployeeService EmployeeService
+@inject IMinuteSheetService MinuteSheetService
+@inject IWorkflowService WorkflowService
+@using System.ComponentModel.DataAnnotations
+
+<PageTitle>Minute Sheet Detail | FFC Enterprise</PageTitle>
+
+@if (sheet is null)
+{
+    <div class="surface-panel p-5 text-center">
+        <h1 class="h4">Minute sheet not found</h1>
+        <a class="btn btn-primary-ffc mt-3" href="minute-sheets">Back to All Requests</a>
+    </div>
+}
+else
+{
+    <div class="page-stack">
+        <nav class="breadcrumb-line" aria-label="Breadcrumb">
+            <a href="minute-sheets">All Requests</a>
+            <i class="bi bi-chevron-right"></i>
+            <strong>@sheet.MinuteSheetId</strong>
+        </nav>
+
+        @if (!string.IsNullOrWhiteSpace(actionMessage))
+        {
+            <div class="alert alert-success d-flex align-items-center gap-2 mb-0" role="alert">
+                <i class="bi bi-check-circle"></i>
+                <span>@actionMessage</span>
+            </div>
+        }
+
+        <div class="row g-4">
+            <div class="col-12 col-xl-8">
+                <section class="minute-document">
+                    <div class="d-flex flex-column flex-md-row justify-content-between gap-4 mb-5">
+                        <div>
+                            <StatusPill Status="sheet.Status" />
+                            <h1 class="display-6 fw-bold mt-3 mb-0">@sheet.Subject</h1>
+                        </div>
+                        <div class="text-md-end">
+                            <p class="text-muted fw-bold mb-1">Reference No.</p>
+                            <strong>@sheet.ReferenceNo</strong>
+                        </div>
+                    </div>
+
+                    <div class="row g-4 pb-5 border-bottom">
+                        <InfoBlock Label="Request Type" Value="@sheet.Type" />
+                        <InfoBlock Label="Budget Allocation" Value="@MinuteSheetDisplay.FormatCurrency(sheet.EstimatedBudget)" />
+                        <div class="col-12 col-md-4">
+                            <p class="section-title mb-2">Priority</p>
+                            <span class="priority-pill @sheet.Priority.PriorityCss()">
+                                <i class="bi bi-exclamation-lg"></i>
+                                @sheet.Priority.ToDisplayName()
+                            </span>
+                        </div>
+                        <InfoBlock Label="Requester" Value="@sheet.RequesterName" />
+                        <InfoBlock Label="Department" Value="@sheet.RequesterDepartment" />
+                        <InfoBlock Label="Date Initiated" Value='@sheet.CreationDate.ToString("MMM dd, yyyy")' />
+                    </div>
+
+                    <article class="py-4">
+                        @((MarkupString)sheet.DescriptionHtml)
+                    </article>
+
+                    <div class="pt-4 border-top">
+                        <h2 class="h5 fw-bold mb-3">Supporting Documentation</h2>
+                        <div class="row g-3">
+                            @foreach (var attachment in sheet.Attachments)
+                            {
+                                <div class="col-12 col-md-6">
+                                    <button class="surface-panel w-100 d-flex align-items-center justify-content-between gap-3 p-3 text-start" type="button">
+                                        <span class="d-flex align-items-center gap-3">
+                                            <i class="bi @FileIcon(attachment.FileName) text-warning fs-4"></i>
+                                            <span>
+                                                <strong class="d-block">@attachment.FileName</strong>
+                                                <small class="text-muted">@attachment.SizeLabel</small>
+                                            </span>
+                                        </span>
+                                        <i class="bi bi-download text-muted"></i>
+                                    </button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="col-12 col-xl-4">
+                <div class="page-stack">
+                    @if (canCurrentUserAct)
+                    {
+                        <section class="surface-panel form-section">
+                            <h2 class="h4 fw-bold mb-4">Review Action</h2>
+                            <EditForm EditContext="decisionContext">
+                                <DataAnnotationsValidator />
+                                <div class="mb-3">
+                                    <label class="form-label-ffc" for="remarks">Remarks / Comments</label>
+                                    <InputTextArea id="remarks" class="form-control" rows="5" @bind-Value="decisionModel.Remarks" placeholder="Enter your decision remarks here..." />
+                                    <ValidationMessage For="() => decisionModel.Remarks" />
+                                </div>
+                                <div class="d-grid gap-3">
+                                    <button class="btn btn-primary-ffc btn-lg" type="button" @onclick="ApproveAsync">
+                                        <i class="bi bi-check-circle me-2"></i>
+                                        Approve Request
+                                    </button>
+                                    <div class="row g-3">
+                                        <div class="col-6">
+                                            <button class="btn btn-soft-ffc btn-lg w-100" type="button" @onclick="RejectAsync">
+                                                <i class="bi bi-x-lg me-2"></i>
+                                                Reject
+                                            </button>
+                                        </div>
+                                        <div class="col-6">
+                                            <button class="btn btn-soft-ffc btn-lg w-100" type="button" @onclick="ReturnAsync">
+                                                <i class="bi bi-reply me-2"></i>
+                                                Return
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </EditForm>
+                        </section>
+                    }
+
+                    <section class="surface-panel form-section">
+                        <div class="d-flex align-items-center justify-content-between gap-3 mb-4">
+                            <h2 class="h4 fw-bold mb-0">Workflow Trail</h2>
+                            <span class="text-primary fw-bold">@CompletedSteps/@timeline.Count Steps</span>
+                        </div>
+
+                        <div class="timeline">
+                            @foreach (var stage in timeline)
+                            {
+                                <div class="timeline-item @(stage.IsCurrent ? "current" : string.Empty) @(stage.IsUpcoming ? "upcoming" : string.Empty)">
+                                    <span class="timeline-dot">
+                                        <i class="bi @TimelineIcon(stage)"></i>
+                                    </span>
+                                    <div>
+                                        <div class="d-flex justify-content-between gap-3">
+                                            <strong>@stage.ActionerName</strong>
+                                            <small class="text-muted">@TimestampLabel(stage)</small>
+                                        </div>
+                                        <p class="text-primary fw-semibold small mb-2">@stage.Role - @stage.Department</p>
+                                        <StatusPill Status="stage.Status" />
+                                        @if (!string.IsNullOrWhiteSpace(stage.Remarks))
+                                        {
+                                            <div class="remark-box">"@stage.Remarks"</div>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </section>
+
+                    <section class="insight-box">
+                        <i class="bi bi-info-circle fs-4"></i>
+                        <span>This request has been reviewed by 2 departments and meets all 2024 compliance benchmarks.</span>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private MinuteSheetRecord? sheet;
+    private IReadOnlyList<WorkflowStage> timeline = Array.Empty<WorkflowStage>();
+    private EmployeeProfile? currentUser;
+    private bool canCurrentUserAct;
+    private string actionMessage = string.Empty;
+    private readonly WorkflowDecisionModel decisionModel = new();
+    private EditContext? decisionContext;
+
+    private int CompletedSteps => timeline.Count(stage => stage.Timestamp.HasValue);
+
+    protected override async Task OnParametersSetAsync()
+    {
+        decisionContext ??= new EditContext(decisionModel);
+        currentUser = await EmployeeService.GetCurrentEmployeeAsync();
+        await LoadAsync();
+    }
+
+    private Task ApproveAsync() => ApplyDecisionAsync("Approve");
+
+    private Task RejectAsync() => ApplyDecisionAsync("Reject");
+
+    private Task ReturnAsync() => ApplyDecisionAsync("Return");
+
+    private async Task LoadAsync()
+    {
+        sheet = await MinuteSheetService.GetMinuteSheetAsync(Id);
+        timeline = await WorkflowService.GetTimelineAsync(Id);
+        canCurrentUserAct = currentUser is not null && await WorkflowService.CanCurrentUserActAsync(Id, currentUser.PNo);
+    }
+
+    private async Task ApplyDecisionAsync(string action)
+    {
+        if (decisionContext is null || !decisionContext.Validate() || currentUser is null)
+        {
+            return;
+        }
+
+        await MinuteSheetService.ApplyDecisionAsync(Id, action, decisionModel.Remarks, currentUser.PNo);
+        actionMessage = $"{action} action recorded for {sheet?.MinuteSheetId}.";
+        decisionModel.Remarks = string.Empty;
+        decisionContext = new EditContext(decisionModel);
+        await LoadAsync();
+    }
+
+    private static string TimelineIcon(WorkflowStage stage)
+    {
+        if (stage.IsUpcoming)
+        {
+            return "bi-person";
+        }
+
+        return stage.Status switch
+        {
+            MinuteSheetStatus.Approved or MinuteSheetStatus.Submitted => "bi-check-lg",
+            MinuteSheetStatus.Rejected => "bi-x-lg",
+            MinuteSheetStatus.Returned => "bi-arrow-return-left",
+            MinuteSheetStatus.InReview or MinuteSheetStatus.Resubmitted => "bi-three-dots",
+            _ => "bi-person"
+        };
+    }
+
+    private static string TimestampLabel(WorkflowStage stage) =>
+        stage.IsCurrent ? "Active Now" : stage.Timestamp?.ToString("MMM dd, hh:mm tt") ?? "--";
+
+    private static string FileIcon(string fileName) =>
+        Path.GetExtension(fileName).ToLowerInvariant() switch
+        {
+            ".pdf" => "bi-file-earmark-pdf",
+            ".xlsx" => "bi-file-earmark-spreadsheet",
+            ".docx" => "bi-file-earmark-word",
+            _ => "bi-file-earmark-text"
+        };
+}

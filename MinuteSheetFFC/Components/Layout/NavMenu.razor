@@ -1,30 +1,62 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">MinuteSheetFFC</a>
-    </div>
+@implements IDisposable
+@inject NavigationManager Navigation
+
+<div class="nav-brand">
+    <a class="brand-link" href="">
+        <span>FFC Minute Sheet</span>
+    </a>
+    <small>Enterprise Governance</small>
 </div>
 
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+<nav class="side-nav" aria-label="Primary">
+    <NavLink class="@AllRequestsClass" href="minute-sheets" Match="NavLinkMatch.All">
+        <i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>
+        <span>All Requests</span>
+    </NavLink>
+    <NavLink class="nav-link" href="minute-sheets/create" Match="NavLinkMatch.All">
+        <i class="bi bi-plus-circle" aria-hidden="true"></i>
+        <span>Create Request</span>
+    </NavLink>
+    <NavLink class="nav-link" href="my-pending" Match="NavLinkMatch.All">
+        <i class="bi bi-clipboard-check" aria-hidden="true"></i>
+        <span>My Actions</span>
+    </NavLink>
+    <NavLink class="nav-link" href="minute-sheets/shared" Match="NavLinkMatch.All">
+        <i class="bi bi-share" aria-hidden="true"></i>
+        <span>Shared Minutesheets</span>
+    </NavLink>
+</nav>
 
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="nav flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
-            </NavLink>
-        </div>
-    </nav>
+<div class="side-nav footer-nav">
+    <a class="nav-link" href="#">
+        <i class="bi bi-gear" aria-hidden="true"></i>
+        <span>Settings</span>
+    </a>
+    <NavLink class="nav-link" href="login" Match="NavLinkMatch.All">
+        <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
+        <span>Logout</span>
+    </NavLink>
 </div>
 
+@code {
+    private string CurrentPath => Navigation.ToBaseRelativePath(Navigation.Uri).TrimEnd('/');
+
+    private string AllRequestsClass => CurrentPath == "minute-sheets"
+        ? "nav-link active"
+        : "nav-link";
+
+    protected override void OnInitialized()
+    {
+        Navigation.LocationChanged += OnLocationChanged;
+    }
+
+    private void OnLocationChanged(object? sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs args)
+    {
+        _ = InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        Navigation.LocationChanged -= OnLocationChanged;
+    }
+}

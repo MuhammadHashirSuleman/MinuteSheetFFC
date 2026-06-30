@@ -12,57 +12,97 @@ build_property.EntryPointFilePath =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MinuteSheetFFC
 build_property.RootNamespace = MinuteSheetFFC
-build_property.ProjectDir = H:\Minute Sheet FFC\MinuteSheetFFC\
+build_property.ProjectDir = /home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 10.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = H:\Minute Sheet FFC\MinuteSheetFFC
+build_property.MSBuildProjectDirectory = /home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[H:/Minute Sheet FFC/MinuteSheetFFC/Components/App.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
+[/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/Components/App.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9BcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/Minute Sheet FFC/MinuteSheetFFC/Components/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
+[/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/Components/Layout/Avatar.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvQXZhdGFyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/Minute Sheet FFC/MinuteSheetFFC/Components/Pages/Error.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
+[/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/Components/Layout/EmptyLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvRW1wdHlMYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/Minute Sheet FFC/MinuteSheetFFC/Components/Pages/Home.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
+[/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/Components/Pages/Dashboard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9EYXNoYm9hcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/Minute Sheet FFC/MinuteSheetFFC/Components/Pages/NotFound.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xOb3RGb3VuZC5yYXpvcg==
+[/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/Components/Pages/Error.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9FcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/Minute Sheet FFC/MinuteSheetFFC/Components/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
+[/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/Components/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Mb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/Minute Sheet FFC/MinuteSheetFFC/Components/Routes.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
+[/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/Components/Pages/MinuteSheets/MinuteSheetCreate.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9NaW51dGVTaGVldHMvTWludXRlU2hlZXRDcmVhdGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/Minute Sheet FFC/MinuteSheetFFC/Components/_Imports.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
+[/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/Components/Pages/MinuteSheets/MinuteSheetDetail.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9NaW51dGVTaGVldHMvTWludXRlU2hlZXREZXRhaWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/Minute Sheet FFC/MinuteSheetFFC/Components/Layout/MainLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-wfxsayrhj5
+[/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/Components/Pages/MinuteSheets/MinuteSheetList.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9NaW51dGVTaGVldHMvTWludXRlU2hlZXRMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
 
-[H:/Minute Sheet FFC/MinuteSheetFFC/Components/Layout/NavMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-q9qnjztaqi
+[/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/Components/Pages/MinuteSheets/MyPendingActions.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9NaW51dGVTaGVldHMvTXlQZW5kaW5nQWN0aW9ucy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
 
-[H:/Minute Sheet FFC/MinuteSheetFFC/Components/Layout/ReconnectModal.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcUmVjb25uZWN0TW9kYWwucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-zre8ifa9lk
+[/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/Components/Pages/MinuteSheets/SharedMinuteSheets.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9NaW51dGVTaGVldHMvU2hhcmVkTWludXRlU2hlZXRzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/Components/Pages/NotFound.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Ob3RGb3VuZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/Components/Routes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Sb3V0ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/Components/Shared/InfoBlock.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9TaGFyZWQvSW5mb0Jsb2NrLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/Components/Shared/MiniTable.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9TaGFyZWQvTWluaVRhYmxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/Components/Shared/MinuteSheetTable.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9TaGFyZWQvTWludXRlU2hlZXRUYWJsZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/Components/Shared/StatusPill.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9TaGFyZWQvU3RhdHVzUGlsbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/Components/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9fSW1wb3J0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-gdfqy47kn9
+
+[/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/Components/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvTmF2TWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-h7zn417dwu
+
+[/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/Components/Layout/ReconnectModal.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvUmVjb25uZWN0TW9kYWwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-9lkzexgtob

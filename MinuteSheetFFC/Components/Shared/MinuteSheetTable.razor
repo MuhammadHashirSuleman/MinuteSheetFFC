@@ -1,0 +1,117 @@
+@inject IEmployeeService EmployeeService
+
+<div class="data-table-wrap">
+    <table class="table data-table @TableClass">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Subject</th>
+                @if (ShowRequester)
+                {
+                    <th>Requester</th>
+                }
+                <th>Creation Date</th>
+                <th>Status</th>
+                <th>Current Actioner</th>
+                <th class="text-end">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!Items.Any())
+            {
+                <tr>
+                    <td colspan="@ColumnCount" class="text-center text-muted py-5">@EmptyText</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var item in Items)
+                {
+                    <tr>
+                        <td class="fw-bold">@item.MinuteSheetId</td>
+                        <td>
+                            <span class="type-pill @(IsFinancial(item.Type) ? string.Empty : "neutral")">@ShortType(item.Type)</span>
+                        </td>
+                        <td>
+                            <div class="fw-semibold text-truncate" style="max-width: 340px;">@item.Subject</div>
+                        </td>
+                        @if (ShowRequester)
+                        {
+                            <td>@item.RequesterName</td>
+                        }
+                        <td class="text-nowrap">@item.CreationDate.ToString("MMM dd, yyyy")</td>
+                        <td><StatusPill Status="item.Status" /></td>
+                        <td>
+                            @if (string.IsNullOrWhiteSpace(item.CurrentActionerPNo))
+                            {
+                                <span class="fst-italic text-muted">@item.CurrentActionerName</span>
+                            }
+                            else
+                            {
+                                var employee = GetEmployee(item.CurrentActionerPNo);
+                                <div class="d-flex align-items-center gap-2">
+                                    <Avatar Employee="@employee" Name="@item.CurrentActionerName" Size="30" />
+                                    <span>@item.CurrentActionerName</span>
+                                </div>
+                            }
+                        </td>
+                        <td class="text-end">
+                            <div class="d-inline-flex align-items-center justify-content-end gap-2">
+                                <a class="icon-button" href="@($"minute-sheets/{item.Id}")" title="View detail" aria-label="View detail">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <a class="icon-button" href="@EditHref(item)" title="Edit request" aria-label="Edit request">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+@code {
+    private IReadOnlyDictionary<string, EmployeeProfile> employees = new Dictionary<string, EmployeeProfile>();
+
+    [Parameter]
+    public IReadOnlyList<MinuteSheetRecord> Items { get; set; } = Array.Empty<MinuteSheetRecord>();
+
+    [Parameter]
+    public bool ShowRequester { get; set; }
+
+    [Parameter]
+    public bool Compact { get; set; }
+
+    [Parameter]
+    public string EmptyText { get; set; } = "No minute sheets found.";
+
+    private int ColumnCount => ShowRequester ? 8 : 7;
+
+    private string TableClass => Compact ? "compact-table" : string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        employees = (await EmployeeService.GetEmployeesAsync()).ToDictionary(employee => employee.PNo);
+    }
+
+    private EmployeeProfile? GetEmployee(string pNo) =>
+        employees.TryGetValue(pNo, out var employee) ? employee : null;
+
+    private static bool IsFinancial(string type) =>
+        type.Contains("Financial", StringComparison.OrdinalIgnoreCase)
+        || type.Contains("CAPEX", StringComparison.OrdinalIgnoreCase);
+
+    private static string ShortType(string type) =>
+        type switch
+        {
+            "Financial & Procurement" => "Financial",
+            "Capital Expenditure (CAPEX)" => "Financial",
+            _ => type
+        };
+
+    private static string EditHref(MinuteSheetRecord item) =>
+        item.Status == MinuteSheetStatus.Draft ? "minute-sheets/create" : $"minute-sheets/{item.Id}";
+}

@@ -45,19 +45,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\B.J COMP\\.nuget\\packages\\": {}
+    "/home/error_343/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "h:\\Minute Sheet FFC\\MinuteSheetFFC\\MinuteSheetFFC.csproj",
+      "projectUniqueName": "/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/MinuteSheetFFC.csproj",
       "projectName": "MinuteSheetFFC",
-      "projectPath": "h:\\Minute Sheet FFC\\MinuteSheetFFC\\MinuteSheetFFC.csproj",
-      "packagesPath": "C:\\Users\\B.J COMP\\.nuget\\packages\\",
-      "outputPath": "h:\\Minute Sheet FFC\\MinuteSheetFFC\\obj\\",
+      "projectPath": "/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/MinuteSheetFFC.csproj",
+      "packagesPath": "/home/error_343/.nuget/packages/",
+      "outputPath": "/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\B.J COMP\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/error_343/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
@@ -115,7 +115,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "/tmp/dotnet10/sdk/10.0.301/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

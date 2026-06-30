@@ -1,0 +1,336 @@
+@page "/minute-sheets/create"
+@rendermode InteractiveServer
+@implements IAsyncDisposable
+@inject IEmployeeService EmployeeService
+@inject IMinuteSheetService MinuteSheetService
+@inject IAiService AiService
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+
+<PageTitle>Create New Minute Sheet | FFC Governance</PageTitle>
+
+@if (CurrentUser is null || editContext is null)
+{
+    <div class="surface-panel p-5 text-center">
+        <div class="spinner-border text-warning" role="status"></div>
+    </div>
+}
+else
+{
+    <EditForm EditContext="editContext" class="page-stack pb-5">
+        <DataAnnotationsValidator />
+
+        @if (!string.IsNullOrWhiteSpace(successMessage))
+        {
+            <div class="alert alert-success d-flex align-items-center gap-2 mb-0" role="alert">
+                <i class="bi bi-check-circle"></i>
+                <span>@successMessage</span>
+            </div>
+        }
+
+        <section class="surface-panel form-section">
+            <div class="d-flex justify-content-between gap-3 mb-3">
+                <h2 class="section-title">Requester Information</h2>
+                <span class="text-muted small fw-semibold">Reference ID: MS-2024-DRAFT</span>
+            </div>
+            <div class="requester-strip">
+                <Avatar Employee="CurrentUser" Size="48" />
+                <div>
+                    <p class="fw-bold mb-1">@CurrentUser.FullName</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="type-pill">@CurrentUser.Department</span>
+                        <span class="type-pill neutral">@CurrentUser.Designation</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="surface-panel form-section">
+            <h2 class="section-title mb-4">Minute Sheet Details</h2>
+            <div class="row g-4">
+                <div class="col-12">
+                    <label class="form-label-ffc" for="subject">Subject / Title</label>
+                    <InputText id="subject" class="form-control" @bind-Value="Model.Subject" placeholder="Enter a descriptive title for this minute sheet" />
+                    <ValidationMessage For="() => Model.Subject" />
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <label class="form-label-ffc" for="type">Sheet Type</label>
+                    <InputSelect id="type" class="form-select" @bind-Value="Model.Type">
+                        @foreach (var type in SheetTypes)
+                        {
+                            <option value="@type">@type</option>
+                        }
+                    </InputSelect>
+                    <ValidationMessage For="() => Model.Type" />
+                </div>
+
+                @if (CreateMinuteSheetModel.IsFinancialType(Model.Type))
+                {
+                    <div class="col-12 col-md-6">
+                        <label class="form-label-ffc" for="budget">Estimated Budget (USD)</label>
+                        <div class="position-relative">
+                            <span class="position-absolute top-50 start-0 translate-middle-y ms-3 text-muted">$</span>
+                            <InputNumber id="budget" class="form-control ps-5" @bind-Value="Model.EstimatedBudget" placeholder="0.00" />
+                        </div>
+                        <ValidationMessage For="() => Model.EstimatedBudget" />
+                    </div>
+                }
+
+                <div class="col-12">
+                    <label class="form-label-ffc d-block">Priority Level</label>
+                    <div class="segmented-control" role="group" aria-label="Priority level">
+                        @foreach (var priority in Enum.GetValues<MinuteSheetPriority>())
+                        {
+                            <button class="@(Model.Priority == priority ? "active" : string.Empty)" type="button" @onclick="() => SetPriority(priority)">
+                                @priority.ToDisplayName()
+                            </button>
+                        }
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="confidential-row">
+                        <div class="d-flex align-items-start gap-3">
+                            <i class="bi bi-lock text-warning fs-5"></i>
+                            <div>
+                                <p class="fw-bold mb-1">Confidential Minute</p>
+                                <p class="text-muted mb-0 small">Restrict visibility to selected reviewers only.</p>
+                            </div>
+                        </div>
+                        <div class="form-check form-switch">
+                            <InputCheckbox id="confidential" class="form-check-input" @bind-Value="Model.Confidential" />
+                            <label class="visually-hidden" for="confidential">Confidential</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="surface-panel form-section">
+            <h2 class="section-title mb-3">Note / Body Text</h2>
+            <div class="minute-editor">
+                <div class="minute-editor-toolbar" role="toolbar" aria-label="Minute body formatting">
+                    <button type="button" title="Bold" aria-label="Bold" @onclick='() => ApplyEditorCommandAsync("bold")'>
+                        <i class="bi bi-type-bold"></i>
+                    </button>
+                    <button type="button" title="Italic" aria-label="Italic" @onclick='() => ApplyEditorCommandAsync("italic")'>
+                        <i class="bi bi-type-italic"></i>
+                    </button>
+                    <button type="button" title="Underline" aria-label="Underline" @onclick='() => ApplyEditorCommandAsync("underline")'>
+                        <i class="bi bi-type-underline"></i>
+                    </button>
+                    <span aria-hidden="true"></span>
+                    <button type="button" title="Bulleted list" aria-label="Bulleted list" @onclick='() => ApplyEditorCommandAsync("insertUnorderedList")'>
+                        <i class="bi bi-list-ul"></i>
+                    </button>
+                    <button type="button" title="Numbered list" aria-label="Numbered list" @onclick='() => ApplyEditorCommandAsync("insertOrderedList")'>
+                        <i class="bi bi-list-ol"></i>
+                    </button>
+                    <span aria-hidden="true"></span>
+                    <button type="button" title="Undo" aria-label="Undo" @onclick='() => ApplyEditorCommandAsync("undo")'>
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                    </button>
+                    <button type="button" title="Redo" aria-label="Redo" @onclick='() => ApplyEditorCommandAsync("redo")'>
+                        <i class="bi bi-arrow-clockwise"></i>
+                    </button>
+                    <button type="button" title="Clear formatting" aria-label="Clear formatting" @onclick='() => ApplyEditorCommandAsync("removeFormat")'>
+                        <i class="bi bi-eraser"></i>
+                    </button>
+                </div>
+                <div id="@EditorId"
+                     class="minute-editor-surface"
+                     contenteditable="true"
+                     role="textbox"
+                     aria-multiline="true"
+                     data-placeholder="Compose the minute content here."></div>
+            </div>
+            <ValidationMessage For="() => Model.DescriptionHtml" />
+        </section>
+
+        <section class="surface-panel form-section">
+            <h2 class="section-title mb-3">Attachments</h2>
+            <label class="upload-zone mb-3">
+                <InputFile class="visually-hidden" OnChange="OnFilesSelected" multiple />
+                <span>
+                    <i class="bi bi-cloud-arrow-up fs-1 d-block mb-2"></i>
+                    <strong class="d-block text-body">Click or drag files to upload</strong>
+                    <small>PDF, DOCX, XLSX (Max 10MB each)</small>
+                </span>
+            </label>
+
+            <div class="d-grid gap-2">
+                @foreach (var attachment in attachments)
+                {
+                    <div class="attachment-row">
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="bi bi-file-earmark-text text-warning fs-4"></i>
+                            <div>
+                                <p class="fw-bold mb-0">@attachment.FileName</p>
+                                <small class="text-muted">@attachment.SizeLabel - Uploaded @attachment.UploadedAt.ToLocalTime().ToString("g")</small>
+                            </div>
+                        </div>
+                        <button class="icon-button text-danger" type="button" @onclick="() => RemoveAttachment(attachment)" aria-label="Remove attachment">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </div>
+                }
+            </div>
+        </section>
+
+    </EditForm>
+
+    <footer class="create-action-bar">
+        <div class="create-action-inner">
+            <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-soft-ffc" type="button" @onclick="AnalyzeAsync">
+                    <i class="bi bi-stars me-2"></i>
+                    AI Analyze
+                </button>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-quiet text-light" type="button" disabled="@isSaving" @onclick="SaveDraftAsync">Save Draft</button>
+                <button class="btn btn-primary-ffc px-4" type="button" disabled="@isSaving" @onclick="SubmitAsync">Submit Sheet</button>
+            </div>
+        </div>
+    </footer>
+}
+
+@code {
+    private static readonly string[] SheetTypes =
+    {
+        "HR & Recruitment",
+        "Financial",
+        "Financial & Procurement",
+        "Administrative",
+        "IT Services",
+        "Legal & Compliance"
+    };
+
+    private readonly CreateMinuteSheetModel Model = new();
+    private readonly List<MinuteSheetAttachment> attachments = new()
+    {
+        new() { FileName = "Project_Proposal_v2.pdf", SizeLabel = "1.2 MB", UploadedAt = DateTimeOffset.Now.AddMinutes(-2) }
+    };
+
+    private readonly string EditorId = $"description-editor-{Guid.NewGuid():N}";
+    private DotNetObjectReference<MinuteSheetCreate>? dotNetRef;
+    private EditContext? editContext;
+    private EmployeeProfile? CurrentUser;
+    private string successMessage = string.Empty;
+    private string aiMessage = string.Empty;
+    private bool isSaving;
+    private bool editorInitialized;
+
+    protected override async Task OnInitializedAsync()
+    {
+        CurrentUser = await EmployeeService.GetCurrentEmployeeAsync();
+        Model.DescriptionHtml = string.Empty;
+        editContext = new EditContext(Model);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender || editorInitialized)
+        {
+            return;
+        }
+
+        dotNetRef = DotNetObjectReference.Create(this);
+        editorInitialized = await JS.InvokeAsync<bool>("minuteSheetEditor.init", EditorId, dotNetRef, Model.DescriptionHtml);
+    }
+
+    [JSInvokable]
+    public Task UpdateDescription(string value)
+    {
+        Model.DescriptionHtml = value;
+        editContext?.NotifyFieldChanged(FieldIdentifier.Create(() => Model.DescriptionHtml));
+        return Task.CompletedTask;
+    }
+
+    private void SetPriority(MinuteSheetPriority priority) => Model.Priority = priority;
+
+    private async Task ApplyEditorCommandAsync(string command)
+    {
+        if (!editorInitialized)
+        {
+            return;
+        }
+
+        await JS.InvokeVoidAsync("minuteSheetEditor.command", EditorId, command);
+    }
+
+    private void OnFilesSelected(InputFileChangeEventArgs args)
+    {
+        foreach (var file in args.GetMultipleFiles(10))
+        {
+            attachments.Add(new MinuteSheetAttachment
+            {
+                FileName = file.Name,
+                SizeLabel = FormatFileSize(file.Size),
+                UploadedAt = DateTimeOffset.Now
+            });
+        }
+    }
+
+    private void RemoveAttachment(MinuteSheetAttachment attachment) => attachments.Remove(attachment);
+
+    private async Task AnalyzeAsync()
+    {
+        aiMessage = await AiService.AnalyzeMinuteSheetAsync(Model);
+        successMessage = aiMessage;
+    }
+
+    private async Task SaveDraftAsync()
+    {
+        if (editContext is null || !editContext.Validate())
+        {
+            return;
+        }
+
+        isSaving = true;
+        var record = await MinuteSheetService.SaveDraftAsync(Model, attachments);
+        isSaving = false;
+        successMessage = $"{record.MinuteSheetId} saved as draft.";
+    }
+
+    private async Task SubmitAsync()
+    {
+        if (editContext is null || !editContext.Validate())
+        {
+            return;
+        }
+
+        isSaving = true;
+        var record = await MinuteSheetService.SubmitAsync(Model, attachments);
+        isSaving = false;
+        Navigation.NavigateTo($"minute-sheets/{record.Id}");
+    }
+
+    private static string FormatFileSize(long bytes)
+    {
+        if (bytes < 1024 * 1024)
+        {
+            return $"{bytes / 1024.0:N0} KB";
+        }
+
+        return $"{bytes / 1024.0 / 1024.0:N1} MB";
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (editorInitialized)
+        {
+            try
+            {
+                await JS.InvokeVoidAsync("minuteSheetEditor.destroy", EditorId);
+            }
+            catch (Microsoft.JSInterop.JSDisconnectedException)
+            {
+                // The SignalR circuit can already be gone during server-side disposal.
+            }
+        }
+
+        dotNetRef?.Dispose();
+    }
+}

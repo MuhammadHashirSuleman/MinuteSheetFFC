@@ -1,0 +1,73 @@
+@page "/minute-sheets/shared"
+@rendermode InteractiveServer
+@inject IEmployeeService EmployeeService
+@inject IMinuteSheetService MinuteSheetService
+
+<PageTitle>FFC Minute Sheet - Shared Minutesheets</PageTitle>
+
+<div class="page-stack">
+    <section class="page-heading">
+        <div>
+            <nav class="breadcrumb-line" aria-label="Breadcrumb">
+                <a href="/">Home</a>
+                <i class="bi bi-chevron-right"></i>
+                <span>MinuteSheet</span>
+                <i class="bi bi-chevron-right"></i>
+                <strong>Shared Minutesheets</strong>
+            </nav>
+            <h1>Shared Minutesheets</h1>
+        </div>
+    </section>
+
+    <section class="surface-panel filter-panel">
+        <div class="row g-3 align-items-end">
+            <div class="col-12 col-lg-7">
+                <label class="form-label-ffc" for="sharedSearch">Search</label>
+                <div class="position-relative">
+                    <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+                    <input id="sharedSearch" class="form-control ps-5" placeholder="Subject or Ref ID..." @bind="SearchTerm" @bind:event="oninput" />
+                </div>
+            </div>
+            <div class="col-12 col-lg">
+                <label class="form-label-ffc" for="sharedStatus">Status</label>
+                <select id="sharedStatus" class="form-select" @bind="StatusFilter">
+                    <option value="">All Statuses</option>
+                    <option value="@MinuteSheetStatus.Marked">Marked</option>
+                    <option value="@MinuteSheetStatus.Approved">Approved</option>
+                    <option value="@MinuteSheetStatus.InReview">In Review</option>
+                    <option value="@MinuteSheetStatus.Submitted">Submitted</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <section class="surface-panel overflow-hidden">
+        <div class="card-header-line">
+            <h2><i class="bi bi-share text-primary"></i> Shared With Me</h2>
+            <span class="text-muted fw-semibold">@FilteredItems.Count item(s)</span>
+        </div>
+        <MinuteSheetTable Items="FilteredItems" ShowRequester="true" EmptyText="No minute sheets have been shared with you." />
+    </section>
+</div>
+
+@code {
+    private IReadOnlyList<MinuteSheetRecord> items = Array.Empty<MinuteSheetRecord>();
+
+    private string SearchTerm { get; set; } = string.Empty;
+    private string StatusFilter { get; set; } = string.Empty;
+
+    private IReadOnlyList<MinuteSheetRecord> FilteredItems =>
+        items
+            .Where(item => string.IsNullOrWhiteSpace(SearchTerm)
+                || item.Subject.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase)
+                || item.MinuteSheetId.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase))
+            .Where(item => string.IsNullOrWhiteSpace(StatusFilter)
+                || Enum.TryParse<MinuteSheetStatus>(StatusFilter, out var status) && item.Status == status)
+            .ToList();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var user = await EmployeeService.GetCurrentEmployeeAsync();
+        items = await MinuteSheetService.GetSharedMinuteSheetsAsync(user.PNo);
+    }
+}

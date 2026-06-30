@@ -1,0 +1,12 @@
+<div class="col-12 col-md-4">
+    <p class="section-title mb-2">@Label</p>
+    <p class="fw-bold mb-0">@Value</p>
+</div>
+
+@code {
+    [Parameter]
+    public string Label { get; set; } = string.Empty;
+
+    [Parameter]
+    public string Value { get; set; } = string.Empty;
+}

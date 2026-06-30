@@ -1,0 +1,158 @@
+@page "/minute-sheets"
+@rendermode InteractiveServer
+@inject IMinuteSheetService MinuteSheetService
+
+<PageTitle>FFC Minute Sheet - All Requests</PageTitle>
+
+<div class="page-stack">
+    <section class="page-heading">
+        <div>
+            <nav class="breadcrumb-line" aria-label="Breadcrumb">
+                <a href="/">Home</a>
+                <i class="bi bi-chevron-right"></i>
+                <span>MinuteSheet</span>
+                <i class="bi bi-chevron-right"></i>
+                <strong>All Requests</strong>
+            </nav>
+            <h1>Minute Sheets</h1>
+        </div>
+        <a class="btn btn-primary-ffc btn-lg px-4" href="minute-sheets/create">
+            <i class="bi bi-plus-lg me-2"></i>
+            New Request
+        </a>
+    </section>
+
+    <section class="surface-panel filter-panel">
+        <div class="row g-3 align-items-end">
+            <div class="col-12 col-md-6 col-xl">
+                <label class="form-label-ffc" for="search">Search</label>
+                <div class="position-relative">
+                    <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+                    <input id="search" class="form-control ps-5" placeholder="Subject or Ref ID..." @bind="SearchTerm" @bind:event="oninput" />
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl">
+                <label class="form-label-ffc" for="status">Status</label>
+                <select id="status" class="form-select" @bind="StatusFilter">
+                    <option value="">All Statuses</option>
+                    @foreach (var status in Enum.GetValues<MinuteSheetStatus>())
+                    {
+                        <option value="@status">@status.ToDisplayName()</option>
+                    }
+                </select>
+            </div>
+            <div class="col-12 col-md-6 col-xl">
+                <label class="form-label-ffc" for="type">Type</label>
+                <select id="type" class="form-select" @bind="TypeFilter">
+                    <option value="">All Types</option>
+                    <option>Financial</option>
+                    <option>Non-Financial</option>
+                    <option>Legal & Compliance</option>
+                    <option>Capital Expenditure (CAPEX)</option>
+                </select>
+            </div>
+            <div class="col-12 col-md-6 col-xl">
+                <label class="form-label-ffc" for="dateRange">Date Range</label>
+                <div class="position-relative">
+                    <input id="dateRange" class="form-control pe-5" placeholder="Select dates..." @bind="DateRange" />
+                    <i class="bi bi-calendar position-absolute top-50 end-0 translate-middle-y me-3 text-muted"></i>
+                </div>
+            </div>
+            <div class="col-12 col-xl-auto">
+                <button class="btn btn-quiet px-3" type="button" @onclick="ClearFilters">
+                    <i class="bi bi-funnel me-2"></i>
+                    Clear filters
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="surface-panel overflow-hidden">
+        <MinuteSheetTable Items="FilteredItems" />
+        <div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 px-4 py-3 border-top" style="background: var(--ffc-surface-blue);">
+            <div class="d-flex align-items-center gap-3 text-muted">
+                <span>Showing @FilteredItems.Count of @allItems.Count entries</span>
+                <label class="d-flex align-items-center gap-2">
+                    <span>Rows per page:</span>
+                    <select class="form-select form-select-sm w-auto">
+                        <option>10</option>
+                        <option>20</option>
+                        <option>50</option>
+                    </select>
+                </label>
+            </div>
+            <div class="btn-group" role="group" aria-label="Pagination">
+                <button class="btn btn-soft-ffc" type="button" disabled><i class="bi bi-chevron-bar-left"></i></button>
+                <button class="btn btn-primary-ffc" type="button">1</button>
+                <button class="btn btn-soft-ffc" type="button">2</button>
+                <button class="btn btn-soft-ffc" type="button">3</button>
+                <button class="btn btn-soft-ffc" type="button"><i class="bi bi-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+</div>
+
+@code {
+    private IReadOnlyList<MinuteSheetRecord> allItems = Array.Empty<MinuteSheetRecord>();
+
+    private string SearchTerm { get; set; } = string.Empty;
+    private string StatusFilter { get; set; } = string.Empty;
+    private string TypeFilter { get; set; } = string.Empty;
+    private string DateRange { get; set; } = string.Empty;
+
+    private IReadOnlyList<MinuteSheetRecord> FilteredItems =>
+        allItems
+            .Where(MatchesSearch)
+            .Where(MatchesStatus)
+            .Where(MatchesType)
+            .ToList();
+
+    protected override async Task OnInitializedAsync()
+    {
+        allItems = await MinuteSheetService.GetMinuteSheetsAsync();
+    }
+
+    private bool MatchesSearch(MinuteSheetRecord item)
+    {
+        if (string.IsNullOrWhiteSpace(SearchTerm))
+        {
+            return true;
+        }
+
+        return item.Subject.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase)
+            || item.MinuteSheetId.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase)
+            || item.ReferenceNo.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase);
+    }
+
+    private bool MatchesStatus(MinuteSheetRecord item) =>
+        string.IsNullOrWhiteSpace(StatusFilter)
+        || Enum.TryParse<MinuteSheetStatus>(StatusFilter, out var status) && item.Status == status;
+
+    private bool MatchesType(MinuteSheetRecord item)
+    {
+        if (string.IsNullOrWhiteSpace(TypeFilter))
+        {
+            return true;
+        }
+
+        if (TypeFilter == "Financial")
+        {
+            return item.EstimatedBudget.HasValue || item.Type.Contains("CAPEX", StringComparison.OrdinalIgnoreCase);
+        }
+
+        if (TypeFilter == "Non-Financial")
+        {
+            return !item.EstimatedBudget.HasValue && !item.Type.Contains("CAPEX", StringComparison.OrdinalIgnoreCase);
+        }
+
+        return item.Type.Equals(TypeFilter, StringComparison.OrdinalIgnoreCase);
+    }
+
+    private void ClearFilters()
+    {
+        SearchTerm = string.Empty;
+        StatusFilter = string.Empty;
+        TypeFilter = string.Empty;
+        DateRange = string.Empty;
+    }
+}

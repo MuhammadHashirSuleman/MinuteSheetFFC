@@ -1,85 +1,173 @@
-H:\Minute Sheet FFC\MinuteSheetFFC\bin\Debug\net10.0\appsettings.Development.json
-H:\Minute Sheet FFC\MinuteSheetFFC\bin\Debug\net10.0\appsettings.json
-H:\Minute Sheet FFC\MinuteSheetFFC\bin\Debug\net10.0\MinuteSheetFFC.staticwebassets.runtime.json
-H:\Minute Sheet FFC\MinuteSheetFFC\bin\Debug\net10.0\MinuteSheetFFC.staticwebassets.endpoints.json
-H:\Minute Sheet FFC\MinuteSheetFFC\bin\Debug\net10.0\MinuteSheetFFC.exe
-H:\Minute Sheet FFC\MinuteSheetFFC\bin\Debug\net10.0\MinuteSheetFFC.deps.json
-H:\Minute Sheet FFC\MinuteSheetFFC\bin\Debug\net10.0\MinuteSheetFFC.runtimeconfig.json
-H:\Minute Sheet FFC\MinuteSheetFFC\bin\Debug\net10.0\MinuteSheetFFC.dll
-H:\Minute Sheet FFC\MinuteSheetFFC\bin\Debug\net10.0\MinuteSheetFFC.pdb
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\EmbeddedAttribute.cs
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\ValidatableTypeAttribute.cs
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\rpswa.dswa.cache.json
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\MinuteSheetFFC.GeneratedMSBuildEditorConfig.editorconfig
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\MinuteSheetFFC.AssemblyInfoInputs.cache
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\MinuteSheetFFC.AssemblyInfo.cs
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\MinuteSheetFFC.csproj.CoreCompileInputs.cache
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\MinuteSheetFFC.MvcApplicationPartsAssemblyInfo.cache
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\rjimswa.dswa.cache.json
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\scopedcss\Components\Layout\ReconnectModal.razor.rz.scp.css
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\scopedcss\bundle\MinuteSheetFFC.styles.css
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\scopedcss\projectbundle\MinuteSheetFFC.bundle.scp.css
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\dhpfj06s8f-{0}-khy4lop6wu-khy4lop6wu.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\njcuy5tyan-{0}-bqjiyaj88i-bqjiyaj88i.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\hxwb1fiibg-{0}-c2jlpeoesf-c2jlpeoesf.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\7niuyvyhti-{0}-erw9l3u2r3-erw9l3u2r3.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\9zi4e2mfdy-{0}-aexeepp0ev-aexeepp0ev.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\cxyuignfi0-{0}-d7shbmvgxk-d7shbmvgxk.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\6jyp2sm2fs-{0}-ausgxo2sd3-ausgxo2sd3.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\ci6c4lbhe2-{0}-k8d9w2qqmf-k8d9w2qqmf.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\x95tfu0una-{0}-cosvhxvwiu-cosvhxvwiu.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\dk8y78rnzp-{0}-ub07r2b239-ub07r2b239.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\l4trodrji1-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\keeg9jzn1s-{0}-b7pk76d08c-b7pk76d08c.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\5x6prpr5aw-{0}-fsbi9cje9m-fsbi9cje9m.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\p6nq4yfhsj-{0}-rzd6atqjts-rzd6atqjts.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\858gzd26z4-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\kxh33b34gd-{0}-dxx9fxp4il-dxx9fxp4il.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\v3tntswjci-{0}-jd9uben2k1-jd9uben2k1.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\u77v2p1ueq-{0}-khv3u5hwcm-khv3u5hwcm.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\9d9pax2zp8-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\zifnz2g8o2-{0}-lcd1t2u6c8-lcd1t2u6c8.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\y3o9voai17-{0}-c2oey78nd0-c2oey78nd0.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\e8khms5vhr-{0}-tdbxkamptv-tdbxkamptv.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\221ifdfvtj-{0}-j5mq2jizvt-j5mq2jizvt.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\vorjanh9vw-{0}-06098lyss8-06098lyss8.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\2829mlcnfr-{0}-nvvlpmu67g-nvvlpmu67g.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\g119w8wcn1-{0}-s35ty4nyc5-s35ty4nyc5.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\nj83q987zv-{0}-pj5nd1wqec-pj5nd1wqec.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\j2sdiyxytv-{0}-46ein0sx1k-46ein0sx1k.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\9b8ap7zb6y-{0}-v0zj4ognzu-v0zj4ognzu.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\zw1zpba7zo-{0}-37tfw0ft22-37tfw0ft22.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\xx9yjvz7xj-{0}-hrwsygsryq-hrwsygsryq.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\36adtvnskm-{0}-pk9g2wxc8p-pk9g2wxc8p.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\tebsmm3wrf-{0}-ft3s53vfgj-ft3s53vfgj.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\tiqr822jph-{0}-6cfz1n2cew-6cfz1n2cew.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\i79wulz5u1-{0}-6pdc2jztkx-6pdc2jztkx.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\p050n18be2-{0}-493y06b0oq-493y06b0oq.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\hs23k0zdlw-{0}-iovd86k7lj-iovd86k7lj.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\khr3nrrghq-{0}-vr1egmr9el-vr1egmr9el.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\40w622b76t-{0}-kbrnm935zg-kbrnm935zg.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\idb3yz05op-{0}-jj8uyg4cgr-jj8uyg4cgr.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\2hmvbzbxy4-{0}-y7v9cxd14o-y7v9cxd14o.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\7f11p4xn6d-{0}-notf2xhcfb-notf2xhcfb.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\sbtssz8z0s-{0}-h1s4sie4z3-h1s4sie4z3.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\taoxbcvg11-{0}-63fj8s7r0e-63fj8s7r0e.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\r62ijj6oru-{0}-0j3bgjxly4-0j3bgjxly4.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\bxw9jfsjiq-{0}-abdmv1u4y3-abdmv1u4y3.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\l7eexupl92-{0}-ne14ti1q68-ne14ti1q68.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\q1dkn2gnmm-{0}-ig5xotzpx5-ig5xotzpx5.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\t3db8pp517-{0}-7cb54zqgmz-7cb54zqgmz.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\compressed\hdl11819ta-{0}-7cb54zqgmz-7cb54zqgmz.gz
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\staticwebassets.build.json
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\staticwebassets.build.json.cache
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\staticwebassets.development.json
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\staticwebassets.build.endpoints.json
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\swae.build.ex.cache
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\MinuteSheetFFC.dll
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\refint\MinuteSheetFFC.dll
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\MinuteSheetFFC.pdb
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\MinuteSheetFFC.genruntimeconfig.cache
-H:\Minute Sheet FFC\MinuteSheetFFC\obj\Debug\net10.0\ref\MinuteSheetFFC.dll
+H:/Minute Sheet FFC/MinuteSheetFFC/bin/Debug/net10.0/appsettings.Development.json
+H:/Minute Sheet FFC/MinuteSheetFFC/bin/Debug/net10.0/appsettings.json
+H:/Minute Sheet FFC/MinuteSheetFFC/bin/Debug/net10.0/MinuteSheetFFC.staticwebassets.runtime.json
+H:/Minute Sheet FFC/MinuteSheetFFC/bin/Debug/net10.0/MinuteSheetFFC.staticwebassets.endpoints.json
+H:/Minute Sheet FFC/MinuteSheetFFC/bin/Debug/net10.0/MinuteSheetFFC.exe
+H:/Minute Sheet FFC/MinuteSheetFFC/bin/Debug/net10.0/MinuteSheetFFC.deps.json
+H:/Minute Sheet FFC/MinuteSheetFFC/bin/Debug/net10.0/MinuteSheetFFC.runtimeconfig.json
+H:/Minute Sheet FFC/MinuteSheetFFC/bin/Debug/net10.0/MinuteSheetFFC.dll
+H:/Minute Sheet FFC/MinuteSheetFFC/bin/Debug/net10.0/MinuteSheetFFC.pdb
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/EmbeddedAttribute.cs
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/ValidatableTypeAttribute.cs
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/rpswa.dswa.cache.json
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/MinuteSheetFFC.GeneratedMSBuildEditorConfig.editorconfig
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/MinuteSheetFFC.AssemblyInfoInputs.cache
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/MinuteSheetFFC.AssemblyInfo.cs
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/MinuteSheetFFC.csproj.CoreCompileInputs.cache
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/MinuteSheetFFC.MvcApplicationPartsAssemblyInfo.cache
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/rjimswa.dswa.cache.json
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/rjsmrazor.dswa.cache.json
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/rjsmcshtml.dswa.cache.json
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/scopedcss/Components/Layout/MainLayout.razor.rz.scp.css
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/scopedcss/Components/Layout/NavMenu.razor.rz.scp.css
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/scopedcss/Components/Layout/ReconnectModal.razor.rz.scp.css
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/scopedcss/bundle/MinuteSheetFFC.styles.css
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/scopedcss/projectbundle/MinuteSheetFFC.bundle.scp.css
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/dhpfj06s8f-{0}-khy4lop6wu-khy4lop6wu.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/njcuy5tyan-{0}-bqjiyaj88i-bqjiyaj88i.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/hxwb1fiibg-{0}-c2jlpeoesf-c2jlpeoesf.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/7niuyvyhti-{0}-erw9l3u2r3-erw9l3u2r3.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/9zi4e2mfdy-{0}-aexeepp0ev-aexeepp0ev.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/cxyuignfi0-{0}-d7shbmvgxk-d7shbmvgxk.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/6jyp2sm2fs-{0}-ausgxo2sd3-ausgxo2sd3.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/ci6c4lbhe2-{0}-k8d9w2qqmf-k8d9w2qqmf.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/x95tfu0una-{0}-cosvhxvwiu-cosvhxvwiu.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/dk8y78rnzp-{0}-ub07r2b239-ub07r2b239.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/l4trodrji1-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/keeg9jzn1s-{0}-b7pk76d08c-b7pk76d08c.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/5x6prpr5aw-{0}-fsbi9cje9m-fsbi9cje9m.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/p6nq4yfhsj-{0}-rzd6atqjts-rzd6atqjts.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/858gzd26z4-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/kxh33b34gd-{0}-dxx9fxp4il-dxx9fxp4il.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/v3tntswjci-{0}-jd9uben2k1-jd9uben2k1.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/u77v2p1ueq-{0}-khv3u5hwcm-khv3u5hwcm.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/9d9pax2zp8-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/zifnz2g8o2-{0}-lcd1t2u6c8-lcd1t2u6c8.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/y3o9voai17-{0}-c2oey78nd0-c2oey78nd0.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/e8khms5vhr-{0}-tdbxkamptv-tdbxkamptv.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/221ifdfvtj-{0}-j5mq2jizvt-j5mq2jizvt.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/vorjanh9vw-{0}-06098lyss8-06098lyss8.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/2829mlcnfr-{0}-nvvlpmu67g-nvvlpmu67g.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/g119w8wcn1-{0}-s35ty4nyc5-s35ty4nyc5.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/nj83q987zv-{0}-pj5nd1wqec-pj5nd1wqec.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/j2sdiyxytv-{0}-46ein0sx1k-46ein0sx1k.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/9b8ap7zb6y-{0}-v0zj4ognzu-v0zj4ognzu.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/zw1zpba7zo-{0}-37tfw0ft22-37tfw0ft22.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/xx9yjvz7xj-{0}-hrwsygsryq-hrwsygsryq.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/36adtvnskm-{0}-pk9g2wxc8p-pk9g2wxc8p.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/tebsmm3wrf-{0}-ft3s53vfgj-ft3s53vfgj.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/tiqr822jph-{0}-6cfz1n2cew-6cfz1n2cew.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/i79wulz5u1-{0}-6pdc2jztkx-6pdc2jztkx.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/p050n18be2-{0}-493y06b0oq-493y06b0oq.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/hs23k0zdlw-{0}-iovd86k7lj-iovd86k7lj.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/khr3nrrghq-{0}-vr1egmr9el-vr1egmr9el.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/40w622b76t-{0}-kbrnm935zg-kbrnm935zg.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/idb3yz05op-{0}-jj8uyg4cgr-jj8uyg4cgr.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/2hmvbzbxy4-{0}-y7v9cxd14o-y7v9cxd14o.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/7f11p4xn6d-{0}-notf2xhcfb-notf2xhcfb.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/sbtssz8z0s-{0}-h1s4sie4z3-h1s4sie4z3.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/taoxbcvg11-{0}-63fj8s7r0e-63fj8s7r0e.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/r62ijj6oru-{0}-0j3bgjxly4-0j3bgjxly4.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/bxw9jfsjiq-{0}-abdmv1u4y3-abdmv1u4y3.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/l7eexupl92-{0}-ne14ti1q68-ne14ti1q68.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/q1dkn2gnmm-{0}-ig5xotzpx5-ig5xotzpx5.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/t3db8pp517-{0}-7cb54zqgmz-7cb54zqgmz.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/hdl11819ta-{0}-7cb54zqgmz-7cb54zqgmz.gz
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/staticwebassets.build.json
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/staticwebassets.build.json.cache
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/staticwebassets.development.json
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/staticwebassets.build.endpoints.json
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/swae.build.ex.cache
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/MinuteSheetFFC.dll
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/refint/MinuteSheetFFC.dll
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/MinuteSheetFFC.pdb
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/MinuteSheetFFC.genruntimeconfig.cache
+H:/Minute Sheet FFC/MinuteSheetFFC/obj/Debug/net10.0/ref/MinuteSheetFFC.dll
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/bin/Debug/net10.0/appsettings.Development.json
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/bin/Debug/net10.0/appsettings.json
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/bin/Debug/net10.0/MinuteSheetFFC.staticwebassets.runtime.json
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/bin/Debug/net10.0/MinuteSheetFFC.staticwebassets.endpoints.json
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/bin/Debug/net10.0/MinuteSheetFFC
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/bin/Debug/net10.0/MinuteSheetFFC.deps.json
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/bin/Debug/net10.0/MinuteSheetFFC.runtimeconfig.json
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/bin/Debug/net10.0/MinuteSheetFFC.dll
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/bin/Debug/net10.0/MinuteSheetFFC.pdb
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/EmbeddedAttribute.cs
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/ValidatableTypeAttribute.cs
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/rpswa.dswa.cache.json
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/MinuteSheetFFC.GeneratedMSBuildEditorConfig.editorconfig
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/MinuteSheetFFC.AssemblyInfoInputs.cache
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/MinuteSheetFFC.AssemblyInfo.cs
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/MinuteSheetFFC.csproj.CoreCompileInputs.cache
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/MinuteSheetFFC.MvcApplicationPartsAssemblyInfo.cache
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/MinuteSheetFFC.sourcelink.json
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/rjimswa.dswa.cache.json
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/rjsmrazor.dswa.cache.json
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/rjsmcshtml.dswa.cache.json
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/scopedcss/Components/Layout/MainLayout.razor.rz.scp.css
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/scopedcss/Components/Layout/NavMenu.razor.rz.scp.css
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/scopedcss/Components/Layout/ReconnectModal.razor.rz.scp.css
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/scopedcss/bundle/MinuteSheetFFC.styles.css
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/scopedcss/projectbundle/MinuteSheetFFC.bundle.scp.css
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/eed9gmfn4l-{0}-26f9b7qkas-26f9b7qkas.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/njcuy5tyan-{0}-bqjiyaj88i-bqjiyaj88i.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/hxwb1fiibg-{0}-c2jlpeoesf-c2jlpeoesf.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/7niuyvyhti-{0}-erw9l3u2r3-erw9l3u2r3.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/9zi4e2mfdy-{0}-aexeepp0ev-aexeepp0ev.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/cxyuignfi0-{0}-d7shbmvgxk-d7shbmvgxk.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/6jyp2sm2fs-{0}-ausgxo2sd3-ausgxo2sd3.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/ci6c4lbhe2-{0}-k8d9w2qqmf-k8d9w2qqmf.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/x95tfu0una-{0}-cosvhxvwiu-cosvhxvwiu.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/dk8y78rnzp-{0}-ub07r2b239-ub07r2b239.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/l4trodrji1-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/keeg9jzn1s-{0}-b7pk76d08c-b7pk76d08c.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/5x6prpr5aw-{0}-fsbi9cje9m-fsbi9cje9m.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/p6nq4yfhsj-{0}-rzd6atqjts-rzd6atqjts.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/858gzd26z4-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/kxh33b34gd-{0}-dxx9fxp4il-dxx9fxp4il.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/v3tntswjci-{0}-jd9uben2k1-jd9uben2k1.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/u77v2p1ueq-{0}-khv3u5hwcm-khv3u5hwcm.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/9d9pax2zp8-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/zifnz2g8o2-{0}-lcd1t2u6c8-lcd1t2u6c8.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/y3o9voai17-{0}-c2oey78nd0-c2oey78nd0.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/e8khms5vhr-{0}-tdbxkamptv-tdbxkamptv.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/221ifdfvtj-{0}-j5mq2jizvt-j5mq2jizvt.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/vorjanh9vw-{0}-06098lyss8-06098lyss8.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/2829mlcnfr-{0}-nvvlpmu67g-nvvlpmu67g.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/g119w8wcn1-{0}-s35ty4nyc5-s35ty4nyc5.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/nj83q987zv-{0}-pj5nd1wqec-pj5nd1wqec.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/j2sdiyxytv-{0}-46ein0sx1k-46ein0sx1k.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/9b8ap7zb6y-{0}-v0zj4ognzu-v0zj4ognzu.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/zw1zpba7zo-{0}-37tfw0ft22-37tfw0ft22.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/xx9yjvz7xj-{0}-hrwsygsryq-hrwsygsryq.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/36adtvnskm-{0}-pk9g2wxc8p-pk9g2wxc8p.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/tebsmm3wrf-{0}-ft3s53vfgj-ft3s53vfgj.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/tiqr822jph-{0}-6cfz1n2cew-6cfz1n2cew.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/i79wulz5u1-{0}-6pdc2jztkx-6pdc2jztkx.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/p050n18be2-{0}-493y06b0oq-493y06b0oq.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/hs23k0zdlw-{0}-iovd86k7lj-iovd86k7lj.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/khr3nrrghq-{0}-vr1egmr9el-vr1egmr9el.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/40w622b76t-{0}-kbrnm935zg-kbrnm935zg.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/idb3yz05op-{0}-jj8uyg4cgr-jj8uyg4cgr.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/2hmvbzbxy4-{0}-y7v9cxd14o-y7v9cxd14o.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/7f11p4xn6d-{0}-notf2xhcfb-notf2xhcfb.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/sbtssz8z0s-{0}-h1s4sie4z3-h1s4sie4z3.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/taoxbcvg11-{0}-63fj8s7r0e-63fj8s7r0e.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/r62ijj6oru-{0}-0j3bgjxly4-0j3bgjxly4.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/bxw9jfsjiq-{0}-cyz5k529gx-cyz5k529gx.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/l7eexupl92-{0}-ne14ti1q68-ne14ti1q68.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/q1dkn2gnmm-{0}-ig5xotzpx5-ig5xotzpx5.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/t3db8pp517-{0}-eqpoanehyt-eqpoanehyt.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/hdl11819ta-{0}-eqpoanehyt-eqpoanehyt.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/staticwebassets.build.json
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/staticwebassets.build.json.cache
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/staticwebassets.development.json
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/staticwebassets.build.endpoints.json
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/swae.build.ex.cache
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/MinuteSheetFFC.dll
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/refint/MinuteSheetFFC.dll
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/MinuteSheetFFC.pdb
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/MinuteSheetFFC.genruntimeconfig.cache
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/ref/MinuteSheetFFC.dll
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/dhpfj06s8f-{0}-q11l9ody2z-q11l9ody2z.gz
+/home/error_343/FFC/MinuteSheetFFC/MinuteSheetFFC/obj/Debug/net10.0/compressed/rts4yzycnl-{0}-ax754ae9i3-ax754ae9i3.gz
