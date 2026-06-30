@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b79cb3b2656b45679cb1dd8cf6d92505" Name="Diagram1">
+        <EntityTypeShape EntityType="MinuteSheetDBModel.AiAnalysisResults" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinuteSheetDBModel.Departments" Width="1.5" PointX="1.5" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinuteSheetDBModel.Employees" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinuteSheetDBModel.MinuteSheetAttachments" Width="1.5" PointX="8.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinuteSheetDBModel.MinuteSheetRequests" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinuteSheetDBModel.RefreshTokens" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinuteSheetDBModel.RequestTypes" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinuteSheetDBModel.Roles" Width="1.5" PointX="6" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinuteSheetDBModel.UserRoles" Width="1.5" PointX="8.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinuteSheetDBModel.Users" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinuteSheetDBModel.WorkflowExceptions" Width="1.5" PointX="8.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinuteSheetDBModel.WorkflowHistory" Width="1.5" PointX="8.25" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinuteSheetDBModel.WorkflowRules" Width="1.5" PointX="3" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinuteSheetDBModel.WorkflowStages" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="MinuteSheetDBModel.FK_AiAnalysis_MinuteSheet" ManuallyRouted="false" />
+        <AssociationConnector Association="MinuteSheetDBModel.FK_Employees_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="MinuteSheetDBModel.FK_Attachment_Uploader" ManuallyRouted="false" />
+        <AssociationConnector Association="MinuteSheetDBModel.FK_Exception_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="MinuteSheetDBModel.FK_History_Actioner" ManuallyRouted="false" />
+        <AssociationConnector Association="MinuteSheetDBModel.FK_MinuteSheet_Actioner" ManuallyRouted="false" />
+        <AssociationConnector Association="MinuteSheetDBModel.FK_MinuteSheet_Requester" ManuallyRouted="false" />
+        <AssociationConnector Association="MinuteSheetDBModel.FK_Stage_Actioner" ManuallyRouted="false" />
+        <AssociationConnector Association="MinuteSheetDBModel.FK_Users_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="MinuteSheetDBModel.FK_Attachment_MinuteSheet" ManuallyRouted="false" />
+        <AssociationConnector Association="MinuteSheetDBModel.FK_Exception_MinuteSheet" ManuallyRouted="false" />
+        <AssociationConnector Association="MinuteSheetDBModel.FK_History_MinuteSheet" ManuallyRouted="false" />
+        <AssociationConnector Association="MinuteSheetDBModel.FK_MinuteSheet_RequestType" ManuallyRouted="false" />
+        <AssociationConnector Association="MinuteSheetDBModel.FK_Stage_MinuteSheet" ManuallyRouted="false" />
+        <AssociationConnector Association="MinuteSheetDBModel.FK_RefreshTokens_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MinuteSheetDBModel.FK_WorkflowRules_RequestType" ManuallyRouted="false" />
+        <AssociationConnector Association="MinuteSheetDBModel.FK_UserRoles_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="MinuteSheetDBModel.FK_UserRoles_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

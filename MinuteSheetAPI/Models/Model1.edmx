@@ -1,0 +1,1428 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MinuteSheetDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AiAnalysisResults">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MinuteSheetId" Type="int" Nullable="false" />
+          <Property Name="Summary" Type="nvarchar" MaxLength="2000" />
+          <Property Name="DetectedBudget" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Impact" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Beneficiaries" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Urgency" Type="varchar" MaxLength="20" />
+          <Property Name="RiskLevel" Type="varchar" MaxLength="20" />
+          <Property Name="SuggestedCategory" Type="varchar" MaxLength="50" />
+          <Property Name="SuggestedSubject" Type="nvarchar" MaxLength="500" />
+          <Property Name="MissingInformation" Type="nvarchar" MaxLength="2000" />
+          <Property Name="RiskFlags" Type="nvarchar" MaxLength="2000" />
+          <Property Name="SuggestedRoute" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ReviewerChecklist" Type="nvarchar" MaxLength="2000" />
+          <Property Name="SuggestedWorkflowMode" Type="varchar" MaxLength="10" />
+          <Property Name="SuggestedLevels" Type="int" />
+          <Property Name="AnalyzedAt" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="ModelUsed" Type="varchar" MaxLength="50" />
+          <Property Name="RawResponse" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Departments">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ShortName" Type="varchar" MaxLength="10" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime2" Precision="3" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="PNo" />
+          </Key>
+          <Property Name="PNo" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="OldPNo" Type="varchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="CNIC" Type="varchar" MaxLength="20" />
+          <Property Name="Gender" Type="int" />
+          <Property Name="MaritalStatus" Type="int" />
+          <Property Name="FatherName" Type="nvarchar" MaxLength="200" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="HireDate" Type="date" />
+          <Property Name="LastPromotionDate" Type="date" />
+          <Property Name="RetirementDate" Type="date" />
+          <Property Name="LeavingDate" Type="date" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DesignationShort" Type="varchar" MaxLength="10" />
+          <Property Name="JobDescription" Type="nvarchar" MaxLength="200" />
+          <Property Name="JobKey" Type="int" />
+          <Property Name="PositionId" Type="int" />
+          <Property Name="Grade" Type="varchar" MaxLength="10" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DepartmentShort" Type="varchar" MaxLength="10" />
+          <Property Name="EmployeeGroup" Type="varchar" MaxLength="5" />
+          <Property Name="EmployeeCategory" Type="varchar" MaxLength="5" />
+          <Property Name="GroupId" Type="int" />
+          <Property Name="GroupDesc" Type="nvarchar" MaxLength="100" />
+          <Property Name="GroupShort" Type="varchar" MaxLength="10" />
+          <Property Name="PAreaId" Type="int" />
+          <Property Name="PAreaDesc" Type="nvarchar" MaxLength="100" />
+          <Property Name="PSAreaId" Type="int" />
+          <Property Name="PSAreaDesc" Type="nvarchar" MaxLength="100" />
+          <Property Name="CostCenter" Type="int" />
+          <Property Name="CostCenterDesc" Type="nvarchar" MaxLength="100" />
+          <Property Name="ManagerPNo" Type="varchar" MaxLength="8" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ActingPNo" Type="varchar" MaxLength="8" />
+          <Property Name="ActingFrom" Type="date" />
+          <Property Name="ActingTo" Type="date" />
+          <Property Name="AnnualLeaveBalance" Type="int" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime2" Precision="3" />
+          <Property Name="Password" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="MinuteSheetAttachments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MinuteSheetId" Type="int" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="FileType" Type="varchar" MaxLength="100" />
+          <Property Name="FileSize" Type="bigint" />
+          <Property Name="StoragePath" Type="nvarchar" MaxLength="500" />
+          <Property Name="UploadedByPNo" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="UploadedAt" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MinuteSheetRequests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReferenceNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RequestTypeId" Type="int" Nullable="false" />
+          <Property Name="EstimatedBudget" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Priority" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="IsConfidential" Type="bit" Nullable="false" />
+          <Property Name="WorkflowMode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="RequesterPNo" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="CurrentActionerPNo" Type="varchar" MaxLength="8" />
+          <Property Name="CurrentStageOrder" Type="int" />
+          <Property Name="SubmittedAt" Type="datetime2" Precision="3" />
+          <Property Name="CompletedAt" Type="datetime2" Precision="3" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime2" Precision="3" />
+        </EntityType>
+        <EntityType Name="RefreshTokens">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Token" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="ExpiresAt" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="RevokedAt" Type="datetime2" Precision="3" />
+          <Property Name="ReplacedByToken" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedByIp" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RequestTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="AssignedAt" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="AssignedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="EmployeePNo" Type="varchar" MaxLength="8" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsLocked" Type="bit" Nullable="false" />
+          <Property Name="FailedLoginAttempts" Type="int" Nullable="false" />
+          <Property Name="LockoutEnd" Type="datetime2" Precision="3" />
+          <Property Name="LastLoginAt" Type="datetime2" Precision="3" />
+          <Property Name="PasswordChangedAt" Type="datetime2" Precision="3" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime2" Precision="3" />
+        </EntityType>
+        <EntityType Name="WorkflowExceptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MinuteSheetId" Type="int" />
+          <Property Name="EmployeePNo" Type="varchar" MaxLength="8" />
+          <Property Name="ExceptionType" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Severity" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="IsResolved" Type="bit" Nullable="false" />
+          <Property Name="ResolvedByPNo" Type="varchar" MaxLength="8" />
+          <Property Name="ResolvedAt" Type="datetime2" Precision="3" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkflowHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MinuteSheetId" Type="int" Nullable="false" />
+          <Property Name="ActionerPNo" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="ActionerName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PreviousStatus" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NewStatus" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="1000" />
+          <Property Name="StageOrder" Type="int" />
+          <Property Name="Timestamp" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkflowRules">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequestTypeId" Type="int" Nullable="false" />
+          <Property Name="BudgetFrom" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="BudgetTo" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="RequiredManagerLevels" Type="int" Nullable="false" />
+          <Property Name="RequiresFinanceReview" Type="bit" Nullable="false" />
+          <Property Name="FallbackBehavior" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="FinalAction" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime2" Precision="3" />
+        </EntityType>
+        <EntityType Name="WorkflowStages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MinuteSheetId" Type="int" Nullable="false" />
+          <Property Name="StageOrder" Type="int" Nullable="false" />
+          <Property Name="ActionerPNo" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="ActionerName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ActionerDesignation" Type="nvarchar" MaxLength="100" />
+          <Property Name="ActionType" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="20" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ActionedAt" Type="datetime2" Precision="3" />
+          <Property Name="Source" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AiAnalysis_MinuteSheet">
+          <End Role="MinuteSheetRequests" Type="Self.MinuteSheetRequests" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AiAnalysisResults" Type="Self.AiAnalysisResults" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MinuteSheetRequests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AiAnalysisResults">
+              <PropertyRef Name="MinuteSheetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attachment_MinuteSheet">
+          <End Role="MinuteSheetRequests" Type="Self.MinuteSheetRequests" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MinuteSheetAttachments" Type="Self.MinuteSheetAttachments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MinuteSheetRequests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MinuteSheetAttachments">
+              <PropertyRef Name="MinuteSheetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attachment_Uploader">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="MinuteSheetAttachments" Type="Self.MinuteSheetAttachments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="PNo" />
+            </Principal>
+            <Dependent Role="MinuteSheetAttachments">
+              <PropertyRef Name="UploadedByPNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Department">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exception_Employee">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="WorkflowExceptions" Type="Self.WorkflowExceptions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="PNo" />
+            </Principal>
+            <Dependent Role="WorkflowExceptions">
+              <PropertyRef Name="EmployeePNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exception_MinuteSheet">
+          <End Role="MinuteSheetRequests" Type="Self.MinuteSheetRequests" Multiplicity="0..1" />
+          <End Role="WorkflowExceptions" Type="Self.WorkflowExceptions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MinuteSheetRequests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkflowExceptions">
+              <PropertyRef Name="MinuteSheetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Actioner">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="WorkflowHistory" Type="Self.WorkflowHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="PNo" />
+            </Principal>
+            <Dependent Role="WorkflowHistory">
+              <PropertyRef Name="ActionerPNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_MinuteSheet">
+          <End Role="MinuteSheetRequests" Type="Self.MinuteSheetRequests" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WorkflowHistory" Type="Self.WorkflowHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MinuteSheetRequests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkflowHistory">
+              <PropertyRef Name="MinuteSheetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MinuteSheet_Actioner">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="MinuteSheetRequests" Type="Self.MinuteSheetRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="PNo" />
+            </Principal>
+            <Dependent Role="MinuteSheetRequests">
+              <PropertyRef Name="CurrentActionerPNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MinuteSheet_Requester">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="MinuteSheetRequests" Type="Self.MinuteSheetRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="PNo" />
+            </Principal>
+            <Dependent Role="MinuteSheetRequests">
+              <PropertyRef Name="RequesterPNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MinuteSheet_RequestType">
+          <End Role="RequestTypes" Type="Self.RequestTypes" Multiplicity="1" />
+          <End Role="MinuteSheetRequests" Type="Self.MinuteSheetRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MinuteSheetRequests">
+              <PropertyRef Name="RequestTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RefreshTokens_User">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RefreshTokens" Type="Self.RefreshTokens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RefreshTokens">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stage_Actioner">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="WorkflowStages" Type="Self.WorkflowStages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="PNo" />
+            </Principal>
+            <Dependent Role="WorkflowStages">
+              <PropertyRef Name="ActionerPNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stage_MinuteSheet">
+          <End Role="MinuteSheetRequests" Type="Self.MinuteSheetRequests" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WorkflowStages" Type="Self.WorkflowStages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MinuteSheetRequests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkflowStages">
+              <PropertyRef Name="MinuteSheetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_Role">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_User">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Employee">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="PNo" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="EmployeePNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkflowRules_RequestType">
+          <End Role="RequestTypes" Type="Self.RequestTypes" Multiplicity="1" />
+          <End Role="WorkflowRules" Type="Self.WorkflowRules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkflowRules">
+              <PropertyRef Name="RequestTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MinuteSheetDBModelStoreContainer">
+          <EntitySet Name="AiAnalysisResults" EntityType="Self.AiAnalysisResults" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MinuteSheetAttachments" EntityType="Self.MinuteSheetAttachments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MinuteSheetRequests" EntityType="Self.MinuteSheetRequests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefreshTokens" EntityType="Self.RefreshTokens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestTypes" EntityType="Self.RequestTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkflowExceptions" EntityType="Self.WorkflowExceptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkflowHistory" EntityType="Self.WorkflowHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkflowRules" EntityType="Self.WorkflowRules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkflowStages" EntityType="Self.WorkflowStages" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AiAnalysis_MinuteSheet" Association="Self.FK_AiAnalysis_MinuteSheet">
+            <End Role="MinuteSheetRequests" EntitySet="MinuteSheetRequests" />
+            <End Role="AiAnalysisResults" EntitySet="AiAnalysisResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attachment_MinuteSheet" Association="Self.FK_Attachment_MinuteSheet">
+            <End Role="MinuteSheetRequests" EntitySet="MinuteSheetRequests" />
+            <End Role="MinuteSheetAttachments" EntitySet="MinuteSheetAttachments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attachment_Uploader" Association="Self.FK_Attachment_Uploader">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="MinuteSheetAttachments" EntitySet="MinuteSheetAttachments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Department" Association="Self.FK_Employees_Department">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exception_Employee" Association="Self.FK_Exception_Employee">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="WorkflowExceptions" EntitySet="WorkflowExceptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exception_MinuteSheet" Association="Self.FK_Exception_MinuteSheet">
+            <End Role="MinuteSheetRequests" EntitySet="MinuteSheetRequests" />
+            <End Role="WorkflowExceptions" EntitySet="WorkflowExceptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Actioner" Association="Self.FK_History_Actioner">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="WorkflowHistory" EntitySet="WorkflowHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_MinuteSheet" Association="Self.FK_History_MinuteSheet">
+            <End Role="MinuteSheetRequests" EntitySet="MinuteSheetRequests" />
+            <End Role="WorkflowHistory" EntitySet="WorkflowHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MinuteSheet_Actioner" Association="Self.FK_MinuteSheet_Actioner">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="MinuteSheetRequests" EntitySet="MinuteSheetRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MinuteSheet_Requester" Association="Self.FK_MinuteSheet_Requester">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="MinuteSheetRequests" EntitySet="MinuteSheetRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MinuteSheet_RequestType" Association="Self.FK_MinuteSheet_RequestType">
+            <End Role="RequestTypes" EntitySet="RequestTypes" />
+            <End Role="MinuteSheetRequests" EntitySet="MinuteSheetRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RefreshTokens_User" Association="Self.FK_RefreshTokens_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="RefreshTokens" EntitySet="RefreshTokens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stage_Actioner" Association="Self.FK_Stage_Actioner">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="WorkflowStages" EntitySet="WorkflowStages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stage_MinuteSheet" Association="Self.FK_Stage_MinuteSheet">
+            <End Role="MinuteSheetRequests" EntitySet="MinuteSheetRequests" />
+            <End Role="WorkflowStages" EntitySet="WorkflowStages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Role" Association="Self.FK_UserRoles_Role">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_User" Association="Self.FK_UserRoles_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Employee" Association="Self.FK_Users_Employee">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkflowRules_RequestType" Association="Self.FK_WorkflowRules_RequestType">
+            <End Role="RequestTypes" EntitySet="RequestTypes" />
+            <End Role="WorkflowRules" EntitySet="WorkflowRules" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MinuteSheetDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AiAnalysisResults">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Summary" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="DetectedBudget" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Impact" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Beneficiaries" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Urgency" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RiskLevel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SuggestedCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SuggestedSubject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MissingInformation" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="RiskFlags" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="SuggestedRoute" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ReviewerChecklist" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="SuggestedWorkflowMode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SuggestedLevels" Type="Int32" />
+          <Property Name="AnalyzedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModelUsed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RawResponse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MinuteSheetRequests" Relationship="Self.FK_AiAnalysis_MinuteSheet" FromRole="AiAnalysisResults" ToRole="MinuteSheetRequests" />
+        </EntityType>
+        <EntityType Name="Departments">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShortName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Department" FromRole="Departments" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="PNo" />
+          </Key>
+          <Property Name="PNo" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OldPNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CNIC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="Int32" />
+          <Property Name="MaritalStatus" Type="Int32" />
+          <Property Name="FatherName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="HireDate" Type="DateTime" Precision="0" />
+          <Property Name="LastPromotionDate" Type="DateTime" Precision="0" />
+          <Property Name="RetirementDate" Type="DateTime" Precision="0" />
+          <Property Name="LeavingDate" Type="DateTime" Precision="0" />
+          <Property Name="Designation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DesignationShort" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JobDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="JobKey" Type="Int32" />
+          <Property Name="PositionId" Type="Int32" />
+          <Property Name="Grade" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DepartmentName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentShort" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeGroup" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeCategory" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="GroupId" Type="Int32" />
+          <Property Name="GroupDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GroupShort" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PAreaId" Type="Int32" />
+          <Property Name="PAreaDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PSAreaId" Type="Int32" />
+          <Property Name="PSAreaDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CostCenter" Type="Int32" />
+          <Property Name="CostCenterDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ManagerPNo" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ActingPNo" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="ActingFrom" Type="DateTime" Precision="0" />
+          <Property Name="ActingTo" Type="DateTime" Precision="0" />
+          <Property Name="AnnualLeaveBalance" Type="Int32" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Departments" Relationship="Self.FK_Employees_Department" FromRole="Employees" ToRole="Departments" />
+          <NavigationProperty Name="MinuteSheetAttachments" Relationship="Self.FK_Attachment_Uploader" FromRole="Employees" ToRole="MinuteSheetAttachments" />
+          <NavigationProperty Name="WorkflowExceptions" Relationship="Self.FK_Exception_Employee" FromRole="Employees" ToRole="WorkflowExceptions" />
+          <NavigationProperty Name="WorkflowHistory" Relationship="Self.FK_History_Actioner" FromRole="Employees" ToRole="WorkflowHistory" />
+          <NavigationProperty Name="MinuteSheetRequests" Relationship="Self.FK_MinuteSheet_Actioner" FromRole="Employees" ToRole="MinuteSheetRequests" />
+          <NavigationProperty Name="MinuteSheetRequests1" Relationship="Self.FK_MinuteSheet_Requester" FromRole="Employees" ToRole="MinuteSheetRequests" />
+          <NavigationProperty Name="WorkflowStages" Relationship="Self.FK_Stage_Actioner" FromRole="Employees" ToRole="WorkflowStages" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Employee" FromRole="Employees" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="MinuteSheetAttachments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FileSize" Type="Int64" />
+          <Property Name="StoragePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UploadedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Attachment_Uploader" FromRole="MinuteSheetAttachments" ToRole="Employees" />
+          <NavigationProperty Name="MinuteSheetRequests" Relationship="Self.FK_Attachment_MinuteSheet" FromRole="MinuteSheetAttachments" ToRole="MinuteSheetRequests" />
+        </EntityType>
+        <EntityType Name="MinuteSheetRequests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReferenceNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EstimatedBudget" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Priority" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsConfidential" Type="Boolean" Nullable="false" />
+          <Property Name="WorkflowMode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CurrentStageOrder" Type="Int32" />
+          <Property Name="SubmittedAt" Type="DateTime" Precision="3" />
+          <Property Name="CompletedAt" Type="DateTime" Precision="3" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AiAnalysisResults" Relationship="Self.FK_AiAnalysis_MinuteSheet" FromRole="MinuteSheetRequests" ToRole="AiAnalysisResults" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_MinuteSheet_Actioner" FromRole="MinuteSheetRequests" ToRole="Employees" />
+          <NavigationProperty Name="Employees1" Relationship="Self.FK_MinuteSheet_Requester" FromRole="MinuteSheetRequests" ToRole="Employees" />
+          <NavigationProperty Name="MinuteSheetAttachments" Relationship="Self.FK_Attachment_MinuteSheet" FromRole="MinuteSheetRequests" ToRole="MinuteSheetAttachments" />
+          <NavigationProperty Name="WorkflowExceptions" Relationship="Self.FK_Exception_MinuteSheet" FromRole="MinuteSheetRequests" ToRole="WorkflowExceptions" />
+          <NavigationProperty Name="WorkflowHistory" Relationship="Self.FK_History_MinuteSheet" FromRole="MinuteSheetRequests" ToRole="WorkflowHistory" />
+          <NavigationProperty Name="RequestTypes" Relationship="Self.FK_MinuteSheet_RequestType" FromRole="MinuteSheetRequests" ToRole="RequestTypes" />
+          <NavigationProperty Name="WorkflowStages" Relationship="Self.FK_Stage_MinuteSheet" FromRole="MinuteSheetRequests" ToRole="WorkflowStages" />
+        </EntityType>
+        <EntityType Name="RefreshTokens">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Token" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExpiresAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RevokedAt" Type="DateTime" Precision="3" />
+          <Property Name="ReplacedByToken" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedByIp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_RefreshTokens_User" FromRole="RefreshTokens" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="RequestTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="MinuteSheetRequests" Relationship="Self.FK_MinuteSheet_RequestType" FromRole="RequestTypes" ToRole="MinuteSheetRequests" />
+          <NavigationProperty Name="WorkflowRules" Relationship="Self.FK_WorkflowRules_RequestType" FromRole="RequestTypes" ToRole="WorkflowRules" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRoles_Role" FromRole="Roles" ToRole="UserRoles" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="AssignedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AssignedBy" Type="Int32" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_UserRoles_Role" FromRole="UserRoles" ToRole="Roles" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_UserRoles_User" FromRole="UserRoles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsLocked" Type="Boolean" Nullable="false" />
+          <Property Name="FailedLoginAttempts" Type="Int32" Nullable="false" />
+          <Property Name="LockoutEnd" Type="DateTime" Precision="3" />
+          <Property Name="LastLoginAt" Type="DateTime" Precision="3" />
+          <Property Name="PasswordChangedAt" Type="DateTime" Precision="3" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Users_Employee" FromRole="Users" ToRole="Employees" />
+          <NavigationProperty Name="RefreshTokens" Relationship="Self.FK_RefreshTokens_User" FromRole="Users" ToRole="RefreshTokens" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRoles_User" FromRole="Users" ToRole="UserRoles" />
+        </EntityType>
+        <EntityType Name="WorkflowExceptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExceptionType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Severity" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsResolved" Type="Boolean" Nullable="false" />
+          <Property Name="ResolvedByPNo" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="ResolvedAt" Type="DateTime" Precision="3" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Exception_Employee" FromRole="WorkflowExceptions" ToRole="Employees" />
+          <NavigationProperty Name="MinuteSheetRequests" Relationship="Self.FK_Exception_MinuteSheet" FromRole="WorkflowExceptions" ToRole="MinuteSheetRequests" />
+        </EntityType>
+        <EntityType Name="WorkflowHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActionerName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PreviousStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NewStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="StageOrder" Type="Int32" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_History_Actioner" FromRole="WorkflowHistory" ToRole="Employees" />
+          <NavigationProperty Name="MinuteSheetRequests" Relationship="Self.FK_History_MinuteSheet" FromRole="WorkflowHistory" ToRole="MinuteSheetRequests" />
+        </EntityType>
+        <EntityType Name="WorkflowRules">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BudgetFrom" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="BudgetTo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RequiredManagerLevels" Type="Int32" Nullable="false" />
+          <Property Name="RequiresFinanceReview" Type="Boolean" Nullable="false" />
+          <Property Name="FallbackBehavior" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FinalAction" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="RequestTypes" Relationship="Self.FK_WorkflowRules_RequestType" FromRole="WorkflowRules" ToRole="RequestTypes" />
+        </EntityType>
+        <EntityType Name="WorkflowStages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StageOrder" Type="Int32" Nullable="false" />
+          <Property Name="ActionerName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActionerDesignation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ActionType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ActionedAt" Type="DateTime" Precision="3" />
+          <Property Name="Source" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Stage_Actioner" FromRole="WorkflowStages" ToRole="Employees" />
+          <NavigationProperty Name="MinuteSheetRequests" Relationship="Self.FK_Stage_MinuteSheet" FromRole="WorkflowStages" ToRole="MinuteSheetRequests" />
+        </EntityType>
+        <Association Name="FK_AiAnalysis_MinuteSheet">
+          <End Role="MinuteSheetRequests" Type="Self.MinuteSheetRequests" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AiAnalysisResults" Type="Self.AiAnalysisResults" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Employees_Department">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Attachment_Uploader">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="MinuteSheetAttachments" Type="Self.MinuteSheetAttachments" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Exception_Employee">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="WorkflowExceptions" Type="Self.WorkflowExceptions" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_History_Actioner">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="WorkflowHistory" Type="Self.WorkflowHistory" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_MinuteSheet_Actioner">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="MinuteSheetRequests" Type="Self.MinuteSheetRequests" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_MinuteSheet_Requester">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="MinuteSheetRequests" Type="Self.MinuteSheetRequests" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Stage_Actioner">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="WorkflowStages" Type="Self.WorkflowStages" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Users_Employee">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Attachment_MinuteSheet">
+          <End Role="MinuteSheetRequests" Type="Self.MinuteSheetRequests" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MinuteSheetAttachments" Type="Self.MinuteSheetAttachments" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Exception_MinuteSheet">
+          <End Role="MinuteSheetRequests" Type="Self.MinuteSheetRequests" Multiplicity="0..1" />
+          <End Role="WorkflowExceptions" Type="Self.WorkflowExceptions" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_History_MinuteSheet">
+          <End Role="MinuteSheetRequests" Type="Self.MinuteSheetRequests" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WorkflowHistory" Type="Self.WorkflowHistory" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_MinuteSheet_RequestType">
+          <End Role="RequestTypes" Type="Self.RequestTypes" Multiplicity="1" />
+          <End Role="MinuteSheetRequests" Type="Self.MinuteSheetRequests" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Stage_MinuteSheet">
+          <End Role="MinuteSheetRequests" Type="Self.MinuteSheetRequests" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WorkflowStages" Type="Self.WorkflowStages" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_RefreshTokens_User">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RefreshTokens" Type="Self.RefreshTokens" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_WorkflowRules_RequestType">
+          <End Role="RequestTypes" Type="Self.RequestTypes" Multiplicity="1" />
+          <End Role="WorkflowRules" Type="Self.WorkflowRules" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_UserRoles_Role">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_User">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MinuteSheetDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AiAnalysisResults" EntityType="Self.AiAnalysisResults" />
+          <EntitySet Name="Departments" EntityType="Self.Departments" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" />
+          <EntitySet Name="MinuteSheetAttachments" EntityType="Self.MinuteSheetAttachments" />
+          <EntitySet Name="MinuteSheetRequests" EntityType="Self.MinuteSheetRequests" />
+          <EntitySet Name="RefreshTokens" EntityType="Self.RefreshTokens" />
+          <EntitySet Name="RequestTypes" EntityType="Self.RequestTypes" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="WorkflowExceptions" EntityType="Self.WorkflowExceptions" />
+          <EntitySet Name="WorkflowHistory" EntityType="Self.WorkflowHistory" />
+          <EntitySet Name="WorkflowRules" EntityType="Self.WorkflowRules" />
+          <EntitySet Name="WorkflowStages" EntityType="Self.WorkflowStages" />
+          <AssociationSet Name="FK_AiAnalysis_MinuteSheet" Association="Self.FK_AiAnalysis_MinuteSheet">
+            <End Role="MinuteSheetRequests" EntitySet="MinuteSheetRequests" />
+            <End Role="AiAnalysisResults" EntitySet="AiAnalysisResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Department" Association="Self.FK_Employees_Department">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attachment_Uploader" Association="Self.FK_Attachment_Uploader">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="MinuteSheetAttachments" EntitySet="MinuteSheetAttachments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exception_Employee" Association="Self.FK_Exception_Employee">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="WorkflowExceptions" EntitySet="WorkflowExceptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Actioner" Association="Self.FK_History_Actioner">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="WorkflowHistory" EntitySet="WorkflowHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MinuteSheet_Actioner" Association="Self.FK_MinuteSheet_Actioner">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="MinuteSheetRequests" EntitySet="MinuteSheetRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MinuteSheet_Requester" Association="Self.FK_MinuteSheet_Requester">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="MinuteSheetRequests" EntitySet="MinuteSheetRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stage_Actioner" Association="Self.FK_Stage_Actioner">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="WorkflowStages" EntitySet="WorkflowStages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Employee" Association="Self.FK_Users_Employee">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attachment_MinuteSheet" Association="Self.FK_Attachment_MinuteSheet">
+            <End Role="MinuteSheetRequests" EntitySet="MinuteSheetRequests" />
+            <End Role="MinuteSheetAttachments" EntitySet="MinuteSheetAttachments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exception_MinuteSheet" Association="Self.FK_Exception_MinuteSheet">
+            <End Role="MinuteSheetRequests" EntitySet="MinuteSheetRequests" />
+            <End Role="WorkflowExceptions" EntitySet="WorkflowExceptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_MinuteSheet" Association="Self.FK_History_MinuteSheet">
+            <End Role="MinuteSheetRequests" EntitySet="MinuteSheetRequests" />
+            <End Role="WorkflowHistory" EntitySet="WorkflowHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MinuteSheet_RequestType" Association="Self.FK_MinuteSheet_RequestType">
+            <End Role="RequestTypes" EntitySet="RequestTypes" />
+            <End Role="MinuteSheetRequests" EntitySet="MinuteSheetRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stage_MinuteSheet" Association="Self.FK_Stage_MinuteSheet">
+            <End Role="MinuteSheetRequests" EntitySet="MinuteSheetRequests" />
+            <End Role="WorkflowStages" EntitySet="WorkflowStages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RefreshTokens_User" Association="Self.FK_RefreshTokens_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="RefreshTokens" EntitySet="RefreshTokens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkflowRules_RequestType" Association="Self.FK_WorkflowRules_RequestType">
+            <End Role="RequestTypes" EntitySet="RequestTypes" />
+            <End Role="WorkflowRules" EntitySet="WorkflowRules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Role" Association="Self.FK_UserRoles_Role">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_User" Association="Self.FK_UserRoles_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MinuteSheetDBModelStoreContainer" CdmEntityContainer="MinuteSheetDBEntities">
+          <EntitySetMapping Name="AiAnalysisResults">
+            <EntityTypeMapping TypeName="MinuteSheetDBModel.AiAnalysisResults">
+              <MappingFragment StoreEntitySet="AiAnalysisResults">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="DetectedBudget" ColumnName="DetectedBudget" />
+                <ScalarProperty Name="Impact" ColumnName="Impact" />
+                <ScalarProperty Name="Beneficiaries" ColumnName="Beneficiaries" />
+                <ScalarProperty Name="Urgency" ColumnName="Urgency" />
+                <ScalarProperty Name="RiskLevel" ColumnName="RiskLevel" />
+                <ScalarProperty Name="SuggestedCategory" ColumnName="SuggestedCategory" />
+                <ScalarProperty Name="SuggestedSubject" ColumnName="SuggestedSubject" />
+                <ScalarProperty Name="MissingInformation" ColumnName="MissingInformation" />
+                <ScalarProperty Name="RiskFlags" ColumnName="RiskFlags" />
+                <ScalarProperty Name="SuggestedRoute" ColumnName="SuggestedRoute" />
+                <ScalarProperty Name="ReviewerChecklist" ColumnName="ReviewerChecklist" />
+                <ScalarProperty Name="SuggestedWorkflowMode" ColumnName="SuggestedWorkflowMode" />
+                <ScalarProperty Name="SuggestedLevels" ColumnName="SuggestedLevels" />
+                <ScalarProperty Name="AnalyzedAt" ColumnName="AnalyzedAt" />
+                <ScalarProperty Name="ModelUsed" ColumnName="ModelUsed" />
+                <ScalarProperty Name="RawResponse" ColumnName="RawResponse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="MinuteSheetDBModel.Departments">
+              <MappingFragment StoreEntitySet="Departments">
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="MinuteSheetDBModel.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="PNo" ColumnName="PNo" />
+                <ScalarProperty Name="OldPNo" ColumnName="OldPNo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="LastPromotionDate" ColumnName="LastPromotionDate" />
+                <ScalarProperty Name="RetirementDate" ColumnName="RetirementDate" />
+                <ScalarProperty Name="LeavingDate" ColumnName="LeavingDate" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="DesignationShort" ColumnName="DesignationShort" />
+                <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+                <ScalarProperty Name="JobKey" ColumnName="JobKey" />
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="DepartmentShort" ColumnName="DepartmentShort" />
+                <ScalarProperty Name="EmployeeGroup" ColumnName="EmployeeGroup" />
+                <ScalarProperty Name="EmployeeCategory" ColumnName="EmployeeCategory" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="GroupDesc" ColumnName="GroupDesc" />
+                <ScalarProperty Name="GroupShort" ColumnName="GroupShort" />
+                <ScalarProperty Name="PAreaId" ColumnName="PAreaId" />
+                <ScalarProperty Name="PAreaDesc" ColumnName="PAreaDesc" />
+                <ScalarProperty Name="PSAreaId" ColumnName="PSAreaId" />
+                <ScalarProperty Name="PSAreaDesc" ColumnName="PSAreaDesc" />
+                <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+                <ScalarProperty Name="CostCenterDesc" ColumnName="CostCenterDesc" />
+                <ScalarProperty Name="ManagerPNo" ColumnName="ManagerPNo" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ActingPNo" ColumnName="ActingPNo" />
+                <ScalarProperty Name="ActingFrom" ColumnName="ActingFrom" />
+                <ScalarProperty Name="ActingTo" ColumnName="ActingTo" />
+                <ScalarProperty Name="AnnualLeaveBalance" ColumnName="AnnualLeaveBalance" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MinuteSheetAttachments">
+            <EntityTypeMapping TypeName="MinuteSheetDBModel.MinuteSheetAttachments">
+              <MappingFragment StoreEntitySet="MinuteSheetAttachments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="StoragePath" ColumnName="StoragePath" />
+                <ScalarProperty Name="UploadedAt" ColumnName="UploadedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MinuteSheetRequests">
+            <EntityTypeMapping TypeName="MinuteSheetDBModel.MinuteSheetRequests">
+              <MappingFragment StoreEntitySet="MinuteSheetRequests">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="EstimatedBudget" ColumnName="EstimatedBudget" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="IsConfidential" ColumnName="IsConfidential" />
+                <ScalarProperty Name="WorkflowMode" ColumnName="WorkflowMode" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CurrentStageOrder" ColumnName="CurrentStageOrder" />
+                <ScalarProperty Name="SubmittedAt" ColumnName="SubmittedAt" />
+                <ScalarProperty Name="CompletedAt" ColumnName="CompletedAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefreshTokens">
+            <EntityTypeMapping TypeName="MinuteSheetDBModel.RefreshTokens">
+              <MappingFragment StoreEntitySet="RefreshTokens">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="ExpiresAt" ColumnName="ExpiresAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="RevokedAt" ColumnName="RevokedAt" />
+                <ScalarProperty Name="ReplacedByToken" ColumnName="ReplacedByToken" />
+                <ScalarProperty Name="CreatedByIp" ColumnName="CreatedByIp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestTypes">
+            <EntityTypeMapping TypeName="MinuteSheetDBModel.RequestTypes">
+              <MappingFragment StoreEntitySet="RequestTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="MinuteSheetDBModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="MinuteSheetDBModel.UserRoles">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="AssignedAt" ColumnName="AssignedAt" />
+                <ScalarProperty Name="AssignedBy" ColumnName="AssignedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MinuteSheetDBModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="FailedLoginAttempts" ColumnName="FailedLoginAttempts" />
+                <ScalarProperty Name="LockoutEnd" ColumnName="LockoutEnd" />
+                <ScalarProperty Name="LastLoginAt" ColumnName="LastLoginAt" />
+                <ScalarProperty Name="PasswordChangedAt" ColumnName="PasswordChangedAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkflowExceptions">
+            <EntityTypeMapping TypeName="MinuteSheetDBModel.WorkflowExceptions">
+              <MappingFragment StoreEntitySet="WorkflowExceptions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ExceptionType" ColumnName="ExceptionType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Severity" ColumnName="Severity" />
+                <ScalarProperty Name="IsResolved" ColumnName="IsResolved" />
+                <ScalarProperty Name="ResolvedByPNo" ColumnName="ResolvedByPNo" />
+                <ScalarProperty Name="ResolvedAt" ColumnName="ResolvedAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkflowHistory">
+            <EntityTypeMapping TypeName="MinuteSheetDBModel.WorkflowHistory">
+              <MappingFragment StoreEntitySet="WorkflowHistory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ActionerName" ColumnName="ActionerName" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="PreviousStatus" ColumnName="PreviousStatus" />
+                <ScalarProperty Name="NewStatus" ColumnName="NewStatus" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="StageOrder" ColumnName="StageOrder" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkflowRules">
+            <EntityTypeMapping TypeName="MinuteSheetDBModel.WorkflowRules">
+              <MappingFragment StoreEntitySet="WorkflowRules">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BudgetFrom" ColumnName="BudgetFrom" />
+                <ScalarProperty Name="BudgetTo" ColumnName="BudgetTo" />
+                <ScalarProperty Name="RequiredManagerLevels" ColumnName="RequiredManagerLevels" />
+                <ScalarProperty Name="RequiresFinanceReview" ColumnName="RequiresFinanceReview" />
+                <ScalarProperty Name="FallbackBehavior" ColumnName="FallbackBehavior" />
+                <ScalarProperty Name="FinalAction" ColumnName="FinalAction" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkflowStages">
+            <EntityTypeMapping TypeName="MinuteSheetDBModel.WorkflowStages">
+              <MappingFragment StoreEntitySet="WorkflowStages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StageOrder" ColumnName="StageOrder" />
+                <ScalarProperty Name="ActionerName" ColumnName="ActionerName" />
+                <ScalarProperty Name="ActionerDesignation" ColumnName="ActionerDesignation" />
+                <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ActionedAt" ColumnName="ActionedAt" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_AiAnalysis_MinuteSheet" TypeName="MinuteSheetDBModel.FK_AiAnalysis_MinuteSheet" StoreEntitySet="AiAnalysisResults">
+            <EndProperty Name="MinuteSheetRequests">
+              <ScalarProperty Name="Id" ColumnName="MinuteSheetId" />
+            </EndProperty>
+            <EndProperty Name="AiAnalysisResults">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Employees_Department" TypeName="MinuteSheetDBModel.FK_Employees_Department" StoreEntitySet="Employees">
+            <EndProperty Name="Departments">
+              <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+            </EndProperty>
+            <EndProperty Name="Employees">
+              <ScalarProperty Name="PNo" ColumnName="PNo" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Attachment_Uploader" TypeName="MinuteSheetDBModel.FK_Attachment_Uploader" StoreEntitySet="MinuteSheetAttachments">
+            <EndProperty Name="Employees">
+              <ScalarProperty Name="PNo" ColumnName="UploadedByPNo" />
+            </EndProperty>
+            <EndProperty Name="MinuteSheetAttachments">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Exception_Employee" TypeName="MinuteSheetDBModel.FK_Exception_Employee" StoreEntitySet="WorkflowExceptions">
+            <EndProperty Name="Employees">
+              <ScalarProperty Name="PNo" ColumnName="EmployeePNo" />
+            </EndProperty>
+            <EndProperty Name="WorkflowExceptions">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="EmployeePNo" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_History_Actioner" TypeName="MinuteSheetDBModel.FK_History_Actioner" StoreEntitySet="WorkflowHistory">
+            <EndProperty Name="Employees">
+              <ScalarProperty Name="PNo" ColumnName="ActionerPNo" />
+            </EndProperty>
+            <EndProperty Name="WorkflowHistory">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_MinuteSheet_Actioner" TypeName="MinuteSheetDBModel.FK_MinuteSheet_Actioner" StoreEntitySet="MinuteSheetRequests">
+            <EndProperty Name="Employees">
+              <ScalarProperty Name="PNo" ColumnName="CurrentActionerPNo" />
+            </EndProperty>
+            <EndProperty Name="MinuteSheetRequests">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="CurrentActionerPNo" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_MinuteSheet_Requester" TypeName="MinuteSheetDBModel.FK_MinuteSheet_Requester" StoreEntitySet="MinuteSheetRequests">
+            <EndProperty Name="Employees">
+              <ScalarProperty Name="PNo" ColumnName="RequesterPNo" />
+            </EndProperty>
+            <EndProperty Name="MinuteSheetRequests">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Stage_Actioner" TypeName="MinuteSheetDBModel.FK_Stage_Actioner" StoreEntitySet="WorkflowStages">
+            <EndProperty Name="Employees">
+              <ScalarProperty Name="PNo" ColumnName="ActionerPNo" />
+            </EndProperty>
+            <EndProperty Name="WorkflowStages">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Users_Employee" TypeName="MinuteSheetDBModel.FK_Users_Employee" StoreEntitySet="Users">
+            <EndProperty Name="Employees">
+              <ScalarProperty Name="PNo" ColumnName="EmployeePNo" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="EmployeePNo" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Attachment_MinuteSheet" TypeName="MinuteSheetDBModel.FK_Attachment_MinuteSheet" StoreEntitySet="MinuteSheetAttachments">
+            <EndProperty Name="MinuteSheetRequests">
+              <ScalarProperty Name="Id" ColumnName="MinuteSheetId" />
+            </EndProperty>
+            <EndProperty Name="MinuteSheetAttachments">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Exception_MinuteSheet" TypeName="MinuteSheetDBModel.FK_Exception_MinuteSheet" StoreEntitySet="WorkflowExceptions">
+            <EndProperty Name="MinuteSheetRequests">
+              <ScalarProperty Name="Id" ColumnName="MinuteSheetId" />
+            </EndProperty>
+            <EndProperty Name="WorkflowExceptions">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="MinuteSheetId" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_History_MinuteSheet" TypeName="MinuteSheetDBModel.FK_History_MinuteSheet" StoreEntitySet="WorkflowHistory">
+            <EndProperty Name="MinuteSheetRequests">
+              <ScalarProperty Name="Id" ColumnName="MinuteSheetId" />
+            </EndProperty>
+            <EndProperty Name="WorkflowHistory">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_MinuteSheet_RequestType" TypeName="MinuteSheetDBModel.FK_MinuteSheet_RequestType" StoreEntitySet="MinuteSheetRequests">
+            <EndProperty Name="RequestTypes">
+              <ScalarProperty Name="Id" ColumnName="RequestTypeId" />
+            </EndProperty>
+            <EndProperty Name="MinuteSheetRequests">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Stage_MinuteSheet" TypeName="MinuteSheetDBModel.FK_Stage_MinuteSheet" StoreEntitySet="WorkflowStages">
+            <EndProperty Name="MinuteSheetRequests">
+              <ScalarProperty Name="Id" ColumnName="MinuteSheetId" />
+            </EndProperty>
+            <EndProperty Name="WorkflowStages">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_RefreshTokens_User" TypeName="MinuteSheetDBModel.FK_RefreshTokens_User" StoreEntitySet="RefreshTokens">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="RefreshTokens">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_WorkflowRules_RequestType" TypeName="MinuteSheetDBModel.FK_WorkflowRules_RequestType" StoreEntitySet="WorkflowRules">
+            <EndProperty Name="RequestTypes">
+              <ScalarProperty Name="Id" ColumnName="RequestTypeId" />
+            </EndProperty>
+            <EndProperty Name="WorkflowRules">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
